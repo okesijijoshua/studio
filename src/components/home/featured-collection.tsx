@@ -10,7 +10,7 @@ export function FeaturedCollection() {
     <section className="py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center">
-          <h2 className="font-headline text-3xl font-bold md:text-4xl">Peak at Our Collection</h2>
+          <h2 className="font-headline text-3xl font-bold md:text-4xl">Peek at Our Collection</h2>
           <p className="mt-2 text-muted-foreground">A glimpse into our world of exquisite fragrances and accessories.</p>
         </div>
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
