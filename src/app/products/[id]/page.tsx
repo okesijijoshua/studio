@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { products as allProducts } from '@/lib/data';
 import { useCurrency } from '@/hooks/use-currency';
@@ -9,13 +10,14 @@ import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, ArrowLeft } from 'lucide-react';
 import { ProductCard } from '@/components/shared/product-card';
 import type { Product } from '@/lib/types';
 import { useEffect, useState } from 'react';
 
 export default function ProductDetailPage() {
   const params = useParams();
+  const router = useRouter();
   const { id } = params;
   const { formatPrice } = useCurrency();
   const { addToCart } = useCart();
@@ -50,6 +52,10 @@ export default function ProductDetailPage() {
 
   return (
     <div className="container mx-auto py-12">
+       <Button variant="ghost" onClick={() => router.back()} className="mb-8">
+        <ArrowLeft className="mr-2" />
+        Go Back
+      </Button>
       <div className="grid md:grid-cols-2 gap-12 items-start">
         <div className="relative aspect-square">
             <Image 
