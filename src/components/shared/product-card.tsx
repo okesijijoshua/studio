@@ -60,7 +60,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </CardContent>
       </Link>
       <CardFooter className="flex flex-col items-start gap-2 p-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
-        <p className="font-semibold text-lg">{product.price > 0 ? formatPrice(product.price) : 'Contact for Price'}</p>
+        <p className="font-semibold text-base">{product.price > 0 ? formatPrice(product.price) : 'Contact for Price'}</p>
         {product.price > 0 ? (
           <Button onClick={handleAddToCart} size="sm" className="w-full sm:w-auto">
             <ShoppingCart className="mr-2 h-4 w-4" />
