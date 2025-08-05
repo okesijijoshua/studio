@@ -43,10 +43,10 @@ export function ProductCard({ product }: ProductCardProps) {
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
                 data-ai-hint="perfume bottle"
             />
-             <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="flex items-center gap-2 text-white font-semibold transform-gpu scale-90 group-hover:scale-100 transition-transform duration-300">
+             <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="flex items-center gap-2 text-white font-semibold transform-gpu scale-90 group-hover:scale-100 transition-transform duration-300 bg-black/50 p-2 rounded-md">
                     <Eye className="h-5 w-5" />
-                    <span>View</span>
+                    <span>View Details</span>
                 </div>
             </div>
             </div>
@@ -60,14 +60,14 @@ export function ProductCard({ product }: ProductCardProps) {
         </CardContent>
       </Link>
       <CardFooter className="flex flex-col items-start gap-4 p-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
-        <p className="font-semibold text-base lg:text-lg">{product.price > 0 ? formatPrice(product.price) : 'Contact for Price'}</p>
+        <p className="font-semibold text-lg">{product.price > 0 ? formatPrice(product.price) : 'Contact for Price'}</p>
         {product.price > 0 ? (
-          <Button onClick={handleAddToCart} size="sm" className="w-full sm:w-auto text-xs px-2 py-1 h-auto lg:px-3 lg:py-2 lg:text-sm lg:h-9">
+          <Button onClick={handleAddToCart} size="sm" className="w-full sm:w-auto">
             <ShoppingCart className="mr-2 h-4 w-4" />
             Add to Cart
           </Button>
         ) : (
-           <Button variant="outline" size="sm" asChild className="w-full sm:w-auto text-xs px-2 py-1 h-auto lg:px-3 lg:py-2 lg:text-sm lg:h-9">
+           <Button variant="outline" size="sm" asChild className="w-full sm:w-auto">
              <Link href={`/products/${product.id}`}>View Details</Link>
           </Button>
         )}
