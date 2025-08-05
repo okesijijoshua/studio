@@ -1,3 +1,4 @@
+
 "use client";
 
 import { ShoppingBag, X } from 'lucide-react';
@@ -103,9 +104,11 @@ export function CartSheet() {
                   <span>Subtotal</span>
                   <span>{formatPrice(totalPrice)}</span>
                 </div>
-                <Button className="w-full" asChild>
-                  <Link href="#">Proceed to Checkout</Link>
-                </Button>
+                <SheetClose asChild>
+                  <Button className="w-full" asChild>
+                    <Link href="/checkout">Proceed to Checkout</Link>
+                  </Button>
+                </SheetClose>
               </div>
             </SheetFooter>
           </>
