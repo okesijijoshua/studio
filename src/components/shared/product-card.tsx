@@ -1,6 +1,7 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import type { Product } from '@/lib/types';
@@ -19,7 +20,8 @@ export function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
   const { toast } = useToast();
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault(); // prevent link navigation
     addToCart(product, 1);
     toast({
       title: "Added to cart",
@@ -29,24 +31,26 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Card className="flex h-full flex-col overflow-hidden transition-shadow duration-300 hover:shadow-lg">
-      <CardHeader className="p-0">
-        <div className="relative aspect-square w-full">
-          <Image
-            src={product.image}
-            alt={product.name}
-            fill
-            className="object-cover"
-            data-ai-hint="perfume bottle"
-          />
-        </div>
-      </CardHeader>
-      <CardContent className="flex-1 p-4">
-        <div className="flex justify-between items-start">
-            <CardTitle className="font-headline text-xl">{product.name}</CardTitle>
-            {product.scentCategory && <Badge variant="outline">{product.scentCategory}</Badge>}
-        </div>
-        <p className="mt-2 text-sm text-muted-foreground">{product.description}</p>
-      </CardContent>
+      <Link href={`/products/${product.id}`} className="flex flex-col flex-1">
+        <CardHeader className="p-0">
+            <div className="relative aspect-square w-full">
+            <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                className="object-cover"
+                data-ai-hint="perfume bottle"
+            />
+            </div>
+        </CardHeader>
+        <CardContent className="flex-1 p-4">
+            <div className="flex justify-between items-start">
+                <CardTitle className="font-headline text-xl">{product.name}</CardTitle>
+                {product.scentCategory && <Badge variant="outline">{product.scentCategory}</Badge>}
+            </div>
+            <p className="mt-2 text-sm text-muted-foreground">{product.description}</p>
+        </CardContent>
+      </Link>
       <CardFooter className="flex items-center justify-between p-4 pt-0">
         <p className="font-semibold text-lg">{formatPrice(product.price)}</p>
         <Button onClick={handleAddToCart} size="sm">
