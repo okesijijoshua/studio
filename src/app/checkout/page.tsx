@@ -30,6 +30,7 @@ import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 import { Truck, CreditCard } from 'lucide-react';
 import { nigerianStates, getShippingCost } from '@/lib/shipping';
+import { usePaystackPayment } from 'react-paystack';
 
 const formSchema = z.object({
   fullName: z.string().min(3, 'Full name must be at least 3 characters.'),
@@ -47,6 +48,7 @@ export default function CheckoutPage() {
   const { cartItems, totalPrice, totalItems, clearCart } = useCart();
   const { formatPrice, currency } = useCurrency();
   const [selectedState, setSelectedState] = useState<string>('');
+  const [formValues, setFormValues] = useState<FormValues | null>(null);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -60,29 +62,52 @@ export default function CheckoutPage() {
     },
   });
 
-  const { formState, reset } = form;
+  const { formState, reset, trigger } = form;
   
   const shippingCost = getShippingCost(selectedState);
   const finalTotal = totalPrice + (shippingCost || 0);
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log("Order Data:", {
-        ...data,
-        cartItems,
-        subtotal: totalPrice,
-        shipping: shippingCost,
-        total: finalTotal,
-        currency: currency
-    });
-    
+  const paystackConfig = {
+      reference: (new Date()).getTime().toString(),
+      email: formValues?.email || '',
+      amount: finalTotal * 100, // Paystack amount is in kobo
+      publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || '',
+  };
+
+  const initializePayment = usePaystackPayment(paystackConfig);
+
+  const onPaymentSuccess = (reference: any) => {
+    console.log('Payment successful:', reference);
     toast({
-      title: 'Order Placed!',
-      description: 'Your order has been successfully submitted. We will contact you shortly.',
+      title: 'Payment Successful!',
+      description: 'Your order has been placed. We will process it shortly.',
     });
     clearCart();
     reset();
-    // In a real app, you would redirect to a "Thank You" page or payment gateway.
+    setFormValues(null);
   };
+
+  const onPaymentClose = () => {
+    console.log('Payment closed');
+    toast({
+        title: 'Payment Canceled',
+        description: 'The payment process was not completed.',
+        variant: 'destructive',
+    });
+  };
+
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    setFormValues(data);
+    initializePayment(onPaymentSuccess, onPaymentClose);
+  };
+
+  const handleProceedToPayment = async () => {
+    const isValid = await trigger();
+    if (isValid) {
+        form.handleSubmit(onSubmit)();
+    }
+  }
+
 
   if (totalItems === 0 && !formState.isSubmitSuccessful) {
     return (
@@ -119,7 +144,7 @@ export default function CheckoutPage() {
             </CardHeader>
             <CardContent>
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
                         <FormField control={form.control} name="fullName" render={({ field }) => (
                             <FormItem><FormLabel>Full Name</FormLabel><FormControl><Input placeholder="John Doe" {...field} /></FormControl><FormMessage /></FormItem>
                         )} />
@@ -155,8 +180,8 @@ export default function CheckoutPage() {
                                 </FormItem>
                             )} />
                         </div>
-                        <Button type="submit" disabled={formState.isSubmitting || totalItems === 0} className="w-full text-lg py-6">
-                            {formState.isSubmitting ? 'Placing Order...' : `Place Order - ${formatPrice(finalTotal)}`}
+                         <Button type="button" onClick={handleProceedToPayment} disabled={formState.isSubmitting || totalItems === 0 || !selectedState} className="w-full text-lg py-6">
+                            {formState.isSubmitting ? 'Processing...' : `Proceed to Payment - ${formatPrice(finalTotal)}`}
                         </Button>
                     </form>
                 </Form>
