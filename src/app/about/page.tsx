@@ -1,6 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Facebook, Instagram, Twitter } from 'lucide-react';
+import { Facebook, Instagram, Twitter, ArrowRight } from 'lucide-react';
 import { TestimonialCard } from '@/components/shared/testimonial-card';
 import { testimonials } from '@/lib/data';
 
@@ -61,6 +62,12 @@ export default function AboutPage() {
                   <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><TiktokIcon /></a>
                 </Button>
               </div>
+               <Button asChild className="mt-8">
+                <Link href="/contact">
+                  Contact Us
+                  <ArrowRight className="ml-2" />
+                </Link>
+              </Button>
             </div>
              <div className="order-1 md:order-2">
                 <Image
