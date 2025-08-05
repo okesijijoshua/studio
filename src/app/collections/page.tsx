@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { products as allProducts } from '@/lib/data';
 import type { Product } from '@/lib/types';
@@ -20,6 +20,7 @@ import { useCurrency } from '@/hooks/use-currency';
 const BRANDS = [...new Set(allProducts.map(p => p.brand))];
 const SCENT_CATEGORIES = [...new Set(allProducts.filter(p => p.scentCategory).map(p => p.scentCategory!))];
 const MAX_PRICE = Math.max(...allProducts.map(p => p.price));
+const PRODUCTS_PER_PAGE = 9;
 
 export default function CollectionsPage() {
   const searchParams = useSearchParams();
@@ -29,9 +30,15 @@ export default function CollectionsPage() {
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedScentCategories, setSelectedScentCategories] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState([0, MAX_PRICE]);
+  const [currentPage, setCurrentPage] = useState(1);
   
   const initialCategory = searchParams.get('category');
   const [selectedCategory, setSelectedCategory] = useState(initialCategory || 'All');
+
+  useEffect(() => {
+    // Reset to first page whenever filters change
+    setCurrentPage(1);
+  }, [selectedCategory, selectedBrands, selectedScentCategories, priceRange, sortOption]);
 
 
   const filteredAndSortedProducts = useMemo(() => {
@@ -68,6 +75,14 @@ export default function CollectionsPage() {
 
     return products;
   }, [sortOption, selectedBrands, selectedScentCategories, priceRange, selectedCategory]);
+
+  const totalPages = Math.ceil(filteredAndSortedProducts.length / PRODUCTS_PER_PAGE);
+
+  const paginatedProducts = useMemo(() => {
+      const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE;
+      const endIndex = startIndex + PRODUCTS_PER_PAGE;
+      return filteredAndSortedProducts.slice(startIndex, endIndex);
+  }, [filteredAndSortedProducts, currentPage]);
 
   const toggleFilter = (setter: React.Dispatch<React.SetStateAction<string[]>>, value: string) => {
     setter(prev => prev.includes(value) ? prev.filter(item => item !== value) : [...prev, value]);
@@ -149,19 +164,41 @@ export default function CollectionsPage() {
 
         {/* Products Grid */}
         <main className="md:col-span-3">
-          {filteredAndSortedProducts.length > 0 ? (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {filteredAndSortedProducts.map(product => (
-                <ProductCard key={product.id} product={product} />
-                ))}
-            </div>
+          {paginatedProducts.length > 0 ? (
+            <>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {paginatedProducts.map(product => (
+                  <ProductCard key={product.id} product={product} />
+                  ))}
+              </div>
+               {totalPages > 1 && (
+                <div className="mt-8 flex justify-center items-center gap-4">
+                  <Button
+                    variant="outline"
+                    onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                    disabled={currentPage === 1}
+                  >
+                    Previous
+                  </Button>
+                  <span className="text-sm text-muted-foreground">
+                    Page {currentPage} of {totalPages}
+                  </span>
+                  <Button
+                    variant="outline"
+                    onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                    disabled={currentPage === totalPages}
+                  >
+                    Next
+                  </Button>
+                </div>
+              )}
+            </>
           ) : (
             <div className="flex flex-col items-center justify-center h-full text-center">
                 <p className="text-lg font-semibold">No products found</p>
                 <p className="text-muted-foreground">Try adjusting your filters.</p>
             </div>
           )}
-          {/* Pagination could be added here */}
         </main>
       </div>
     </div>
