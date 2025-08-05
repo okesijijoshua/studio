@@ -59,15 +59,15 @@ export function ProductCard({ product }: ProductCardProps) {
             <p className="mt-2 text-sm text-muted-foreground">{product.description}</p>
         </CardContent>
       </Link>
-      <CardFooter className="flex items-center justify-between p-4 pt-0">
+      <CardFooter className="flex flex-col items-start gap-2 p-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="font-semibold text-lg">{product.price > 0 ? formatPrice(product.price) : 'Contact for Price'}</p>
         {product.price > 0 ? (
-          <Button onClick={handleAddToCart} size="sm">
+          <Button onClick={handleAddToCart} size="sm" className="w-full sm:w-auto">
             <ShoppingCart className="mr-2 h-4 w-4" />
             Add to Cart
           </Button>
         ) : (
-           <Button variant="outline" size="sm" asChild>
+           <Button variant="outline" size="sm" asChild className="w-full sm:w-auto">
              <Link href={`/products/${product.id}`}>View Details</Link>
           </Button>
         )}
