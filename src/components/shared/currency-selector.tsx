@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useCurrency } from '@/hooks/use-currency';
@@ -15,13 +16,21 @@ export function CurrencySelector() {
 
   return (
     <Select value={currency} onValueChange={(value: CurrencyCode) => setCurrency(value)}>
-      <SelectTrigger className="w-[80px] border-none focus:ring-0 shadow-none bg-transparent">
-        <SelectValue placeholder="Select currency" />
+      <SelectTrigger className="w-[120px] border-none focus:ring-0 shadow-none bg-transparent">
+        <SelectValue placeholder="Select currency">
+          <span className="flex items-center gap-2">
+            {currencies[currency].flag}
+            <span>{currency}</span>
+          </span>
+        </SelectValue>
       </SelectTrigger>
       <SelectContent>
-        {Object.entries(currencies).map(([code, { name }]) => (
+        {Object.entries(currencies).map(([code, { name, flag }]) => (
           <SelectItem key={code} value={code}>
-            {code} - {name}
+            <span className="flex items-center gap-2">
+                {flag}
+                <span>{code} - {name}</span>
+            </span>
           </SelectItem>
         ))}
       </SelectContent>
