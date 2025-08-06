@@ -10,9 +10,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Skeleton } from '../ui/skeleton';
 
 export function CurrencySelector() {
-  const { currency, setCurrency } = useCurrency();
+  const { currency, setCurrency, isMounted } = useCurrency();
+
+  if (!isMounted) {
+    return <Skeleton className="w-[120px] h-10" />;
+  }
 
   return (
     <Select value={currency} onValueChange={(value: CurrencyCode) => setCurrency(value)}>
