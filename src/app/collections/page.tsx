@@ -21,7 +21,7 @@ import { useCurrency } from '@/hooks/use-currency';
 const BRANDS = [...new Set(allProducts.map(p => p.brand))];
 const SCENT_CATEGORIES = [...new Set(allProducts.filter(p => p.scentCategory).map(p => p.scentCategory!))];
 const MAX_PRICE = Math.max(...allProducts.map(p => p.price));
-const PRODUCTS_PER_PAGE = 9;
+const PRODUCTS_PER_PAGE = 10;
 
 export default function CollectionsPage() {
   const searchParams = useSearchParams();
