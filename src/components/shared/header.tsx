@@ -33,13 +33,13 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
-  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+  const closeMobileMenu = () => setIsMobileMenuOpen(useState(false));
 
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full transition-all duration-300',
-        isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-md' : 'bg-transparent'
+        'sticky top-0 z-50 w-full transition-all duration-300 bg-card',
+        isScrolled ? 'shadow-md' : ''
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
