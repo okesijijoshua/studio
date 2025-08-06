@@ -96,9 +96,9 @@ export default function CollectionsPage() {
         <p className="mt-2 text-muted-foreground">Browse our entire range of exquisite products.</p>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Filters Sidebar */}
-        <aside className="lg:col-span-1">
+        <aside className="md:col-span-1">
           <div className="space-y-6">
             <div>
                 <Label className="text-lg font-headline">Sort By</Label>
@@ -164,10 +164,10 @@ export default function CollectionsPage() {
         </aside>
 
         {/* Products Grid */}
-        <main className="lg:col-span-3">
+        <main className="md:col-span-3">
           {paginatedProducts.length > 0 ? (
             <>
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {paginatedProducts.map(product => (
                   <ProductCard key={product.id} product={product} />
                   ))}
