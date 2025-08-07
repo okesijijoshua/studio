@@ -32,7 +32,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h1 className="font-headline text-4xl font-bold md:text-5xl">Our Story</h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-            LuxeScents was born from a passion for the art of perfumery. We believe that a fragrance is more than just a scent—it's an expression of identity, a memory, a feeling. Our mission is to bring you the most exquisite and unique fragrances from around the world, curated with love and expertise.
+            DekemiScents was born from a passion for the art of perfumery. We believe that a fragrance is more than just a scent—it's an expression of identity, a memory, a feeling. Our mission is to bring you the most exquisite and unique fragrances from around the world, curated with love and expertise.
           </p>
         </div>
       </section>
@@ -43,7 +43,7 @@ export default function AboutPage() {
             <div className="order-2 md:order-1">
               <h2 className="font-headline text-3xl font-bold">The Essence of Luxury</h2>
               <p className="mt-4 text-muted-foreground">
-                We travel the globe to source the finest ingredients and partner with master perfumers who share our dedication to quality and craftsmanship. Each bottle in our collection tells a story, ready to become a part of yours.
+                At <span className="font-bold text-foreground">DekemiScents</span>, we don’t just sell perfumes, we help you discover your perfect scent. Through global research and expert curation, we offer a refined collection of luxury fragrances crafted with rare ingredients. Plus, our <span className="font-bold text-foreground">AI-powered scent finder</span> makes it easy to find perfumes that align with your personality, preferences, and mood. Explore, discover, and find the fragrance that tells your story.
               </p>
               <p className="mt-4 text-muted-foreground">
                 From rare florals to rich, exotic ouds, our collection is a journey for the senses. We invite you to explore, discover, and find the scent that truly speaks to you.
