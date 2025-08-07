@@ -1,3 +1,4 @@
+
 "use client"
 import './globals.css';
 import { cn } from '@/lib/utils';
@@ -15,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>LuxeScents - Elegance in Every Drop</title>
+        <title>DekemiScents - Elegance in Every Drop</title>
         <meta name="description" content="Discover our curated collection of luxury perfumes, crafted to captivate your senses and define your essence." />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

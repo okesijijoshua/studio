@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Logo } from './logo';
 import { Facebook, Instagram, Twitter } from 'lucide-react';
@@ -69,7 +70,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t pt-4 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} LuxeScents. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} DekemiScents. All rights reserved.</p>
         </div>
       </div>
     </footer>

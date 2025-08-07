@@ -45,9 +45,6 @@ export default function AboutPage() {
               <p className="mt-4 text-muted-foreground">
                 At <span className="font-bold text-foreground">DekemiScents</span>, we don’t just sell perfumes, we help you discover your perfect scent. Through global research and expert curation, we offer a refined collection of luxury fragrances crafted with rare ingredients. Plus, our <span className="font-bold text-foreground">AI-powered scent finder</span> makes it easy to find perfumes that align with your personality, preferences, and mood. Explore, discover, and find the fragrance that tells your story.
               </p>
-              <p className="mt-4 text-muted-foreground">
-                From rare florals to rich, exotic ouds, our collection is a journey for the senses. We invite you to explore, discover, and find the scent that truly speaks to you.
-              </p>
               <div className="mt-6 flex space-x-2">
                 <Button variant="ghost" size="icon" asChild>
                   <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook /></a>

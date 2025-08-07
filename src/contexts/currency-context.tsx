@@ -20,7 +20,7 @@ export const CurrencyProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     setIsMounted(true);
     try {
-      const storedCurrency = localStorage.getItem('luxe_scents_currency') as CurrencyCode;
+      const storedCurrency = localStorage.getItem('dekemi_scents_currency') as CurrencyCode;
       if (storedCurrency && currencies[storedCurrency]) {
         setCurrencyState(storedCurrency);
       }
@@ -34,7 +34,7 @@ export const CurrencyProvider = ({ children }: { children: ReactNode }) => {
       setCurrencyState(newCurrency);
       if (typeof window !== 'undefined') {
         try {
-          localStorage.setItem('luxe_scents_currency', newCurrency);
+          localStorage.setItem('dekemi_scents_currency', newCurrency);
         } catch (error) {
           console.error("Could not access localStorage:", error);
         }
@@ -49,13 +49,8 @@ export const CurrencyProvider = ({ children }: { children: ReactNode }) => {
       const convertedPrice = priceInNgn * rate;
 
       if (!isMounted) {
-        // During SSR or before hydration, render with the default currency format
-        // but potentially calculated with the stored currency to avoid flash of different value.
-        // For simplicity and to avoid mismatch, we can just show a placeholder or the default NGN price.
-         return `${currencies['NGN'].symbol}${(priceInNgn).toLocaleString(undefined, {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        })}`;
+        // During SSR or before hydration, render a loading state.
+        return <span className="w-20 h-5 bg-muted rounded animate-pulse" />;
       }
       
       return `${symbol}${convertedPrice.toLocaleString(undefined, {

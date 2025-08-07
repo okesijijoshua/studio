@@ -1,3 +1,4 @@
+
 import type { Product, Testimonial } from '@/lib/types';
 
 export const products: Product[] = [
@@ -8,7 +9,7 @@ export const products: Product[] = [
     price: 45000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
-    brand: 'LuxeScents',
+    brand: 'DekemiScents',
     scentCategory: 'Floral',
   },
   {
@@ -28,7 +29,7 @@ export const products: Product[] = [
     price: 38000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
-    brand: 'LuxeScents',
+    brand: 'DekemiScents',
     scentCategory: 'Fresh',
   },
   {
@@ -58,7 +59,7 @@ export const products: Product[] = [
     price: 15000,
     image: 'https://placehold.co/600x600.png',
     category: 'Accessory',
-    brand: 'LuxeScents',
+    brand: 'DekemiScents',
   },
   {
     id: '7',
@@ -77,7 +78,7 @@ export const products: Product[] = [
     price: 59000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
-    brand: 'LuxeScents',
+    brand: 'DekemiScents',
     scentCategory: 'Floral',
   },
   {
@@ -106,7 +107,7 @@ export const products: Product[] = [
     price: 52000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
-    brand: 'LuxeScents',
+    brand: 'DekemiScents',
     scentCategory: 'Oriental',
   },
   {

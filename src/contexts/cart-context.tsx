@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { createContext, useState, useEffect, useMemo, type ReactNode } from 'react';
@@ -22,7 +23,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     setIsMounted(true);
     try {
-      const storedCart = localStorage.getItem('luxe_scents_cart');
+      const storedCart = localStorage.getItem('dekemi_scents_cart');
       if (storedCart) {
         setCartItems(JSON.parse(storedCart));
       }
@@ -34,7 +35,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (isMounted) {
       try {
-        localStorage.setItem('luxe_scents_cart', JSON.stringify(cartItems));
+        localStorage.setItem('dekemi_scents_cart', JSON.stringify(cartItems));
       } catch (error) {
         console.error("Could not access localStorage:", error);
       }
