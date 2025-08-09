@@ -7,10 +7,13 @@ export const products: Product[] = [
     name: 'Mystic Bloom',
     description: 'A captivating floral scent with notes of jasmine and rose.',
     price: 45000,
-    image: 'https://placehold.co/600x600.png',
+    image: '/images/mystic-bloom.jpg',
     category: 'Perfume',
     brand: 'DekemiScents',
     scentCategory: 'Floral',
+    details: {
+      size: '100ml'
+    }
   },
   {
     id: '2',
@@ -21,6 +24,9 @@ export const products: Product[] = [
     category: 'Perfume',
     brand: 'Aura Fragrances',
     scentCategory: 'Woody',
+    details: {
+      size: '75ml'
+    }
   },
   {
     id: '3',
@@ -31,6 +37,9 @@ export const products: Product[] = [
     category: 'Perfume',
     brand: 'DekemiScents',
     scentCategory: 'Fresh',
+    details: {
+        size: '100ml'
+    }
   },
   {
     id: '4',
@@ -41,6 +50,9 @@ export const products: Product[] = [
     category: 'Perfume',
     brand: 'Scentoria',
     scentCategory: 'Oriental',
+    details: {
+        size: '50ml'
+    }
   },
   {
     id: '5',
@@ -51,6 +63,9 @@ export const products: Product[] = [
     category: 'Perfume',
     brand: 'Aura Fragrances',
     scentCategory: 'Fresh',
+    details: {
+        size: '120ml'
+    }
   },
   {
     id: '6',
@@ -60,6 +75,11 @@ export const products: Product[] = [
     image: 'https://placehold.co/600x600.png',
     category: 'Accessory',
     brand: 'DekemiScents',
+    details: {
+        color: 'Rose Gold',
+        material: 'Aluminum',
+        size: '5ml'
+    }
   },
   {
     id: '7',
@@ -70,6 +90,9 @@ export const products: Product[] = [
     category: 'Perfume',
     brand: 'Scentoria',
     scentCategory: 'Woody',
+    details: {
+      size: '100ml'
+    }
   },
   {
     id: '8',
@@ -80,6 +103,9 @@ export const products: Product[] = [
     category: 'Perfume',
     brand: 'DekemiScents',
     scentCategory: 'Floral',
+    details: {
+        size: '75ml'
+    }
   },
   {
     id: '9',
@@ -89,6 +115,10 @@ export const products: Product[] = [
     image: 'https://placehold.co/600x600.png',
     category: 'Accessory',
     brand: 'Aura Fragrances',
+    details: {
+        color: 'Brown',
+        material: 'Genuine Leather'
+    }
   },
   {
     id: '10',
@@ -98,7 +128,10 @@ export const products: Product[] = [
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
     brand: 'Scentoria',
-    scentCategory: 'Fresh'
+    scentCategory: 'Fresh',
+    details: {
+        size: '100ml'
+    }
   },
   {
     id: '11',
@@ -109,6 +142,9 @@ export const products: Product[] = [
     category: 'Perfume',
     brand: 'DekemiScents',
     scentCategory: 'Oriental',
+    details: {
+        size: '50ml'
+    }
   },
   {
     id: '12',
@@ -118,6 +154,10 @@ export const products: Product[] = [
     image: 'https://placehold.co/600x600.png',
     category: 'Accessory',
     brand: 'Scentoria',
+    details: {
+        color: 'Black',
+        material: 'Velvet'
+    }
   }
 ];
 

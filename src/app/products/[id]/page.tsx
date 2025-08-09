@@ -14,6 +14,9 @@ import { ShoppingCart, ArrowLeft } from 'lucide-react';
 import { ProductCard } from '@/components/shared/product-card';
 import type { Product } from '@/lib/types';
 import { useEffect, useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -49,6 +52,8 @@ export default function ProductDetailPage() {
     p.id !== product.id && 
     (p.scentCategory === product.scentCategory || p.brand === product.brand)
   ).slice(0, 3);
+  
+  const productDetails = product.details ? Object.entries(product.details).filter(([_, value]) => value) : [];
 
   return (
     <div className="container mx-auto py-12">
@@ -76,6 +81,24 @@ export default function ProductDetailPage() {
             <p className="text-3xl font-semibold">{formatPrice(product.price)}</p>
             
             <p className="text-muted-foreground text-lg">{product.description}</p>
+
+            {productDetails.length > 0 && (
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="font-headline text-xl">Details</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <ul className="space-y-2 text-sm">
+                            {productDetails.map(([key, value]) => (
+                                <li key={key} className="flex justify-between">
+                                    <span className="font-semibold text-muted-foreground">{capitalize(key)}:</span>
+                                    <span>{value}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </CardContent>
+                </Card>
+            )}
             
             <Button size="lg" onClick={handleAddToCart} className="w-full md:w-auto">
                 <ShoppingCart className="mr-2" />

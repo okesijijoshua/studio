@@ -7,6 +7,11 @@ export type Product = {
   category: 'Perfume' | 'Accessory';
   brand: string;
   scentCategory?: 'Floral' | 'Woody' | 'Oriental' | 'Fresh';
+  details?: {
+    size?: string;
+    color?: string;
+    material?: string;
+  };
 };
 
 export type Testimonial = {
