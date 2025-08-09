@@ -98,7 +98,7 @@ export default function ProductDetailPage() {
                 <CardContent>
                     <ul className="space-y-2 text-sm grid md:grid-cols-2 gap-x-8 gap-y-2">
                         {productDetails.map(([key, value]) => (
-                            <li key={key} className="flex justify-between border-b pb-1">
+                            <li key={key} className="flex justify-between">
                                 <span className="text-muted-foreground">{capitalize(key)}:</span>
                                 <span>{value}</span>
                             </li>
