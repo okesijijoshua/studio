@@ -81,24 +81,6 @@ export default function ProductDetailPage() {
             <p className="text-3xl font-semibold">{formatPrice(product.price)}</p>
             
             <p className="text-muted-foreground text-lg">{product.description}</p>
-
-            {productDetails.length > 0 && (
-                <Card>
-                    <CardHeader>
-                        <CardTitle className="font-headline text-xl">Details</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <ul className="space-y-2 text-sm">
-                            {productDetails.map(([key, value]) => (
-                                <li key={key} className="flex justify-between">
-                                    <span className="font-semibold text-muted-foreground">{capitalize(key)}:</span>
-                                    <span>{value}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </CardContent>
-                </Card>
-            )}
             
             <Button size="lg" onClick={handleAddToCart} className="w-full md:w-auto">
                 <ShoppingCart className="mr-2" />
@@ -106,6 +88,26 @@ export default function ProductDetailPage() {
             </Button>
         </div>
       </div>
+
+       {productDetails.length > 0 && (
+          <div className="my-12">
+            <Card>
+                <CardHeader>
+                    <CardTitle className="font-headline text-2xl">Details</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <ul className="space-y-2 text-sm grid md:grid-cols-2 gap-x-8 gap-y-2">
+                        {productDetails.map(([key, value]) => (
+                            <li key={key} className="flex justify-between border-b pb-1">
+                                <span className="font-semibold text-muted-foreground">{capitalize(key)}:</span>
+                                <span>{value}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </CardContent>
+            </Card>
+          </div>
+      )}
       
       <Separator className="my-16" />
       
