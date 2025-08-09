@@ -96,14 +96,14 @@ export default function ProductDetailPage() {
                     <CardTitle className="font-headline text-2xl">Details</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <ul className="space-y-2 text-sm grid md:grid-cols-2 gap-x-8 gap-y-2">
+                    <dl className="grid grid-cols-1 gap-y-2 text-sm md:grid-cols-2 lg:grid-cols-3">
                         {productDetails.map(([key, value]) => (
-                            <li key={key} className="flex justify-between">
-                                <span className="text-muted-foreground">{capitalize(key)}:</span>
-                                <span>{value}</span>
-                            </li>
+                            <div key={key} className="grid grid-cols-2 gap-x-2">
+                                <dt className="text-muted-foreground">{capitalize(key)}:</dt>
+                                <dd>{value}</dd>
+                            </div>
                         ))}
-                    </ul>
+                    </dl>
                 </CardContent>
             </Card>
           </div>
