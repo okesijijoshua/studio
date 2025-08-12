@@ -2,6 +2,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { products as allProducts } from '@/lib/data';
 import type { Product } from '@/lib/types';
 import { ProductCard } from '@/components/shared/product-card';
@@ -69,6 +70,7 @@ const usePagination = ({ totalPages, siblingCount = 1, currentPage }: { totalPag
 
 export default function CollectionsPage() {
   const { formatPrice } = useCurrency();
+  const searchParams = useSearchParams();
 
   const [sortOption, setSortOption] = useState('name-asc');
   const [selectedPerfumeType, setSelectedPerfumeType] = useState<string | null>(null);
@@ -76,6 +78,16 @@ export default function CollectionsPage() {
   const [selectedScentCategories, setSelectedScentCategories] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState([0, MAX_PRICE]);
   const [currentPage, setCurrentPage] = useState(1);
+  
+  useEffect(() => {
+    const typeFromUrl = searchParams.get('type');
+    if (typeFromUrl) {
+        const matchingType = PERFUME_TYPES.find(t => t.toLowerCase().includes(typeFromUrl.toLowerCase()));
+        if (matchingType) {
+            setSelectedPerfumeType(matchingType);
+        }
+    }
+  }, [searchParams]);
   
   useEffect(() => {
     // Reset to first page whenever filters change
@@ -86,7 +98,7 @@ export default function CollectionsPage() {
   const filteredAndSortedProducts = useMemo(() => {
     let products = allProducts.filter(p => p.category === 'Perfume');
 
-    if (selectedPerfumeType) {
+    if (selectedPerfumeType && selectedPerfumeType !== 'All Perfumes') {
       const internalType = selectedPerfumeType.split(' ')[0];
       products = products.filter(p => p.perfumeType === internalType);
     }
