@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useMemo, useEffect } from 'react';
@@ -70,7 +71,7 @@ export default function CollectionsPage() {
   const { formatPrice } = useCurrency();
 
   const [sortOption, setSortOption] = useState('name-asc');
-  const [selectedPerfumeTypes, setSelectedPerfumeTypes] = useState<string[]>([]);
+  const [selectedPerfumeType, setSelectedPerfumeType] = useState<string | null>(null);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedScentCategories, setSelectedScentCategories] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState([0, MAX_PRICE]);
@@ -79,15 +80,15 @@ export default function CollectionsPage() {
   useEffect(() => {
     // Reset to first page whenever filters change
     setCurrentPage(1);
-  }, [selectedPerfumeTypes, selectedBrands, selectedScentCategories, priceRange, sortOption]);
+  }, [selectedPerfumeType, selectedBrands, selectedScentCategories, priceRange, sortOption]);
 
 
   const filteredAndSortedProducts = useMemo(() => {
     let products = allProducts.filter(p => p.category === 'Perfume');
 
-    if (selectedPerfumeTypes.length > 0) {
-      const internalTypes = selectedPerfumeTypes.map(t => t.split(' ')[0]);
-      products = products.filter(p => p.perfumeType && internalTypes.includes(p.perfumeType));
+    if (selectedPerfumeType) {
+      const internalType = selectedPerfumeType.split(' ')[0];
+      products = products.filter(p => p.perfumeType === internalType);
     }
 
     if (selectedBrands.length > 0) {
@@ -116,7 +117,7 @@ export default function CollectionsPage() {
     }
 
     return products;
-  }, [sortOption, selectedPerfumeTypes, selectedBrands, selectedScentCategories, priceRange]);
+  }, [sortOption, selectedPerfumeType, selectedBrands, selectedScentCategories, priceRange]);
 
   const totalPages = Math.ceil(filteredAndSortedProducts.length / PRODUCTS_PER_PAGE);
 
@@ -128,7 +129,11 @@ export default function CollectionsPage() {
 
   const paginationRange = usePagination({ currentPage, totalPages });
 
-  const toggleFilter = (setter: React.Dispatch<React.SetStateAction<string[]>>, value: string) => {
+  const handlePerfumeTypeSelect = (type: string) => {
+      setSelectedPerfumeType(prev => (prev === type ? null : type));
+  };
+  
+  const toggleArrayFilter = (setter: React.Dispatch<React.SetStateAction<string[]>>, value: string) => {
     setter(prev => prev.includes(value) ? prev.filter(item => item !== value) : [...prev, value]);
   }
 
@@ -139,16 +144,14 @@ export default function CollectionsPage() {
         <p className="mt-2 text-muted-foreground">Browse our exquisite collection of fragrances.</p>
       </div>
 
-       {selectedPerfumeTypes.length > 0 && (
+       {selectedPerfumeType && (
         <div className="mb-8 flex flex-wrap items-center justify-center gap-2">
-            <span className="text-sm font-medium">Active Filters:</span>
-            {selectedPerfumeTypes.map(type => (
-                <Badge key={type} variant="secondary" className="text-sm">
-                    {type}
-                </Badge>
-            ))}
-            <Button variant="ghost" size="sm" onClick={() => setSelectedPerfumeTypes([])} className="text-primary hover:text-primary">
-                Clear all
+            <span className="text-sm font-medium">Active Filter:</span>
+            <Badge variant="secondary" className="text-sm">
+                {selectedPerfumeType}
+            </Badge>
+            <Button variant="ghost" size="sm" onClick={() => setSelectedPerfumeType(null)} className="text-primary hover:text-primary">
+                Clear filter
             </Button>
         </div>
       )}
@@ -161,7 +164,7 @@ export default function CollectionsPage() {
                 <Label className="text-lg font-headline">Category</Label>
                 <div className="mt-2 space-y-2">
                     {PERFUME_TYPES.map(type => (
-                        <Button key={type} variant={selectedPerfumeTypes.includes(type) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleFilter(setSelectedPerfumeTypes, type)}>
+                        <Button key={type} variant={selectedPerfumeType === type ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => handlePerfumeTypeSelect(type)}>
                             {type}
                         </Button>
                     ))}
@@ -185,7 +188,7 @@ export default function CollectionsPage() {
               <Label className="text-lg font-headline">Brand</Label>
               <div className="mt-2 space-y-2">
                 {BRANDS.map(brand => (
-                    <Button key={brand} variant={selectedBrands.includes(brand) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleFilter(setSelectedBrands, brand)}>
+                    <Button key={brand} variant={selectedBrands.includes(brand) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleArrayFilter(setSelectedBrands, brand)}>
                         {brand}
                     </Button>
                 ))}
@@ -195,7 +198,7 @@ export default function CollectionsPage() {
               <Label className="text-lg font-headline">Scent</Label>
               <div className="mt-2 space-y-2">
                 {SCENT_CATEGORIES.map(scent => (
-                     <Button key={scent} variant={selectedScentCategories.includes(scent) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleFilter(setSelectedScentCategories, scent)}>
+                     <Button key={scent} variant={selectedScentCategories.includes(scent) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleArrayFilter(setSelectedScentCategories, scent)}>
                         {scent}
                     </Button>
                 ))}
@@ -276,3 +279,5 @@ export default function CollectionsPage() {
     </div>
   );
 }
+
+  
