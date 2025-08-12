@@ -233,7 +233,7 @@ export default function CollectionsPage() {
   );
 
   const AccordionFilters = () => (
-    <Accordion type="multiple" collapsible className="w-full" defaultValue={['sort']}>
+    <Accordion type="multiple" className="w-full" defaultValue={['sort']}>
         <AccordionItem value="sort">
             <AccordionTrigger className="text-lg font-headline">Sort By</AccordionTrigger>
             <AccordionContent>
