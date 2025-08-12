@@ -1,7 +1,7 @@
 
 "use client";
 
-import { ShoppingBag, X } from 'lucide-react';
+import { ShoppingCart, X } from 'lucide-react';
 import { useCart } from '@/hooks/use-cart';
 import { useCurrency } from '@/hooks/use-currency';
 import { Button } from '@/components/ui/button';
@@ -28,7 +28,7 @@ export function CartSheet() {
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="ghost" size="icon" className="relative">
-          <ShoppingBag />
+          <ShoppingCart />
           {totalItems > 0 && (
             <Badge 
               variant="destructive" 
@@ -114,7 +114,7 @@ export function CartSheet() {
           </>
         ) : (
           <div className="flex flex-1 flex-col items-center justify-center gap-4">
-            <ShoppingBag className="h-16 w-16 text-muted-foreground" />
+            <ShoppingCart className="h-16 w-16 text-muted-foreground" />
             <p className="text-muted-foreground">Your cart is empty.</p>
             <SheetClose asChild>
               <Button asChild>
