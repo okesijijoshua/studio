@@ -17,7 +17,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { useCurrency } from '@/hooks/use-currency';
 
-const PERFUME_TYPES = [...new Set(allProducts.filter(p => p.perfumeType).map(p => p.perfumeType!))];
+const PERFUME_TYPES = ['Dekemi Perfumes', 'Designer Perfumes', 'Signature Perfumes', 'Mini Perfumes'];
 const BRANDS = [...new Set(allProducts.filter(p => p.category === 'Perfume').map(p => p.brand))];
 const SCENT_CATEGORIES = [...new Set(allProducts.filter(p => p.scentCategory).map(p => p.scentCategory!))];
 const MAX_PRICE = Math.max(...allProducts.filter(p => p.category === 'Perfume').map(p => p.price));
@@ -86,7 +86,8 @@ export default function CollectionsPage() {
     let products = allProducts.filter(p => p.category === 'Perfume');
 
     if (selectedPerfumeTypes.length > 0) {
-      products = products.filter(p => p.perfumeType && selectedPerfumeTypes.includes(p.perfumeType));
+      const internalTypes = selectedPerfumeTypes.map(t => t.split(' ')[0]);
+      products = products.filter(p => p.perfumeType && internalTypes.includes(p.perfumeType));
     }
 
     if (selectedBrands.length > 0) {
