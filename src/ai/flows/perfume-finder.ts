@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -11,8 +12,6 @@
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 import { products } from '@/lib/data';
-import type { Product } from '@/lib/types';
-
 
 const PerfumeSchema = z.object({
     id: z.string().optional(),
@@ -39,6 +38,40 @@ export async function findPerfume(input: FindPerfumeInput): Promise<FindPerfumeO
   return findPerfumeFlow(input);
 }
 
+const prompt = ai.definePrompt({
+    name: 'perfumeFinderPrompt',
+    input: {
+        schema: z.object({
+            description: z.string(),
+            products: z.array(z.any()),
+        }),
+    },
+    output: {
+        schema: FindPerfumeOutputSchema,
+    },
+    prompt: `You are a world-class perfumier. A customer is looking for a new scent. Based on their description, recommend up to 3 perfumes.
+
+    User's request: "{{description}}"
+    
+    Here is a list of perfumes available in our collection:
+    {{#each products}}
+    - Name: {{this.name}}
+      - ID: {{this.id}}
+      - Description: {{this.description}}
+      - Brand: {{this.brand}}
+      - Scent Category: {{this.scentCategory}}
+    {{/each}}
+    
+    Please analyze the user's request and compare it against our collection.
+    
+    - If you find one or more perfumes in our collection that are a strong match, please return them. Include their IDs.
+    - If our collection does not contain a strong match, create and recommend one or two new, fictional perfumes that you believe the user would love. For these fictional perfumes, do not include an ID.
+    - You can also return a mix of existing and fictional perfumes if there is one good match but you think a fictional one would be even better.
+    
+    Return your recommendations in the requested JSON format.
+    `,
+});
+
 const findPerfumeFlow = ai.defineFlow(
   {
     name: 'findPerfumeFlow',
@@ -46,39 +79,6 @@ const findPerfumeFlow = ai.defineFlow(
     outputSchema: FindPerfumeOutputSchema,
   },
   async (input) => {
-    const prompt = ai.definePrompt({
-        name: 'perfumeFinderPrompt',
-        input: {
-            schema: z.object({
-                description: z.string(),
-                products: z.array(z.any()),
-            }),
-        },
-        output: {
-            schema: FindPerfumeOutputSchema,
-        },
-        prompt: `You are a world-class perfumier. A customer is looking for a new scent. Based on their description, recommend up to 3 perfumes.
-
-        User's request: "{{description}}"
-        
-        Here is a list of perfumes available in our collection:
-        {{#each products}}
-        - Name: {{this.name}}
-          - ID: {{this.id}}
-          - Description: {{this.description}}
-          - Brand: {{this.brand}}
-          - Scent Category: {{this.scentCategory}}
-        {{/each}}
-        
-        Please analyze the user's request and compare it against our collection.
-        
-        - If you find one or more perfumes in our collection that are a strong match, please return them. Include their IDs.
-        - If our collection does not contain a strong match, create and recommend one or two new, fictional perfumes that you believe the user would love. For these fictional perfumes, do not include an ID.
-        - You can also return a mix of existing and fictional perfumes if there is one good match but you think a fictional one would be even better.
-        
-        Return your recommendations in the requested JSON format.
-        `,
-    });
     const {output} = await prompt({
       description: input.description,
       products: products.filter(p => p.category === 'Perfume'),
