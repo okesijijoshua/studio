@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useMemo, useEffect } from 'react';
@@ -16,6 +15,7 @@ import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { useCurrency } from '@/hooks/use-currency';
+import { Badge } from '@/components/ui/badge';
 
 const PERFUME_TYPES = ['Dekemi Perfumes', 'Designer Perfumes', 'Signature Perfumes', 'Mini Perfumes'];
 const BRANDS = [...new Set(allProducts.filter(p => p.category === 'Perfume').map(p => p.brand))];
@@ -138,6 +138,20 @@ export default function CollectionsPage() {
         <h1 className="font-headline text-4xl font-bold">Our Perfumes</h1>
         <p className="mt-2 text-muted-foreground">Browse our exquisite collection of fragrances.</p>
       </div>
+
+       {selectedPerfumeTypes.length > 0 && (
+        <div className="mb-8 flex flex-wrap items-center justify-center gap-2">
+            <span className="text-sm font-medium">Active Filters:</span>
+            {selectedPerfumeTypes.map(type => (
+                <Badge key={type} variant="secondary" className="text-sm">
+                    {type}
+                </Badge>
+            ))}
+            <Button variant="ghost" size="sm" onClick={() => setSelectedPerfumeTypes([])} className="text-primary hover:text-primary">
+                Clear all
+            </Button>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Filters Sidebar */}
