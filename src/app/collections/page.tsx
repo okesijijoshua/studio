@@ -18,7 +18,7 @@ import { Label } from '@/components/ui/label';
 import { useCurrency } from '@/hooks/use-currency';
 import { Badge } from '@/components/ui/badge';
 
-const PERFUME_TYPES = ['Dekemi Perfumes', 'Designer Perfumes', 'Signature Perfumes', 'Mini Perfumes'];
+const PERFUME_TYPES = ['All Perfumes', 'Dekemi Perfumes', 'Designer Perfumes', 'Signature Perfumes', 'Mini Perfumes'];
 const BRANDS = [...new Set(allProducts.filter(p => p.category === 'Perfume').map(p => p.brand))];
 const SCENT_CATEGORIES = [...new Set(allProducts.filter(p => p.scentCategory).map(p => p.scentCategory!))];
 const MAX_PRICE = Math.max(...allProducts.filter(p => p.category === 'Perfume').map(p => p.price));
@@ -130,7 +130,11 @@ export default function CollectionsPage() {
   const paginationRange = usePagination({ currentPage, totalPages });
 
   const handlePerfumeTypeSelect = (type: string) => {
-      setSelectedPerfumeType(prev => (prev === type ? null : type));
+      if (type === 'All Perfumes') {
+        setSelectedPerfumeType(null);
+      } else {
+        setSelectedPerfumeType(prev => (prev === type ? null : type));
+      }
   };
   
   const toggleArrayFilter = (setter: React.Dispatch<React.SetStateAction<string[]>>, value: string) => {
@@ -164,7 +168,12 @@ export default function CollectionsPage() {
                 <Label className="text-lg font-headline">Category</Label>
                 <div className="mt-2 space-y-2">
                     {PERFUME_TYPES.map(type => (
-                        <Button key={type} variant={selectedPerfumeType === type ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => handlePerfumeTypeSelect(type)}>
+                        <Button
+                          key={type}
+                          variant={selectedPerfumeType === type || (type === 'All Perfumes' && selectedPerfumeType === null) ? 'secondary' : 'ghost'}
+                          className="w-full justify-start"
+                          onClick={() => handlePerfumeTypeSelect(type)}
+                        >
                             {type}
                         </Button>
                     ))}
@@ -279,5 +288,3 @@ export default function CollectionsPage() {
     </div>
   );
 }
-
-  
