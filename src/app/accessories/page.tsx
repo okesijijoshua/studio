@@ -23,6 +23,8 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { useCurrency } from '@/hooks/use-currency';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Filter } from 'lucide-react';
 
 
 const BRANDS = [...new Set(allProducts.filter(p => p.category === 'Accessory').map(p => p.brand))];
@@ -101,7 +103,7 @@ export default function AccessoriesPage() {
         products.sort((a, b) => a.price - b.price);
         break;
       case 'price-desc':
-        products.sort((a, b) => b.price - a.price);
+        products.sort((a, b) => b.price - b.price);
         break;
       case 'name-asc':
         products.sort((a, b) => a.name.localeCompare(b.name));
@@ -174,7 +176,7 @@ export default function AccessoriesPage() {
   );
 
   const AccordionFilters = () => (
-     <Accordion type="multiple" className="w-full" defaultValue={['sort']}>
+     <Accordion type="multiple" className="w-full">
         <AccordionItem value="sort">
             <AccordionTrigger className="text-lg font-headline">Sort By</AccordionTrigger>
             <AccordionContent>
@@ -224,6 +226,25 @@ export default function AccessoriesPage() {
     </Accordion>
   );
 
+  const MobileFilters = () => (
+      <Sheet>
+        <SheetTrigger asChild>
+            <Button variant="outline" className="w-full">
+                <Filter className="mr-2 h-4 w-4" />
+                Filter By
+            </Button>
+        </SheetTrigger>
+        <SheetContent side="left" className="w-full max-w-sm">
+            <SheetHeader>
+                <SheetTitle className="font-headline text-2xl">Filters</SheetTitle>
+            </SheetHeader>
+            <div className="p-4">
+                <AccordionFilters />
+            </div>
+        </SheetContent>
+      </Sheet>
+  )
+
   return (
     <div className="container mx-auto px-4 py-8 md:px-6">
       <div className="text-center mb-8">
@@ -234,7 +255,7 @@ export default function AccessoriesPage() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Filters Sidebar */}
         <aside className="md:col-span-1">
-            {isMobile ? <AccordionFilters /> : <Filters />}
+            {isMobile ? <MobileFilters /> : <Filters />}
         </aside>
 
         {/* Products Grid */}
