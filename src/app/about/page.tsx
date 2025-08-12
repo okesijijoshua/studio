@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -43,7 +44,7 @@ export default function AboutPage() {
             <div className="order-2 md:order-1">
               <h2 className="font-headline text-3xl font-bold">The Essence of Luxury</h2>
               <p className="mt-4 text-muted-foreground">
-                At <span className="font-bold text-foreground">DekemiScents</span>, we don’t just sell perfumes, we help you discover your perfect scent. Through global research and expert curation, we offer a refined collection of luxury fragrances crafted with rare ingredients. Plus, our <span className="font-bold text-foreground">AI-powered scent finder</span> makes it easy to find perfumes that align with your personality, preferences, and mood. Explore, discover, and find the fragrance that tells your story.
+                At <span className="font-bold text-foreground">DekemiScents</span>, we don’t just sell perfumes, we help you discover your perfect scent. Through global research and expert curation, we offer a refined collection of luxury fragrances crafted with rare ingredients. Explore, discover, and find the fragrance that tells your story.
               </p>
               <div className="mt-6 flex space-x-2">
                 <Button variant="ghost" size="icon" asChild>
