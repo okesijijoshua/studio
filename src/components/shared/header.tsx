@@ -62,13 +62,13 @@ export function Header() {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Logo />
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-4 lg:gap-6 md:flex">
           {navLinks.map(link => (
             <Link
               key={link.href}
               href={link.href}
               className={cn(
-                'text-sm font-medium transition-colors hover:text-primary',
+                'text-xs lg:text-sm font-medium transition-colors hover:text-primary',
                 pathname === link.href ? 'text-primary font-bold' : 'text-foreground/60'
               )}
             >
