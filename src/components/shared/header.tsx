@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from '@/components/ui/sheet';
 import { Logo } from '@/components/shared/logo';
 import { CurrencySelector } from '@/components/shared/currency-selector';
 import { CartSheet } from '@/components/cart/cart-sheet';
@@ -23,7 +23,6 @@ const navLinks = [
   { href: '/collections', label: 'Perfumes' },
   { href: '/accessories', label: 'Accessories' },
   { href: '/ai-perfume-finder', label: 'AI Perfume Finder' },
-  { href: '/blog', label: 'Blog' },
   { href: '/about', label: 'About Us' },
 ];
 
@@ -90,7 +89,9 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="left">
-                <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+                <SheetHeader>
+                    <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+                </SheetHeader>
                 <div className="flex flex-col gap-6 p-6">
                   <Logo />
                    <nav className="flex flex-col gap-4">
