@@ -13,11 +13,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { useCurrency } from '@/hooks/use-currency';
 import { Badge } from '@/components/ui/badge';
+import { useIsMobile } from '@/hooks/use-mobile';
+
 
 const PERFUME_TYPES = ['All Perfumes', 'Dekemi Perfumes', 'Designer Perfumes', 'Signature Perfumes', 'Mini Perfumes'];
 const BRANDS = [...new Set(allProducts.filter(p => p.category === 'Perfume').map(p => p.brand))];
@@ -71,6 +79,7 @@ const usePagination = ({ totalPages, siblingCount = 1, currentPage }: { totalPag
 export default function CollectionsPage() {
   const { formatPrice } = useCurrency();
   const searchParams = useSearchParams();
+  const isMobile = useIsMobile();
 
   const [sortOption, setSortOption] = useState('name-asc');
   const [selectedPerfumeType, setSelectedPerfumeType] = useState<string | null>(null);
@@ -153,6 +162,156 @@ export default function CollectionsPage() {
     setter(prev => prev.includes(value) ? prev.filter(item => item !== value) : [...prev, value]);
   }
 
+  const Filters = () => (
+    <div className="space-y-6">
+        <div>
+            <Label className="text-lg font-headline">Sort By</Label>
+            <Select value={sortOption} onValueChange={setSortOption}>
+                <SelectTrigger className="w-full mt-2">
+                <SelectValue placeholder="Sort products" />
+                </SelectTrigger>
+                <SelectContent>
+                <SelectItem value="name-asc">Alphabetically, A-Z</SelectItem>
+                <SelectItem value="name-desc">Alphabetically, Z-A</SelectItem>
+                <SelectItem value="price-asc">Price, low to high</SelectItem>
+                <SelectItem value="price-desc">Price, high to low</SelectItem>
+                </SelectContent>
+            </Select>
+        </div>
+        <div>
+            <Label className="text-lg font-headline">Category</Label>
+            <div className="mt-2 space-y-2">
+                {PERFUME_TYPES.map(type => (
+                    <Button
+                        key={type}
+                        variant={selectedPerfumeType === type || (type === 'All Perfumes' && selectedPerfumeType === null) ? 'secondary' : 'ghost'}
+                        className="w-full justify-start"
+                        onClick={() => handlePerfumeTypeSelect(type)}
+                    >
+                        {type}
+                    </Button>
+                ))}
+            </div>
+        </div>
+        <div>
+            <Label className="text-lg font-headline">Brand</Label>
+            <div className="mt-2 space-y-2">
+            {BRANDS.map(brand => (
+                <Button key={brand} variant={selectedBrands.includes(brand) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleArrayFilter(setSelectedBrands, brand)}>
+                    {brand}
+                </Button>
+            ))}
+            </div>
+        </div>
+        <div>
+            <Label className="text-lg font-headline">Scent</Label>
+            <div className="mt-2 space-y-2">
+            {SCENT_CATEGORIES.map(scent => (
+                    <Button key={scent} variant={selectedScentCategories.includes(scent) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleArrayFilter(setSelectedScentCategories, scent)}>
+                    {scent}
+                </Button>
+            ))}
+            </div>
+        </div>
+        <div>
+            <Label className="text-lg font-headline">Price Range</Label>
+            <div className="mt-4">
+            <Slider
+                min={0}
+                max={MAX_PRICE}
+                step={1000}
+                value={priceRange}
+                onValueChange={(value) => setPriceRange(value)}
+            />
+                <div className="flex justify-between text-sm text-muted-foreground mt-2">
+                <span>{formatPrice(priceRange[0])}</span>
+                <span>{formatPrice(priceRange[1])}</span>
+            </div>
+            </div>
+        </div>
+    </div>
+  );
+
+  const AccordionFilters = () => (
+    <Accordion type="multiple" collapsible className="w-full" defaultValue={['sort']}>
+        <AccordionItem value="sort">
+            <AccordionTrigger className="text-lg font-headline">Sort By</AccordionTrigger>
+            <AccordionContent>
+                <Select value={sortOption} onValueChange={setSortOption}>
+                    <SelectTrigger className="w-full mt-2">
+                    <SelectValue placeholder="Sort products" />
+                    </SelectTrigger>
+                    <SelectContent>
+                    <SelectItem value="name-asc">Alphabetically, A-Z</SelectItem>
+                    <SelectItem value="name-desc">Alphabetically, Z-A</SelectItem>
+                    <SelectItem value="price-asc">Price, low to high</SelectItem>
+                    <SelectItem value="price-desc">Price, high to low</SelectItem>
+                    </SelectContent>
+                </Select>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="category">
+            <AccordionTrigger className="text-lg font-headline">Category</AccordionTrigger>
+            <AccordionContent>
+                <div className="mt-2 space-y-2">
+                    {PERFUME_TYPES.map(type => (
+                        <Button
+                            key={type}
+                            variant={selectedPerfumeType === type || (type === 'All Perfumes' && selectedPerfumeType === null) ? 'secondary' : 'ghost'}
+                            className="w-full justify-start"
+                            onClick={() => handlePerfumeTypeSelect(type)}
+                        >
+                            {type}
+                        </Button>
+                    ))}
+                </div>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="brand">
+            <AccordionTrigger className="text-lg font-headline">Brand</AccordionTrigger>
+            <AccordionContent>
+                 <div className="mt-2 space-y-2">
+                    {BRANDS.map(brand => (
+                        <Button key={brand} variant={selectedBrands.includes(brand) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleArrayFilter(setSelectedBrands, brand)}>
+                            {brand}
+                        </Button>
+                    ))}
+                </div>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="scent">
+            <AccordionTrigger className="text-lg font-headline">Scent</AccordionTrigger>
+            <AccordionContent>
+                <div className="mt-2 space-y-2">
+                    {SCENT_CATEGORIES.map(scent => (
+                        <Button key={scent} variant={selectedScentCategories.includes(scent) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleArrayFilter(setSelectedScentCategories, scent)}>
+                            {scent}
+                        </Button>
+                    ))}
+                </div>
+            </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="price">
+            <AccordionTrigger className="text-lg font-headline">Price</AccordionTrigger>
+            <AccordionContent>
+                 <div className="mt-4">
+                    <Slider
+                    min={0}
+                    max={MAX_PRICE}
+                    step={1000}
+                    value={priceRange}
+                    onValueChange={(value) => setPriceRange(value)}
+                    />
+                    <div className="flex justify-between text-sm text-muted-foreground mt-2">
+                        <span>{formatPrice(priceRange[0])}</span>
+                        <span>{formatPrice(priceRange[1])}</span>
+                    </div>
+                </div>
+            </AccordionContent>
+        </AccordionItem>
+    </Accordion>
+  );
+
   return (
     <div className="container mx-auto px-4 py-8 md:px-6">
       <div className="text-center mb-8">
@@ -175,73 +334,7 @@ export default function CollectionsPage() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Filters Sidebar */}
         <aside className="md:col-span-1">
-          <div className="space-y-6">
-            <div>
-                <Label className="text-lg font-headline">Category</Label>
-                <div className="mt-2 space-y-2">
-                    {PERFUME_TYPES.map(type => (
-                        <Button
-                          key={type}
-                          variant={selectedPerfumeType === type || (type === 'All Perfumes' && selectedPerfumeType === null) ? 'secondary' : 'ghost'}
-                          className="w-full justify-start"
-                          onClick={() => handlePerfumeTypeSelect(type)}
-                        >
-                            {type}
-                        </Button>
-                    ))}
-                </div>
-            </div>
-            <div>
-                <Label className="text-lg font-headline">Sort By</Label>
-                <Select value={sortOption} onValueChange={setSortOption}>
-                    <SelectTrigger className="w-full mt-2">
-                    <SelectValue placeholder="Sort products" />
-                    </SelectTrigger>
-                    <SelectContent>
-                    <SelectItem value="name-asc">Alphabetically, A-Z</SelectItem>
-                    <SelectItem value="name-desc">Alphabetically, Z-A</SelectItem>
-                    <SelectItem value="price-asc">Price, low to high</SelectItem>
-                    <SelectItem value="price-desc">Price, high to low</SelectItem>
-                    </SelectContent>
-                </Select>
-            </div>
-            <div>
-              <Label className="text-lg font-headline">Brand</Label>
-              <div className="mt-2 space-y-2">
-                {BRANDS.map(brand => (
-                    <Button key={brand} variant={selectedBrands.includes(brand) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleArrayFilter(setSelectedBrands, brand)}>
-                        {brand}
-                    </Button>
-                ))}
-              </div>
-            </div>
-             <div>
-              <Label className="text-lg font-headline">Scent</Label>
-              <div className="mt-2 space-y-2">
-                {SCENT_CATEGORIES.map(scent => (
-                     <Button key={scent} variant={selectedScentCategories.includes(scent) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleArrayFilter(setSelectedScentCategories, scent)}>
-                        {scent}
-                    </Button>
-                ))}
-              </div>
-            </div>
-            <div>
-              <Label className="text-lg font-headline">Price Range</Label>
-              <div className="mt-4">
-                <Slider
-                  min={0}
-                  max={MAX_PRICE}
-                  step={1000}
-                  value={priceRange}
-                  onValueChange={(value) => setPriceRange(value)}
-                />
-                 <div className="flex justify-between text-sm text-muted-foreground mt-2">
-                    <span>{formatPrice(priceRange[0])}</span>
-                    <span>{formatPrice(priceRange[1])}</span>
-                </div>
-              </div>
-            </div>
-          </div>
+            {isMobile ? <AccordionFilters /> : <Filters />}
         </aside>
 
         {/* Products Grid */}
