@@ -17,6 +17,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { useCurrency } from '@/hooks/use-currency';
 
+const PERFUME_TYPES = [...new Set(allProducts.filter(p => p.perfumeType).map(p => p.perfumeType!))];
 const BRANDS = [...new Set(allProducts.filter(p => p.category === 'Perfume').map(p => p.brand))];
 const SCENT_CATEGORIES = [...new Set(allProducts.filter(p => p.scentCategory).map(p => p.scentCategory!))];
 const MAX_PRICE = Math.max(...allProducts.filter(p => p.category === 'Perfume').map(p => p.price));
@@ -69,6 +70,7 @@ export default function CollectionsPage() {
   const { formatPrice } = useCurrency();
 
   const [sortOption, setSortOption] = useState('name-asc');
+  const [selectedPerfumeTypes, setSelectedPerfumeTypes] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedScentCategories, setSelectedScentCategories] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState([0, MAX_PRICE]);
@@ -77,11 +79,15 @@ export default function CollectionsPage() {
   useEffect(() => {
     // Reset to first page whenever filters change
     setCurrentPage(1);
-  }, [selectedBrands, selectedScentCategories, priceRange, sortOption]);
+  }, [selectedPerfumeTypes, selectedBrands, selectedScentCategories, priceRange, sortOption]);
 
 
   const filteredAndSortedProducts = useMemo(() => {
     let products = allProducts.filter(p => p.category === 'Perfume');
+
+    if (selectedPerfumeTypes.length > 0) {
+      products = products.filter(p => p.perfumeType && selectedPerfumeTypes.includes(p.perfumeType));
+    }
 
     if (selectedBrands.length > 0) {
       products = products.filter(p => selectedBrands.includes(p.brand));
@@ -109,7 +115,7 @@ export default function CollectionsPage() {
     }
 
     return products;
-  }, [sortOption, selectedBrands, selectedScentCategories, priceRange]);
+  }, [sortOption, selectedPerfumeTypes, selectedBrands, selectedScentCategories, priceRange]);
 
   const totalPages = Math.ceil(filteredAndSortedProducts.length / PRODUCTS_PER_PAGE);
 
@@ -136,6 +142,16 @@ export default function CollectionsPage() {
         {/* Filters Sidebar */}
         <aside className="md:col-span-1">
           <div className="space-y-6">
+            <div>
+                <Label className="text-lg font-headline">Category</Label>
+                <div className="mt-2 space-y-2">
+                    {PERFUME_TYPES.map(type => (
+                        <Button key={type} variant={selectedPerfumeTypes.includes(type) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleFilter(setSelectedPerfumeTypes, type)}>
+                            {type}
+                        </Button>
+                    ))}
+                </div>
+            </div>
             <div>
                 <Label className="text-lg font-headline">Sort By</Label>
                 <Select value={sortOption} onValueChange={setSortOption}>

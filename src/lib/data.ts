@@ -9,6 +9,7 @@ export const products: Product[] = [
     price: 45000,
     image: '/images/mystic-bloom.jpg',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Floral',
     details: {
@@ -22,6 +23,7 @@ export const products: Product[] = [
     price: 62000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Woody',
     details: {
@@ -35,6 +37,7 @@ export const products: Product[] = [
     price: 38000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Fresh',
     details: {
@@ -48,6 +51,7 @@ export const products: Product[] = [
     price: 55000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Oriental',
     details: {
@@ -61,6 +65,7 @@ export const products: Product[] = [
     price: 41000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Fresh',
     details: {
@@ -88,6 +93,7 @@ export const products: Product[] = [
     price: 48000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Woody',
     details: {
@@ -101,6 +107,7 @@ export const products: Product[] = [
     price: 59000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Floral',
     details: {
@@ -127,6 +134,7 @@ export const products: Product[] = [
     price: 36000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Fresh',
     details: {
@@ -140,6 +148,7 @@ export const products: Product[] = [
     price: 52000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Oriental',
     details: {
@@ -166,6 +175,7 @@ export const products: Product[] = [
     price: 43000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Fresh',
     details: {
@@ -179,6 +189,7 @@ export const products: Product[] = [
     price: 58000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Floral',
     details: {
@@ -192,6 +203,7 @@ export const products: Product[] = [
     price: 51000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Woody',
     details: {
@@ -205,6 +217,7 @@ export const products: Product[] = [
     price: 65000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Oriental',
     details: {
@@ -218,6 +231,7 @@ export const products: Product[] = [
     price: 39000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Fresh',
     details: {
@@ -231,6 +245,7 @@ export const products: Product[] = [
     price: 72000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Floral',
     details: {
@@ -244,6 +259,7 @@ export const products: Product[] = [
     price: 56000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Woody',
     details: {
@@ -257,6 +273,7 @@ export const products: Product[] = [
     price: 75000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Oriental',
     details: {
@@ -270,6 +287,7 @@ export const products: Product[] = [
     price: 40000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Fresh',
     details: {
@@ -283,6 +301,7 @@ export const products: Product[] = [
     price: 49000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Floral',
     details: {
@@ -296,6 +315,7 @@ export const products: Product[] = [
     price: 68000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Woody',
     details: {
@@ -309,6 +329,7 @@ export const products: Product[] = [
     price: 54000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Oriental',
     details: {
@@ -322,6 +343,7 @@ export const products: Product[] = [
     price: 46000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Fresh',
     details: {
@@ -335,6 +357,7 @@ export const products: Product[] = [
     price: 61000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Floral',
     details: {
@@ -348,6 +371,7 @@ export const products: Product[] = [
     price: 78000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Woody',
     details: {
@@ -361,6 +385,7 @@ export const products: Product[] = [
     price: 63000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Oriental',
     details: {
@@ -374,6 +399,7 @@ export const products: Product[] = [
     price: 53000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Floral',
     details: {
@@ -387,6 +413,7 @@ export const products: Product[] = [
     price: 42000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Fresh',
     details: {
@@ -400,6 +427,7 @@ export const products: Product[] = [
     price: 85000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Woody',
     details: {
@@ -413,6 +441,7 @@ export const products: Product[] = [
     price: 47000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Fresh',
     details: {
@@ -426,6 +455,7 @@ export const products: Product[] = [
     price: 69000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Floral',
     details: {
@@ -439,6 +469,7 @@ export const products: Product[] = [
     price: 71000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Oriental',
     details: {
@@ -452,6 +483,7 @@ export const products: Product[] = [
     price: 50000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Woody',
     details: {
@@ -465,6 +497,7 @@ export const products: Product[] = [
     price: 44000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Fresh',
     details: {
@@ -478,6 +511,7 @@ export const products: Product[] = [
     price: 48000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Floral',
     details: {
@@ -491,6 +525,7 @@ export const products: Product[] = [
     price: 95000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Woody',
     details: {
@@ -504,6 +539,7 @@ export const products: Product[] = [
     price: 45000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Fresh',
     details: {
@@ -517,6 +553,7 @@ export const products: Product[] = [
     price: 76000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Oriental',
     details: {
@@ -530,6 +567,7 @@ export const products: Product[] = [
     price: 57000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Floral',
     details: {
@@ -543,6 +581,7 @@ export const products: Product[] = [
     price: 64000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Woody',
     details: {
@@ -556,6 +595,7 @@ export const products: Product[] = [
     price: 49000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Fresh',
     details: {
@@ -569,6 +609,7 @@ export const products: Product[] = [
     price: 67000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Oriental',
     details: {
@@ -582,6 +623,7 @@ export const products: Product[] = [
     price: 52000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Floral',
     details: {
@@ -595,6 +637,7 @@ export const products: Product[] = [
     price: 73000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Woody',
     details: {
@@ -608,6 +651,7 @@ export const products: Product[] = [
     price: 48000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Fresh',
     details: {
@@ -621,6 +665,7 @@ export const products: Product[] = [
     price: 88000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Oriental',
     details: {
@@ -634,6 +679,7 @@ export const products: Product[] = [
     price: 59000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Floral',
     details: {
@@ -647,6 +693,7 @@ export const products: Product[] = [
     price: 60000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Woody',
     details: {
@@ -660,6 +707,7 @@ export const products: Product[] = [
     price: 105000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Woody',
     details: {
@@ -673,6 +721,7 @@ export const products: Product[] = [
     price: 47000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Fresh',
     details: {
@@ -686,6 +735,7 @@ export const products: Product[] = [
     price: 66000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Floral',
     details: {
@@ -699,6 +749,7 @@ export const products: Product[] = [
     price: 62000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Oriental',
     details: {
@@ -712,6 +763,7 @@ export const products: Product[] = [
     price: 55000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Woody',
     details: {
@@ -725,6 +777,7 @@ export const products: Product[] = [
     price: 43000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Fresh',
     details: {
@@ -738,6 +791,7 @@ export const products: Product[] = [
     price: 53000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Floral',
     details: {
@@ -751,6 +805,7 @@ export const products: Product[] = [
     price: 82000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Oriental',
     details: {
@@ -764,6 +819,7 @@ export const products: Product[] = [
     price: 54000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Woody',
     details: {
@@ -777,6 +833,7 @@ export const products: Product[] = [
     price: 46000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Fresh',
     details: {
@@ -790,6 +847,7 @@ export const products: Product[] = [
     price: 68000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Floral',
     details: {
@@ -803,6 +861,7 @@ export const products: Product[] = [
     price: 58000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Woody',
     details: {
@@ -816,6 +875,7 @@ export const products: Product[] = [
     price: 56000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Oriental',
     details: {
@@ -829,6 +889,7 @@ export const products: Product[] = [
     price: 50000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Fresh',
     details: {
@@ -842,6 +903,7 @@ export const products: Product[] = [
     price: 65000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Floral',
     details: {
@@ -855,6 +917,7 @@ export const products: Product[] = [
     price: 61000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Woody',
     details: {
@@ -868,6 +931,7 @@ export const products: Product[] = [
     price: 47000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Fresh',
     details: {
@@ -881,6 +945,7 @@ export const products: Product[] = [
     price: 79000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Oriental',
     details: {
@@ -894,6 +959,7 @@ export const products: Product[] = [
     price: 54000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Floral',
     details: {
@@ -907,6 +973,7 @@ export const products: Product[] = [
     price: 63000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Woody',
     details: {
@@ -920,6 +987,7 @@ export const products: Product[] = [
     price: 41000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Fresh',
     details: {
@@ -933,6 +1001,7 @@ export const products: Product[] = [
     price: 81000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Oriental',
     details: {
@@ -946,6 +1015,7 @@ export const products: Product[] = [
     price: 56000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Floral',
     details: {
@@ -959,6 +1029,7 @@ export const products: Product[] = [
     price: 69000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Woody',
     details: {
@@ -972,6 +1043,7 @@ export const products: Product[] = [
     price: 48000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Fresh',
     details: {
@@ -985,6 +1057,7 @@ export const products: Product[] = [
     price: 70000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Oriental',
     details: {
@@ -998,6 +1071,7 @@ export const products: Product[] = [
     price: 58000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Floral',
     details: {
@@ -1011,6 +1085,7 @@ export const products: Product[] = [
     price: 66000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Woody',
     details: {
@@ -1024,6 +1099,7 @@ export const products: Product[] = [
     price: 44000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Fresh',
     details: {
@@ -1037,6 +1113,7 @@ export const products: Product[] = [
     price: 85000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Oriental',
     details: {
@@ -1050,6 +1127,7 @@ export const products: Product[] = [
     price: 72000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Floral',
     details: {
@@ -1063,6 +1141,7 @@ export const products: Product[] = [
     price: 70000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Woody',
     details: {
@@ -1076,6 +1155,7 @@ export const products: Product[] = [
     price: 51000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Fresh',
     details: {
@@ -1089,6 +1169,7 @@ export const products: Product[] = [
     price: 60000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Oriental',
     details: {
@@ -1102,6 +1183,7 @@ export const products: Product[] = [
     price: 55000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Floral',
     details: {
@@ -1115,6 +1197,7 @@ export const products: Product[] = [
     price: 74000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Woody',
     details: {
@@ -1128,6 +1211,7 @@ export const products: Product[] = [
     price: 53000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Fresh',
     details: {
@@ -1141,6 +1225,7 @@ export const products: Product[] = [
     price: 59000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Oriental',
     details: {
@@ -1154,6 +1239,7 @@ export const products: Product[] = [
     price: 64000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Floral',
     details: {
@@ -1167,6 +1253,7 @@ export const products: Product[] = [
     price: 98000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Woody',
     details: {
@@ -1180,6 +1267,7 @@ export const products: Product[] = [
     price: 52000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Fresh',
     details: {
@@ -1193,6 +1281,7 @@ export const products: Product[] = [
     price: 110000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Floral',
     details: {
@@ -1206,6 +1295,7 @@ export const products: Product[] = [
     price: 77000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Oriental',
     details: {
@@ -1219,6 +1309,7 @@ export const products: Product[] = [
     price: 61000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Woody',
     details: {
@@ -1232,6 +1323,7 @@ export const products: Product[] = [
     price: 50000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Fresh',
     details: {
@@ -1245,6 +1337,7 @@ export const products: Product[] = [
     price: 73000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Floral',
     details: {
@@ -1258,6 +1351,7 @@ export const products: Product[] = [
     price: 76000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Woody',
     details: {
@@ -1271,6 +1365,7 @@ export const products: Product[] = [
     price: 57000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Oriental',
     details: {
@@ -1284,6 +1379,7 @@ export const products: Product[] = [
     price: 63000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Fresh',
     details: {
@@ -1297,6 +1393,7 @@ export const products: Product[] = [
     price: 125000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Floral',
     details: {
@@ -1310,6 +1407,7 @@ export const products: Product[] = [
     price: 68000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Designer',
     brand: 'Aura Fragrances',
     scentCategory: 'Woody',
     details: {
@@ -1323,6 +1421,7 @@ export const products: Product[] = [
     price: 84000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Signature',
     brand: 'Scentoria',
     scentCategory: 'Oriental',
     details: {
@@ -1336,6 +1435,7 @@ export const products: Product[] = [
     price: 54000,
     image: 'https://placehold.co/600x600.png',
     category: 'Perfume',
+    perfumeType: 'Dekemi',
     brand: 'DekemiScents',
     scentCategory: 'Fresh',
     details: {

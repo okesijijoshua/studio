@@ -5,6 +5,7 @@ export type Product = {
   price: number; // Stored in NGN (default currency)
   image: string;
   category: 'Perfume' | 'Accessory';
+  perfumeType?: 'Dekemi' | 'Designer' | 'Signature' | 'Mini';
   brand: string;
   scentCategory?: 'Floral' | 'Woody' | 'Oriental' | 'Fresh';
   details?: {
