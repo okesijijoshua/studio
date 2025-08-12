@@ -2,7 +2,6 @@
 "use client";
 
 import { useState, useMemo, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
 import { products as allProducts } from '@/lib/data';
 import type { Product } from '@/lib/types';
 import { ProductCard } from '@/components/shared/product-card';
@@ -18,9 +17,9 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { useCurrency } from '@/hooks/use-currency';
 
-const BRANDS = [...new Set(allProducts.map(p => p.brand))];
+const BRANDS = [...new Set(allProducts.filter(p => p.category === 'Perfume').map(p => p.brand))];
 const SCENT_CATEGORIES = [...new Set(allProducts.filter(p => p.scentCategory).map(p => p.scentCategory!))];
-const MAX_PRICE = Math.max(...allProducts.map(p => p.price));
+const MAX_PRICE = Math.max(...allProducts.filter(p => p.category === 'Perfume').map(p => p.price));
 const PRODUCTS_PER_PAGE = 10;
 
 const DOTS = '...';
@@ -67,7 +66,6 @@ const usePagination = ({ totalPages, siblingCount = 1, currentPage }: { totalPag
 }
 
 export default function CollectionsPage() {
-  const searchParams = useSearchParams();
   const { formatPrice } = useCurrency();
 
   const [sortOption, setSortOption] = useState('name-asc');
@@ -76,21 +74,14 @@ export default function CollectionsPage() {
   const [priceRange, setPriceRange] = useState([0, MAX_PRICE]);
   const [currentPage, setCurrentPage] = useState(1);
   
-  const initialCategory = searchParams.get('category');
-  const [selectedCategory, setSelectedCategory] = useState(initialCategory || 'All');
-
   useEffect(() => {
     // Reset to first page whenever filters change
     setCurrentPage(1);
-  }, [selectedCategory, selectedBrands, selectedScentCategories, priceRange, sortOption]);
+  }, [selectedBrands, selectedScentCategories, priceRange, sortOption]);
 
 
   const filteredAndSortedProducts = useMemo(() => {
-    let products = allProducts;
-
-    if (selectedCategory !== 'All') {
-      products = products.filter(p => p.category === selectedCategory);
-    }
+    let products = allProducts.filter(p => p.category === 'Perfume');
 
     if (selectedBrands.length > 0) {
       products = products.filter(p => selectedBrands.includes(p.brand));
@@ -118,7 +109,7 @@ export default function CollectionsPage() {
     }
 
     return products;
-  }, [sortOption, selectedBrands, selectedScentCategories, priceRange, selectedCategory]);
+  }, [sortOption, selectedBrands, selectedScentCategories, priceRange]);
 
   const totalPages = Math.ceil(filteredAndSortedProducts.length / PRODUCTS_PER_PAGE);
 
@@ -137,8 +128,8 @@ export default function CollectionsPage() {
   return (
     <div className="container mx-auto px-4 py-8 md:px-6">
       <div className="text-center mb-8">
-        <h1 className="font-headline text-4xl font-bold">Our Collection</h1>
-        <p className="mt-2 text-muted-foreground">Browse our entire range of exquisite products.</p>
+        <h1 className="font-headline text-4xl font-bold">Our Perfumes</h1>
+        <p className="mt-2 text-muted-foreground">Browse our exquisite collection of fragrances.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -158,16 +149,6 @@ export default function CollectionsPage() {
                     <SelectItem value="price-desc">Price, high to low</SelectItem>
                     </SelectContent>
                 </Select>
-            </div>
-            <div>
-              <Label className="text-lg font-headline">Category</Label>
-              <div className="mt-2 space-y-2">
-                {['All', 'Perfume', 'Accessory'].map(cat => (
-                  <Button key={cat} variant={selectedCategory === cat ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => setSelectedCategory(cat)}>
-                    {cat}
-                  </Button>
-                ))}
-              </div>
             </div>
             <div>
               <Label className="text-lg font-headline">Brand</Label>

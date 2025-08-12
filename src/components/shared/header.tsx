@@ -15,7 +15,8 @@ import { CartSheet } from '@/components/cart/cart-sheet';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/collections', label: 'Collections' },
+  { href: '/collections', label: 'Perfumes' },
+  { href: '/accessories', label: 'Accessories' },
   { href: '/ai-perfume-finder', label: 'AI Perfume Finder' },
   { href: '/about', label: 'About Us' },
 ];

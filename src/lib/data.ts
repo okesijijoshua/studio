@@ -4,8 +4,8 @@ import type { Product, Testimonial } from '@/lib/types';
 export const products: Product[] = [
   {
     id: '1',
-    name: 'Mystic Bloom',
-    description: 'A captivating floral scent with notes of jasmine and rose.',
+    name: '9AM Dive',
+    description: ' A fresh aquatic fragrance with citrus top notes.',
     price: 45000,
     image: '/images/mystic-bloom.jpg',
     category: 'Perfume',
