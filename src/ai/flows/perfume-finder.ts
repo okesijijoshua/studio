@@ -81,7 +81,7 @@ const findPerfumeFlow = ai.defineFlow(
   async (input) => {
     const {output} = await prompt({
       description: input.description,
-      products: products.filter(p => p.category === 'Perfume'),
+      products: products,
     });
     return output!;
   }
