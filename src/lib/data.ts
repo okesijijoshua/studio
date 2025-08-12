@@ -6,14 +6,14 @@ export const products: Product[] = [
     id: '1',
     name: '9AM Dive',
     description: ' A fresh aquatic fragrance with citrus top notes.',
-    price: 45000,
+    price: 15000,
     image: '/images/mystic-bloom.jpg',
     category: 'Perfume',
-    perfumeType: 'Dekemi',
+    perfumeType: 'Mini',
     brand: 'DekemiScents',
     scentCategory: 'Floral',
     details: {
-      size: '100ml'
+      size: '10ml'
     }
   },
   {
