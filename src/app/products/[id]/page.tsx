@@ -12,7 +12,7 @@ import { Separator } from '@/components/ui/separator';
 import { ShoppingCart, ArrowLeft } from 'lucide-react';
 import { ProductCard } from '@/components/shared/product-card';
 import type { Product } from '@/lib/types';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
@@ -36,6 +36,19 @@ export default function ProductDetailPage() {
     }
   }, [id]);
 
+  const productDetails = useMemo(() => {
+    if (!product) return [];
+    
+    const details = [
+        { key: 'Brand', value: product.brand },
+        { key: 'Type', value: product.perfumeType },
+        { key: 'Notes', value: product.notes },
+        { key: 'Size', value: product.details?.size },
+    ];
+    
+    return details.filter(detail => detail.value);
+  }, [product]);
+
 
   if (!product) {
     return <div className="container mx-auto py-10 text-center">Loading product...</div>;
@@ -53,16 +66,6 @@ export default function ProductDetailPage() {
     p.id !== product.id && 
     (p.notes === product.notes || p.brand === product.brand)
   ).slice(0, 3);
-  
-  const productDetails = product.details ? Object.entries(product.details).filter(([_, value]) => value) : [];
-  if (product.notes) {
-    productDetails.unshift(['Notes', product.notes]);
-  }
-  if (product.perfumeType) {
-    productDetails.unshift(['Type', product.perfumeType]);
-  }
-  productDetails.unshift(['Brand', product.brand]);
-
 
   return (
     <div className="container mx-auto py-12">
@@ -102,15 +105,14 @@ export default function ProductDetailPage() {
                     )}
                 </TabsContent>
                 <TabsContent value="specifications" className="mt-4">
-                     <dl className="grid grid-cols-1 gap-x-8 gap-y-4 text-sm md:grid-cols-2">
-                        {productDetails.map(([key, value]) => (
-                            <div key={key} className="flex justify-between items-end gap-2">
-                                <dt className="text-muted-foreground">{capitalize(key)}:</dt>
-                                <div className="flex-grow border-b border-dotted border-border"></div>
-                                <dd className="font-medium">{value}</dd>
+                     <div className="grid grid-cols-1 gap-4 text-sm md:grid-cols-2">
+                        {productDetails.map(({ key, value }) => (
+                            <div key={key} className="flex items-center justify-between gap-4 p-3 bg-secondary rounded-lg">
+                                <span className="font-semibold text-secondary-foreground">{capitalize(key)}</span>
+                                <span className="text-right text-muted-foreground">{value}</span>
                             </div>
                         ))}
-                    </dl>
+                    </div>
                 </TabsContent>
             </Tabs>
             
