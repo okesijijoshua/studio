@@ -93,8 +93,8 @@ export default function ProductDetailPage() {
             
             <Tabs defaultValue="description" className="w-full">
                 <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="description" className="data-[state=active]:font-bold data-[state=active]:bg-secondary">Description</TabsTrigger>
-                    <TabsTrigger value="specifications" className="data-[state=active]:font-bold data-[state=active]:bg-secondary">Specifications</TabsTrigger>
+                    <TabsTrigger value="description" className="data-[state=active]:font-bold data-[state=active]:bg-background data-[state=active]:shadow-sm">Description</TabsTrigger>
+                    <TabsTrigger value="specifications" className="data-[state=active]:font-bold data-[state=active]:bg-background data-[state=active]:shadow-sm">Specifications</TabsTrigger>
                 </TabsList>
                 <TabsContent value="description" className="mt-4 text-lg text-muted-foreground space-y-4">
                     <p>{product.description}</p>
