@@ -14,6 +14,8 @@ import { ProductCard } from '@/components/shared/product-card';
 import type { Product } from '@/lib/types';
 import { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -56,6 +58,11 @@ export default function ProductDetailPage() {
   if (product.notes) {
     productDetails.unshift(['Notes', product.notes]);
   }
+  if (product.perfumeType) {
+    productDetails.unshift(['Type', product.perfumeType]);
+  }
+  productDetails.unshift(['Brand', product.brand]);
+
 
   return (
     <div className="container mx-auto py-12">
@@ -81,30 +88,21 @@ export default function ProductDetailPage() {
             
             <p className="text-3xl font-semibold">{formatPrice(product.price)}</p>
             
-            <div className="space-y-4 text-lg">
-              <p className="text-muted-foreground">{product.description}</p>
-              {product.vibeCheck && (
-                <p className="text-sm italic text-muted-foreground/80">
-                  <span className="font-semibold not-italic text-foreground/80">Vibe Check:</span> {product.vibeCheck}
-                </p>
-              )}
-            </div>
-            
-            <Button size="lg" onClick={handleAddToCart} className="w-full md:w-auto">
-                <ShoppingCart className="mr-2" />
-                Add to Cart
-            </Button>
-        </div>
-      </div>
-
-       {productDetails.length > 0 && (
-          <div className="my-12">
-            <Card>
-                <CardHeader>
-                    <CardTitle className="font-headline text-2xl">Details</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <dl className="grid grid-cols-1 gap-x-8 gap-y-4 text-sm md:grid-cols-2 lg:grid-cols-3">
+            <Tabs defaultValue="description" className="w-full">
+                <TabsList>
+                    <TabsTrigger value="description">Description</TabsTrigger>
+                    <TabsTrigger value="specifications">Specifications</TabsTrigger>
+                </TabsList>
+                <TabsContent value="description" className="mt-4 text-lg text-muted-foreground space-y-4">
+                    <p>{product.description}</p>
+                    {product.vibeCheck && (
+                        <p className="text-sm italic text-muted-foreground/80">
+                        <span className="font-semibold not-italic text-foreground/80">Vibe Check:</span> {product.vibeCheck}
+                        </p>
+                    )}
+                </TabsContent>
+                <TabsContent value="specifications" className="mt-4">
+                     <dl className="grid grid-cols-1 gap-x-8 gap-y-4 text-sm md:grid-cols-2">
                         {productDetails.map(([key, value]) => (
                             <div key={key} className="flex justify-between items-end gap-2">
                                 <dt className="text-muted-foreground">{capitalize(key)}:</dt>
@@ -113,10 +111,15 @@ export default function ProductDetailPage() {
                             </div>
                         ))}
                     </dl>
-                </CardContent>
-            </Card>
-          </div>
-      )}
+                </TabsContent>
+            </Tabs>
+            
+            <Button size="lg" onClick={handleAddToCart} className="w-full md:w-auto">
+                <ShoppingCart className="mr-2" />
+                Add to Cart
+            </Button>
+        </div>
+      </div>
       
       <Separator className="my-16" />
       

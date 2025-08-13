@@ -8,7 +8,7 @@ export const products: Product[] = [
     description: 'An invigorating aquatic fragrance with crisp citrus, cool marine notes, and a smooth amber-musk base for a fresh yet refined scent.',
     vibeCheck: 'A crisp morning swim in citrus-infused waters—energizing and bold, for those who chase sunrises with confidence.',
     price: 60000,
-    image: '/images/9am-dive.jpg',
+    image: '/images/9am-Dive.png',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Afnan',
