@@ -54,7 +54,6 @@ export function ProductCard({ product }: ProductCardProps) {
         <CardContent className="flex-1 p-4">
             <div className="flex justify-between items-start">
                 <CardTitle className="font-headline text-xl">{product.name}</CardTitle>
-                {product.scentCategory && <Badge variant="outline">{product.scentCategory}</Badge>}
             </div>
             <p className="mt-2 text-sm text-muted-foreground">{product.description}</p>
         </CardContent>

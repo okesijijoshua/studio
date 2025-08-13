@@ -9,7 +9,6 @@ import { useCart } from '@/hooks/use-cart';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { Badge } from '@/components/ui/badge';
 import { ShoppingCart, ArrowLeft } from 'lucide-react';
 import { ProductCard } from '@/components/shared/product-card';
 import type { Product } from '@/lib/types';
@@ -54,6 +53,9 @@ export default function ProductDetailPage() {
   ).slice(0, 3);
   
   const productDetails = product.details ? Object.entries(product.details).filter(([_, value]) => value) : [];
+  if (product.scentCategory) {
+    productDetails.unshift(['Scent Category', product.scentCategory]);
+  }
 
   return (
     <div className="container mx-auto py-12">
@@ -75,7 +77,6 @@ export default function ProductDetailPage() {
             <div className="space-y-2">
                 <p className="text-sm font-medium text-muted-foreground">{product.brand}</p>
                 <h1 className="font-headline text-4xl font-bold">{product.name}</h1>
-                {product.scentCategory && <Badge variant="secondary">{product.scentCategory}</Badge>}
             </div>
             
             <p className="text-3xl font-semibold">{formatPrice(product.price)}</p>

@@ -5,375 +5,377 @@ export const products: Product[] = [
   {
     id: '1',
     name: '9AM Dive',
-    description: ' A fresh aquatic fragrance with citrus top notes.',
-    price: 15000,
-    image: '/images/mystic-bloom.jpg',
+    description: 'Perfect for daily wear with a touch of sophistication.',
+    price: 60000,
+    image: '/images/9am-dive.jpg',
     category: 'Perfume',
-    perfumeType: 'Mini',
-    brand: 'DekemiScents',
-    scentCategory: 'Floral',
+    perfumeType: 'Signature',
+    brand: 'Afnan',
+    scentCategory: 'Top note: Citrus',
     details: {
-      size: '10ml'
+      size: '100ml'
     }
   },
   {
     id: '2',
-    name: 'Amber Oud',
-    description: 'A rich and warm oud fragrance, with a hint of sweet amber.',
-    price: 62000,
-    image: 'https://placehold.co/600x600.png',
+    name: '9AM Pour Femme',
+    description: 'Perfect for daily wear with a touch of sophistication.',
+    price: 60000,
+    image: '/images/9am-pour-femme.jpg',
     category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    scentCategory: 'Woody',
+    perfumeType: 'Signature',
+    brand: 'Afnan',
+    scentCategory: 'Top note: Citrus',
     details: {
-      size: '75ml'
+      size: '100ml'
     }
   },
   {
     id: '3',
-    name: 'Ocean Breeze',
-    description: 'A fresh and invigorating scent reminiscent of a cool sea breeze.',
-    price: 38000,
-    image: 'https://placehold.co/600x600.png',
+    name: '9PM Elixir',
+    description: 'Perfect for daily wear with a touch of sophistication.',
+    price: 65000,
+    image: '/images/9pm-elixir.jpg',
     category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    scentCategory: 'Fresh',
+    perfumeType: 'Signature',
+    brand: 'Afnan',
+    scentCategory: 'Top note: Citrus',
     details: {
-        size: '100ml'
+      size: '100ml'
     }
   },
   {
     id: '4',
-    name: 'Spiced Vanilla',
-    description: 'An exotic blend of vanilla bean and oriental spices.',
-    price: 55000,
-    image: 'https://placehold.co/600x600.png',
+    name: '9PM Rebel Afnan',
+    description: 'Perfect for daily wear with a touch of sophistication.',
+    price: 60000,
+    image: '/images/9pm-rebel.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
-    brand: 'Scentoria',
-    scentCategory: 'Oriental',
+    brand: 'Afnan',
+    scentCategory: 'Top note: Citrus',
     details: {
-        size: '50ml'
+      size: '100ml'
     }
   },
   {
     id: '5',
-    name: 'Citrus Burst',
-    description: 'A zesty and energetic fragrance with lemon and bergamot.',
-    price: 41000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Ajeeb',
+    description: 'Perfect for daily wear with a touch of sophistication.',
+    price: 25000,
+    image: '/images/ajeeb.jpg',
     category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    scentCategory: 'Fresh',
+    perfumeType: 'Signature',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Citrus',
     details: {
-        size: '120ml'
+      size: '100ml'
     }
   },
   {
     id: '6',
-    name: 'Rose Gold Atomizer',
-    description: 'A stylish and portable perfume atomizer in rose gold.',
-    price: 15000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Accessory',
-    brand: 'DekemiScents',
+    name: 'Ajwad',
+    description: 'Perfect for daily wear with a touch of sophistication.',
+    price: 34000,
+    image: '/images/ajwad.jpg',
+    category: 'Perfume',
+    perfumeType: 'Signature',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Citrus',
     details: {
-        color: 'Rose Gold',
-        material: 'Aluminum',
-        size: '5ml'
+      size: '100ml'
     }
   },
   {
     id: '7',
-    name: 'Sandalwood Serenity',
-    description: 'A calming and creamy sandalwood scent for a tranquil mind.',
-    price: 48000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Al Dirgham Limited Edition',
+    description: 'Perfect for daily wear with a touch of sophistication.',
+    price: 30000,
+    image: '/images/al-dirgham.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
-    brand: 'Scentoria',
-    scentCategory: 'Woody',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Citrus',
     details: {
       size: '100ml'
     }
   },
   {
     id: '8',
-    name: 'Midnight Gardenia',
-    description: 'An elegant and powerful white floral fragrance.',
-    price: 59000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Al Haramain Amber Oud Aqua Dubai',
+    description: 'Perfect for daily wear with a touch of sophistication.',
+    price: 160000,
+    image: '/images/amber-oud-aqua.jpg',
     category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    scentCategory: 'Floral',
+    perfumeType: 'Signature',
+    brand: 'Al Haramain',
+    scentCategory: 'Top note: Citrus',
     details: {
-        size: '75ml'
+      size: '100ml'
     }
   },
   {
     id: '9',
-    name: 'Leather Travel Case',
-    description: 'Protect your favorite fragrance with this premium leather case.',
-    price: 25000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Accessory',
-    brand: 'Aura Fragrances',
+    name: 'Al Haramain Amber Oud Extreme',
+    description: 'Perfect for daily wear with a touch of sophistication.',
+    price: 130000,
+    image: '/images/amber-oud-extreme.jpg',
+    category: 'Perfume',
+    perfumeType: 'Signature',
+    brand: 'Al Haramain',
+    scentCategory: 'Top note: Citrus',
     details: {
-        color: 'Brown',
-        material: 'Genuine Leather'
+      size: '100ml'
     }
   },
   {
     id: '10',
-    name: 'Fresh Linen',
-    description: 'Clean and comforting, like freshly laundered sheets.',
-    price: 36000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Al Haramain Amber Oud Gold Edition',
+    description: 'Perfect for daily wear with a touch of sophistication.',
+    price: 135000,
+    image: '/images/amber-oud-gold.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
-    brand: 'Scentoria',
-    scentCategory: 'Fresh',
+    brand: 'Al Haramain',
+    scentCategory: 'Top note: Citrus',
     details: {
-        size: '100ml'
+      size: '100ml'
     }
   },
   {
     id: '11',
-    name: 'Patchouli Passion',
-    description: 'A deep, earthy, and mysterious patchouli blend.',
-    price: 52000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Angham',
+    description: 'Elegant and romantic; ideal for special occasions or evening wear.',
+    price: 40000,
+    image: '/images/angham.jpg',
     category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    scentCategory: 'Oriental',
+    perfumeType: 'Signature',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Floral',
     details: {
-        size: '50ml'
+      size: '100ml'
     }
   },
   {
     id: '12',
-    name: 'Velvet Pouch',
-    description: 'A soft velvet pouch for storing your perfume bottle.',
-    price: 8000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Accessory',
-    brand: 'Scentoria',
+    name: 'Asad',
+    description: 'Confident and bold; perfect for night outs and colder months.',
+    price: 30000,
+    image: '/images/asad.jpg',
+    category: 'Perfume',
+    perfumeType: 'Signature',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Spicy Pepper',
     details: {
-        color: 'Black',
-        material: 'Velvet'
+      size: '100ml'
     }
   },
   {
     id: '13',
-    name: 'Solar Flare',
-    description: 'A bright, radiant citrus with a solar musk accord.',
-    price: 43000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Asad Bourbon',
+    description: 'Luxurious, warm, and masculine; best for evening events.',
+    price: 30000,
+    image: '/images/asad-bourbon.jpg',
     category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    scentCategory: 'Fresh',
+    perfumeType: 'Signature',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Vanilla',
     details: {
       size: '100ml'
     }
   },
   {
     id: '14',
-    name: 'Velvet Rose',
-    description: 'A modern take on a classic rose, deep and velvety.',
-    price: 58000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Asad Zanzibar',
+    description: 'Exotic and uplifting; great for summer trips or beachside evenings.',
+    price: 30000,
+    image: '/images/asad-zanzibar.jpg',
     category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    scentCategory: 'Floral',
+    perfumeType: 'Signature',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Tropical Spices',
     details: {
-      size: '75ml'
+      size: '100ml'
     }
   },
   {
     id: '15',
-    name: 'Cedarwood Dreams',
-    description: 'A tranquil, dreamy scent of cedar and lavender.',
-    price: 51000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Atheeri',
+    description: 'Delicate and feminine; perfect for everyday wear or office settings.',
+    price: 50000,
+    image: '/images/atheeri.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
-    brand: 'Scentoria',
-    scentCategory: 'Woody',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Soft Florals',
     details: {
       size: '100ml'
     }
   },
   {
     id: '16',
-    name: 'Crimson Spice',
-    description: 'A fiery blend of cinnamon, clove, and red mandarin.',
-    price: 65000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Badee Al Oud Amethyst',
+    description: 'Romantic and bold; suits date nights and evening wear.',
+    price: 38000,
+    image: '/images/badee-oud-amethyst.jpg',
     category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    scentCategory: 'Oriental',
+    perfumeType: 'Signature',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Sweet Rose',
     details: {
-      size: '50ml'
+      size: '100ml'
     }
   },
   {
     id: '17',
-    name: 'Aqua Marine',
-    description: 'A refreshing dive into notes of sea salt and cucumber.',
-    price: 39000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Badee Al Oud For Glory',
+    description: 'Regal and powerful; best for formal events and cold evenings.',
+    price: 38000,
+    image: '/images/badee-oud-glory.jpg',
     category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    scentCategory: 'Fresh',
+    perfumeType: 'Signature',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Spicy Saffron',
     details: {
-      size: '120ml'
+      size: '100ml'
     }
   },
   {
     id: '18',
-    name: 'Golden Iris',
-    description: 'A powdery, elegant iris with a touch of golden amber.',
-    price: 72000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Badee Al Oud Noble Blush',
+    description: 'Feminine and soft; great for brunch, weddings, or daytime dates.',
+    price: 38000,
+    image: '/images/badee-oud-blush.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
-    brand: 'Scentoria',
-    scentCategory: 'Floral',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Powdery Florals',
     details: {
-      size: '75ml'
+      size: '100ml'
     }
   },
   {
     id: '19',
-    name: 'Vetiver Veil',
-    description: 'Earthy and smoky vetiver wrapped in a clean, green veil.',
-    price: 56000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Badee Al Oud Honour and Glory',
+    description: 'Majestic and traditional; ideal for cultural events or evening gatherings.',
+    price: 38000,
+    image: '/images/badee-oud-honour.jpg',
     category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    scentCategory: 'Woody',
+    perfumeType: 'Signature',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Bold Oud',
     details: {
       size: '100ml'
     }
   },
   {
     id: '20',
-    name: 'Orchid Noir',
-    description: 'A dark, mysterious orchid with hints of black truffle.',
-    price: 75000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Badee Al Oud Sublime',
+    description: 'Versatile and modern; can be worn all year round.',
+    price: 38000,
+    image: '/images/badee-oud-sublime.jpg',
     category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    scentCategory: 'Oriental',
+    perfumeType: 'Signature',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Citrus',
     details: {
-      size: '50ml'
+      size: '100ml'
     }
   },
   {
     id: '21',
-    name: 'Green Tea Revive',
-    description: 'A crisp, revitalizing scent of green tea and mint.',
-    price: 40000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Amber Oud Gold Edition',
+    description: 'Rich, golden, and sensual — perfect for date nights or evening events.',
+    price: 120000,
+    image: '/images/amber-oud-gold.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
-    brand: 'Scentoria',
-    scentCategory: 'Fresh',
+    brand: 'Al Haramain',
+    scentCategory: 'Top note: Sweet Vanilla',
     details: {
       size: '100ml'
     }
   },
   {
     id: '22',
-    name: 'Peony Blush',
-    description: 'A soft, romantic peony with a hint of red apple.',
-    price: 49000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Amber Oud Ruby',
+    description: 'Luxurious and radiant — great for making a bold, sophisticated statement.',
+    price: 120000,
+    image: '/images/amber-oud-ruby.jpg',
     category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    scentCategory: 'Floral',
+    perfumeType: 'Signature',
+    brand: 'Al Haramain',
+    scentCategory: 'Top note: Raspberry',
     details: {
       size: '100ml'
     }
   },
   {
     id: '23',
-    name: 'Ebony Wood',
-    description: 'A deep, rich scent of ebony wood and black pepper.',
-    price: 68000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Amber Oud Tobacco Edition',
+    description: 'Autumn/winter evenings; confident, refined, and masculine-leaning.',
+    price: 120000,
+    image: '/images/amber-oud-tobacco.jpg',
     category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    scentCategory: 'Woody',
+    perfumeType: 'Signature',
+    brand: 'Al Haramain',
+    scentCategory: 'Top note: Warm Tobacco',
     details: {
-      size: '75ml'
+      size: '100ml'
     }
   },
   {
     id: '24',
-    name: 'Tonka Delight',
-    description: 'A sweet and creamy tonka bean with almond notes.',
-    price: 54000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Ameer Al Arab Imperium',
+    description: 'Refined and understated; ideal for office wear or meetings.',
+    price: 25000,
+    image: '/images/ameer-imperium.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
-    brand: 'Scentoria',
-    scentCategory: 'Oriental',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Woody',
     details: {
-      size: '50ml'
+      size: '100ml'
     }
   },
   {
     id: '25',
-    name: 'Fig Leaf',
-    description: 'A green and slightly bitter scent of freshly crushed fig leaves.',
-    price: 46000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Ameer Al Ouhd Intense Oud',
+    description: 'For oud lovers; best for winter, evenings, and traditional occasions.',
+    price: 28000,
+    image: '/images/ameer-oud-intense.jpg',
     category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    scentCategory: 'Fresh',
+    perfumeType: 'Signature',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Strong Oud',
     details: {
       size: '100ml'
     }
   },
   {
     id: '26',
-    name: 'White Jasmine',
-    description: 'A pure, intoxicating jasmine fragrance for warm evenings.',
-    price: 61000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Ameerat Al Arab',
+    description: 'Romantic and graceful — perfect for day dates or weddings.',
+    price: 25000,
+    image: '/images/ameerat-al-arab.jpg',
     category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    scentCategory: 'Floral',
+    perfumeType: 'Signature',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Floral',
     details: {
-      size: '75ml'
+      size: '100ml'
     }
   },
   {
     id: '27',
-    name: 'Smoked Leather',
-    description: 'A rugged, smoky leather with a hint of birch tar.',
-    price: 78000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Andaleeb',
+    description: 'Year-round versatile scent with a charming, friendly aura.',
+    price: 25000,
+    image: '/images/andaleeb.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
-    brand: 'Scentoria',
-    scentCategory: 'Woody',
+    brand: 'Lattafa',
+    scentCategory: 'Top note: Fruity',
     details: {
       size: '100ml'
     }
