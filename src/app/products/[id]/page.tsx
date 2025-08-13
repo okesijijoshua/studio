@@ -92,9 +92,9 @@ export default function ProductDetailPage() {
             <p className="text-3xl font-semibold">{formatPrice(product.price)}</p>
             
             <Tabs defaultValue="description" className="w-full">
-                <TabsList>
-                    <TabsTrigger value="description">Description</TabsTrigger>
-                    <TabsTrigger value="specifications">Specifications</TabsTrigger>
+                <TabsList className="grid w-full grid-cols-2">
+                    <TabsTrigger value="description" className="data-[state=active]:font-bold data-[state=active]:bg-secondary">Description</TabsTrigger>
+                    <TabsTrigger value="specifications" className="data-[state=active]:font-bold data-[state=active]:bg-secondary">Specifications</TabsTrigger>
                 </TabsList>
                 <TabsContent value="description" className="mt-4 text-lg text-muted-foreground space-y-4">
                     <p>{product.description}</p>
