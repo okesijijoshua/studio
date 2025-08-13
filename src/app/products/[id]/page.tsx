@@ -109,7 +109,7 @@ export default function ProductDetailPage() {
                         {productDetails.map(({ key, value }) => (
                             <div key={key} className="flex items-center justify-between gap-4 p-3 bg-secondary rounded-lg">
                                 <span className="font-semibold text-secondary-foreground">{capitalize(key)}</span>
-                                <span className="text-right text-muted-foreground">{value}</span>
+                                <span className="text-left text-muted-foreground">{value}</span>
                             </div>
                         ))}
                     </div>
