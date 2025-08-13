@@ -5,13 +5,14 @@ export const products: Product[] = [
   {
     id: '1',
     name: '9AM Dive',
-    description: 'Perfect for daily wear with a touch of sophistication.',
+    description: 'An invigorating aquatic fragrance with crisp citrus, cool marine notes, and a smooth amber-musk base for a fresh yet refined scent.',
+    vibeCheck: 'A crisp morning swim in citrus-infused waters—energizing and bold, for those who chase sunrises with confidence.',
     price: 60000,
     image: '/images/9am-dive.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Afnan',
-    scentCategory: 'Top note: Citrus',
+    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -19,13 +20,14 @@ export const products: Product[] = [
   {
     id: '2',
     name: '9AM Pour Femme',
-    description: 'Perfect for daily wear with a touch of sophistication.',
+    description: 'A fresh citrus opening with floral heart notes and woody base for elegant daytime wear.',
+    vibeCheck: 'Elegant brunch vibes—think linen dresses and iced lavender lattes, with a whisper of floral sophistication.',
     price: 60000,
     image: '/images/9am-pour-femme.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Afnan',
-    scentCategory: 'Top note: Citrus',
+    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -33,13 +35,14 @@ export const products: Product[] = [
   {
     id: '3',
     name: '9PM Elixir',
-    description: 'Perfect for daily wear with a touch of sophistication.',
+    description: 'Citrus top notes blend with floral heart and woody base for a sophisticated evening scent.',
+    vibeCheck: 'Midnight magnetism—smooth citrus and woods that linger like a secret shared under starry skies.',
     price: 65000,
     image: '/images/9pm-elixir.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Afnan',
-    scentCategory: 'Top note: Citrus',
+    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -47,13 +50,14 @@ export const products: Product[] = [
   {
     id: '4',
     name: '9PM Rebel Afnan',
-    description: 'Perfect for daily wear with a touch of sophistication.',
+    description: 'Bold citrus opening with floral heart and rebellious woody base notes.',
+    vibeCheck: 'A leather-jacket-and-motorcycle scent—unapologetically fresh with a rebellious woody edge.',
     price: 60000,
     image: '/images/9pm-rebel.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Afnan',
-    scentCategory: 'Top note: Citrus',
+    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -61,13 +65,14 @@ export const products: Product[] = [
   {
     id: '5',
     name: 'Ajeeb',
-    description: 'Perfect for daily wear with a touch of sophistication.',
+    description: 'A surprising blend of citrus, florals and woods that intrigues the senses.',
+    vibeCheck: 'A sun-dappled library nook—citrus pages turning into floral chapters, wrapped in woody warmth.',
     price: 25000,
     image: '/images/ajeeb.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Citrus',
+    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -75,13 +80,14 @@ export const products: Product[] = [
   {
     id: '6',
     name: 'Ajwad',
-    description: 'Perfect for daily wear with a touch of sophistication.',
+    description: 'A regal composition of citrus, florals and rich woody notes.',
+    vibeCheck: 'Royal garden soirées—where citrus fountains meet floral tapestries and polished mahogany halls.',
     price: 34000,
     image: '/images/ajwad.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Citrus',
+    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -89,13 +95,14 @@ export const products: Product[] = [
   {
     id: '7',
     name: 'Al Dirgham Limited Edition',
-    description: 'Perfect for daily wear with a touch of sophistication.',
+    description: 'An exclusive blend of citrus, florals and precious woods.',
+    vibeCheck: 'A hidden oasis—zesty top notes bloom into a floral heart, anchored by rare desert woods.',
     price: 30000,
     image: '/images/al-dirgham.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Citrus',
+    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -103,13 +110,14 @@ export const products: Product[] = [
   {
     id: '8',
     name: 'Al Haramain Amber Oud Aqua Dubai',
-    description: 'Perfect for daily wear with a touch of sophistication.',
+    description: 'A luxurious aquatic take on the classic amber oud composition.',
+    vibeCheck: 'Skyline infinity pool—citrus sparkle over floral depths, with a woody anchor.',
     price: 160000,
     image: '/images/amber-oud-aqua.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    scentCategory: 'Top note: Citrus',
+    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -117,13 +125,14 @@ export const products: Product[] = [
   {
     id: '9',
     name: 'Al Haramain Amber Oud Extreme',
-    description: 'Perfect for daily wear with a touch of sophistication.',
+    description: 'An intense interpretation of the beloved amber oud fragrance.',
+    vibeCheck: 'Desert storm—citrus sharpness cut through by oud\'s electric intensity.',
     price: 130000,
     image: '/images/amber-oud-extreme.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    scentCategory: 'Top note: Citrus',
+    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -131,13 +140,14 @@ export const products: Product[] = [
   {
     id: '10',
     name: 'Al Haramain Amber Oud Gold Edition',
-    description: 'Perfect for daily wear with a touch of sophistication.',
+    description: 'A golden, luxurious take on the classic amber oud.',
+    vibeCheck: 'Gilded cocktail hour—vanilla and melon shimmer like champagne bubbles.',
     price: 135000,
     image: '/images/amber-oud-gold.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    scentCategory: 'Top note: Citrus',
+    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -145,13 +155,14 @@ export const products: Product[] = [
   {
     id: '11',
     name: 'Angham',
-    description: 'Elegant and romantic; ideal for special occasions or evening wear.',
+    description: 'A rich floral-oriental blend with rose, jasmine, musk, and oud undertones.',
+    vibeCheck: 'A velvet-curtained opera house—rose and jasmine crescendo over musk and oud\'s dramatic bassline.',
     price: 40000,
     image: '/images/angham.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Floral',
+    scentCategory: 'Top: Rose, Heart: Jasmine, Base: Musk & Oud',
     details: {
       size: '100ml'
     }
@@ -159,13 +170,14 @@ export const products: Product[] = [
   {
     id: '12',
     name: 'Asad',
-    description: 'Confident and bold; perfect for night outs and colder months.',
+    description: 'Warm vanilla, spicy pepper, and wood notes with a sweet-amber dry down.',
+    vibeCheck: 'Spice-market mystique—vanilla and pepper clash like firelight on ancient amber walls.',
     price: 30000,
     image: '/images/asad.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Spicy Pepper',
+    scentCategory: 'Top: Spicy Pepper, Heart: Vanilla, Base: Woody Amber',
     details: {
       size: '100ml'
     }
@@ -173,13 +185,14 @@ export const products: Product[] = [
   {
     id: '13',
     name: 'Asad Bourbon',
-    description: 'Luxurious, warm, and masculine; best for evening events.',
+    description: 'A deeper, boozier twist on Asad with sweet vanilla and smoky bourbon accords.',
+    vibeCheck: 'Smoky jazz club nights—bourbon-kissed vanilla swirling with dark, woody intrigue.',
     price: 30000,
     image: '/images/asad-bourbon.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Vanilla',
+    scentCategory: 'Top: Vanilla, Heart: Smoky Bourbon, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -187,13 +200,14 @@ export const products: Product[] = [
   {
     id: '14',
     name: 'Asad Zanzibar',
-    description: 'Exotic and uplifting; great for summer trips or beachside evenings.',
+    description: 'Tropical spices, citrus freshness, and woody undertones with a creamy base.',
+    vibeCheck: 'Beach bonfire at dusk—tropical spices crackle over creamy coconut and driftwood.',
     price: 30000,
     image: '/images/asad-zanzibar.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Tropical Spices',
+    scentCategory: 'Top: Tropical Spices, Heart: Citrus, Base: Creamy Woods',
     details: {
       size: '100ml'
     }
@@ -201,13 +215,14 @@ export const products: Product[] = [
   {
     id: '15',
     name: 'Atheeri',
-    description: 'Delicate and feminine; perfect for everyday wear or office settings.',
+    description: 'Soft florals mixed with powdery musk and gentle amber sweetness.',
+    vibeCheck: 'Powdered silk gloves—soft florals and musk that feel like a whispered compliment.',
     price: 50000,
     image: '/images/atheeri.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Soft Florals',
+    scentCategory: 'Top: Soft Florals, Heart: Powdery Musk, Base: Amber',
     details: {
       size: '100ml'
     }
@@ -215,13 +230,14 @@ export const products: Product[] = [
   {
     id: '16',
     name: 'Badee Al Oud Amethyst',
-    description: 'Romantic and bold; suits date nights and evening wear.',
+    description: 'Sweet rose, creamy vanilla, and smoky oud blend; inspired by Initio Atomic Rose.',
+    vibeCheck: 'Gothic romance—rose and vanilla dance with smoky oud under a full moon.',
     price: 38000,
     image: '/images/badee-oud-amethyst.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Sweet Rose',
+    scentCategory: 'Top: Sweet Rose, Heart: Creamy Vanilla, Base: Smoky Oud',
     details: {
       size: '100ml'
     }
@@ -229,13 +245,14 @@ export const products: Product[] = [
   {
     id: '17',
     name: 'Badee Al Oud For Glory',
-    description: 'Regal and powerful; best for formal events and cold evenings.',
+    description: 'Spicy saffron, sweet rose, and resinous oud; similar to Initio Oud for Greatness.',
+    vibeCheck: 'A throne room\'s grandeur—saffron and oud weave a tapestry of power and opulence.',
     price: 38000,
     image: '/images/badee-oud-glory.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Spicy Saffron',
+    scentCategory: 'Top: Spicy Saffron, Heart: Sweet Rose, Base: Resinous Oud',
     details: {
       size: '100ml'
     }
@@ -243,13 +260,14 @@ export const products: Product[] = [
   {
     id: '18',
     name: 'Badee Al Oud Noble Blush',
-    description: 'Feminine and soft; great for brunch, weddings, or daytime dates.',
+    description: 'Powdery florals with creamy woods and gentle sweetness.',
+    vibeCheck: 'Blushing debutante—powdery florals melt into creamy woods like a first love letter.',
     price: 38000,
     image: '/images/badee-oud-blush.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Powdery Florals',
+    scentCategory: 'Top: Powdery Florals, Heart: Creamy Woods, Base: Gentle Sweetness',
     details: {
       size: '100ml'
     }
@@ -257,13 +275,14 @@ export const products: Product[] = [
   {
     id: '19',
     name: 'Badee Al Oud Honour and Glory',
-    description: 'Majestic and traditional; ideal for cultural events or evening gatherings.',
+    description: 'Bold oud, smoky incense, and sweet amber.',
+    vibeCheck: 'Ancient temple incense—bold oud and amber echo through stone corridors.',
     price: 38000,
     image: '/images/badee-oud-honour.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Bold Oud',
+    scentCategory: 'Top: Bold Oud, Heart: Smoky Incense, Base: Sweet Amber',
     details: {
       size: '100ml'
     }
@@ -271,13 +290,14 @@ export const products: Product[] = [
   {
     id: '20',
     name: 'Badee Al Oud Sublime',
-    description: 'Versatile and modern; can be worn all year round.',
+    description: 'A fresher take on the Badee Al Oud DNA; hints of citrus, woods, and musk.',
+    vibeCheck: 'A minimalist art gallery—citrus and musk in clean, modern strokes.',
     price: 38000,
     image: '/images/badee-oud-sublime.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Citrus',
+    scentCategory: 'Top: Citrus, Heart: Woods, Base: Musk',
     details: {
       size: '100ml'
     }
@@ -285,13 +305,14 @@ export const products: Product[] = [
   {
     id: '21',
     name: 'Amber Oud Gold Edition',
-    description: 'Rich, golden, and sensual — perfect for date nights or evening events.',
+    description: 'Sweet vanilla, fruity melon, warm amber, with a slightly powdery dry-down.',
+    vibeCheck: 'Gilded cocktail hour—vanilla and melon shimmer like champagne bubbles.',
     price: 120000,
     image: '/images/amber-oud-gold.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    scentCategory: 'Top note: Sweet Vanilla',
+    scentCategory: 'Top: Sweet Vanilla, Heart: Fruity Melon, Base: Warm Amber',
     details: {
       size: '100ml'
     }
@@ -299,13 +320,14 @@ export const products: Product[] = [
   {
     id: '22',
     name: 'Amber Oud Ruby',
-    description: 'Luxurious and radiant — great for making a bold, sophisticated statement.',
+    description: 'Raspberry, saffron, ambergris, and musk — inspired by Baccarat Rouge 540.',
+    vibeCheck: 'Heirloom jewelry box—raspberry and saffron glow against musky velvet.',
     price: 120000,
     image: '/images/amber-oud-ruby.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    scentCategory: 'Top note: Raspberry',
+    scentCategory: 'Top: Raspberry, Heart: Saffron, Base: Ambergris & Musk',
     details: {
       size: '100ml'
     }
@@ -313,13 +335,14 @@ export const products: Product[] = [
   {
     id: '23',
     name: 'Amber Oud Tobacco Edition',
-    description: 'Autumn/winter evenings; confident, refined, and masculine-leaning.',
+    description: 'Warm tobacco, sweet vanilla, and spicy cinnamon notes; cozy and rich.',
+    vibeCheck: 'Library of rare books—tobacco leaves and vanilla spines aged to perfection.',
     price: 120000,
     image: '/images/amber-oud-tobacco.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    scentCategory: 'Top note: Warm Tobacco',
+    scentCategory: 'Top: Warm Tobacco, Heart: Sweet Vanilla, Base: Spicy Cinnamon',
     details: {
       size: '100ml'
     }
@@ -327,13 +350,14 @@ export const products: Product[] = [
   {
     id: '24',
     name: 'Ameer Al Arab Imperium',
-    description: 'Refined and understated; ideal for office wear or meetings.',
+    description: 'Woody, musky, and slightly fruity with an elegant smoothness.',
+    vibeCheck: 'CEO energy—woody musk with a fruity wink, for boardrooms and yacht decks.',
     price: 25000,
     image: '/images/ameer-imperium.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Woody',
+    scentCategory: 'Top: Woody, Heart: Musky, Base: Fruity',
     details: {
       size: '100ml'
     }
@@ -341,13 +365,14 @@ export const products: Product[] = [
   {
     id: '25',
     name: 'Ameer Al Ouhd Intense Oud',
-    description: 'For oud lovers; best for winter, evenings, and traditional occasions.',
+    description: 'Strong oud presence with smoky incense and amber notes.',
+    vibeCheck: 'Aged whiskey by the fireplace—oud and incense crackle with smoky depth.',
     price: 28000,
     image: '/images/ameer-oud-intense.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Strong Oud',
+    scentCategory: 'Top: Strong Oud, Heart: Smoky Incense, Base: Amber',
     details: {
       size: '100ml'
     }
@@ -355,13 +380,14 @@ export const products: Product[] = [
   {
     id: '26',
     name: 'Ameerat Al Arab',
-    description: 'Romantic and graceful — perfect for day dates or weddings.',
+    description: 'Floral, fruity, with hints of musk and sweet vanilla. Feminine and soft.',
+    vibeCheck: 'Honeysuckle-draped balconies—floral and fruity, like a Mediterranean breeze.',
     price: 25000,
     image: '/images/ameerat-al-arab.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Floral',
+    scentCategory: 'Top: Floral, Heart: Fruity, Base: Musk & Vanilla',
     details: {
       size: '100ml'
     }
@@ -369,13 +395,14 @@ export const products: Product[] = [
   {
     id: '27',
     name: 'Andaleeb',
-    description: 'Year-round versatile scent with a charming, friendly aura.',
+    description: 'Fruity-floral with a warm amber base; smooth and inviting.',
+    vibeCheck: 'Picnic in an orchard—juicy fruits and amber warmth under dappled sunlight.',
     price: 25000,
     image: '/images/andaleeb.jpg',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top note: Fruity',
+    scentCategory: 'Top: Fruity, Heart: Floral, Base: Warm Amber',
     details: {
       size: '100ml'
     }

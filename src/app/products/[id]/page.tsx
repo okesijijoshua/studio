@@ -81,7 +81,14 @@ export default function ProductDetailPage() {
             
             <p className="text-3xl font-semibold">{formatPrice(product.price)}</p>
             
-            <p className="text-muted-foreground text-lg">{product.description}</p>
+            <div className="space-y-4 text-lg">
+              <p className="text-muted-foreground">{product.description}</p>
+              {product.vibeCheck && (
+                <p className="text-sm italic text-muted-foreground/80">
+                  <span className="font-semibold not-italic text-foreground/80">Vibe Check:</span> {product.vibeCheck}
+                </p>
+              )}
+            </div>
             
             <Button size="lg" onClick={handleAddToCart} className="w-full md:w-auto">
                 <ShoppingCart className="mr-2" />
