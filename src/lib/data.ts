@@ -12,7 +12,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Afnan',
-    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -27,7 +27,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Afnan',
-    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -42,7 +42,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Afnan',
-    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -57,7 +57,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Afnan',
-    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -72,7 +72,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -87,7 +87,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -102,7 +102,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -117,7 +117,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -132,7 +132,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -147,7 +147,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    scentCategory: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -162,7 +162,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Rose, Heart: Jasmine, Base: Musk & Oud',
+    notes: 'Top: Rose, Heart: Jasmine, Base: Musk & Oud',
     details: {
       size: '100ml'
     }
@@ -177,7 +177,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Spicy Pepper, Heart: Vanilla, Base: Woody Amber',
+    notes: 'Top: Spicy Pepper, Heart: Vanilla, Base: Woody Amber',
     details: {
       size: '100ml'
     }
@@ -192,7 +192,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Vanilla, Heart: Smoky Bourbon, Base: Woody',
+    notes: 'Top: Vanilla, Heart: Smoky Bourbon, Base: Woody',
     details: {
       size: '100ml'
     }
@@ -207,7 +207,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Tropical Spices, Heart: Citrus, Base: Creamy Woods',
+    notes: 'Top: Tropical Spices, Heart: Citrus, Base: Creamy Woods',
     details: {
       size: '100ml'
     }
@@ -222,7 +222,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Soft Florals, Heart: Powdery Musk, Base: Amber',
+    notes: 'Top: Soft Florals, Heart: Powdery Musk, Base: Amber',
     details: {
       size: '100ml'
     }
@@ -237,7 +237,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Sweet Rose, Heart: Creamy Vanilla, Base: Smoky Oud',
+    notes: 'Top: Sweet Rose, Heart: Creamy Vanilla, Base: Smoky Oud',
     details: {
       size: '100ml'
     }
@@ -252,7 +252,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Spicy Saffron, Heart: Sweet Rose, Base: Resinous Oud',
+    notes: 'Top: Spicy Saffron, Heart: Sweet Rose, Base: Resinous Oud',
     details: {
       size: '100ml'
     }
@@ -267,7 +267,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Powdery Florals, Heart: Creamy Woods, Base: Gentle Sweetness',
+    notes: 'Top: Powdery Florals, Heart: Creamy Woods, Base: Gentle Sweetness',
     details: {
       size: '100ml'
     }
@@ -282,7 +282,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Bold Oud, Heart: Smoky Incense, Base: Sweet Amber',
+    notes: 'Top: Bold Oud, Heart: Smoky Incense, Base: Sweet Amber',
     details: {
       size: '100ml'
     }
@@ -297,7 +297,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Citrus, Heart: Woods, Base: Musk',
+    notes: 'Top: Citrus, Heart: Woods, Base: Musk',
     details: {
       size: '100ml'
     }
@@ -312,7 +312,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    scentCategory: 'Top: Sweet Vanilla, Heart: Fruity Melon, Base: Warm Amber',
+    notes: 'Top: Sweet Vanilla, Heart: Fruity Melon, Base: Warm Amber',
     details: {
       size: '100ml'
     }
@@ -327,7 +327,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    scentCategory: 'Top: Raspberry, Heart: Saffron, Base: Ambergris & Musk',
+    notes: 'Top: Raspberry, Heart: Saffron, Base: Ambergris & Musk',
     details: {
       size: '100ml'
     }
@@ -342,7 +342,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    scentCategory: 'Top: Warm Tobacco, Heart: Sweet Vanilla, Base: Spicy Cinnamon',
+    notes: 'Top: Warm Tobacco, Heart: Sweet Vanilla, Base: Spicy Cinnamon',
     details: {
       size: '100ml'
     }
@@ -357,7 +357,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Woody, Heart: Musky, Base: Fruity',
+    notes: 'Top: Woody, Heart: Musky, Base: Fruity',
     details: {
       size: '100ml'
     }
@@ -372,7 +372,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Strong Oud, Heart: Smoky Incense, Base: Amber',
+    notes: 'Top: Strong Oud, Heart: Smoky Incense, Base: Amber',
     details: {
       size: '100ml'
     }
@@ -387,7 +387,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Floral, Heart: Fruity, Base: Musk & Vanilla',
+    notes: 'Top: Floral, Heart: Fruity, Base: Musk & Vanilla',
     details: {
       size: '100ml'
     }
@@ -402,7 +402,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    scentCategory: 'Top: Fruity, Heart: Floral, Base: Warm Amber',
+    notes: 'Top: Fruity, Heart: Floral, Base: Warm Amber',
     details: {
       size: '100ml'
     }
@@ -416,7 +416,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '50ml'
     }
@@ -430,7 +430,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
@@ -444,7 +444,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '120ml'
     }
@@ -458,7 +458,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '75ml'
     }
@@ -472,7 +472,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '100ml'
     }
@@ -486,7 +486,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '50ml'
     }
@@ -500,7 +500,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '75ml'
     }
@@ -514,7 +514,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -528,7 +528,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '120ml'
     }
@@ -542,7 +542,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
@@ -556,7 +556,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '50ml'
     }
@@ -570,7 +570,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '100ml'
     }
@@ -584,7 +584,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '75ml'
     }
@@ -598,7 +598,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '75ml'
     }
@@ -612,7 +612,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -626,7 +626,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '100ml'
     }
@@ -640,7 +640,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '50ml'
     }
@@ -654,7 +654,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
@@ -668,7 +668,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '75ml'
     }
@@ -682,7 +682,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '120ml'
     }
@@ -696,7 +696,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '50ml'
     }
@@ -710,7 +710,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
@@ -724,7 +724,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -738,7 +738,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '75ml'
     }
@@ -752,7 +752,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '100ml'
     }
@@ -766,7 +766,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '50ml'
     }
@@ -780,7 +780,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '75ml'
     }
@@ -794,7 +794,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -808,7 +808,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '120ml'
     }
@@ -822,7 +822,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
@@ -836,7 +836,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '50ml'
     }
@@ -850,7 +850,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -864,7 +864,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '120ml'
     }
@@ -878,7 +878,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '75ml'
     }
@@ -892,7 +892,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -906,7 +906,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '50ml'
     }
@@ -920,7 +920,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '100ml'
     }
@@ -934,7 +934,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '75ml'
     }
@@ -948,7 +948,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -962,7 +962,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '120ml'
     }
@@ -976,7 +976,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '50ml'
     }
@@ -990,7 +990,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
@@ -1004,7 +1004,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '75ml'
     }
@@ -1018,7 +1018,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '120ml'
     }
@@ -1032,7 +1032,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '50ml'
     }
@@ -1046,7 +1046,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
@@ -1060,7 +1060,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -1074,7 +1074,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '120ml'
     }
@@ -1088,7 +1088,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '75ml'
     }
@@ -1102,7 +1102,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
@@ -1116,7 +1116,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -1130,7 +1130,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '120ml'
     }
@@ -1144,7 +1144,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '50ml'
     }
@@ -1158,7 +1158,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '75ml'
     }
@@ -1172,7 +1172,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -1186,7 +1186,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '100ml'
     }
@@ -1200,7 +1200,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '50ml'
     }
@@ -1214,7 +1214,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
@@ -1228,7 +1228,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '75ml'
     }
@@ -1242,7 +1242,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '100ml'
     }
@@ -1256,7 +1256,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '75ml'
     }
@@ -1270,7 +1270,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
@@ -1284,7 +1284,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '50ml'
     }
@@ -1298,7 +1298,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '100ml'
     }
@@ -1312,7 +1312,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '50ml'
     }
@@ -1326,7 +1326,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '75ml'
     }
@@ -1340,7 +1340,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -1354,7 +1354,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '100ml'
     }
@@ -1368,7 +1368,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '75ml'
     }
@@ -1382,7 +1382,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -1396,7 +1396,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '50ml'
     }
@@ -1410,7 +1410,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '100ml'
     }
@@ -1424,7 +1424,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Floral',
+    notes: 'Floral',
     details: {
       size: '50ml'
     }
@@ -1438,7 +1438,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Designer',
     brand: 'Aura Fragrances',
-    scentCategory: 'Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -1452,7 +1452,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Scentoria',
-    scentCategory: 'Oriental',
+    notes: 'Oriental',
     details: {
       size: '75ml'
     }
@@ -1466,7 +1466,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Dekemi',
     brand: 'DekemiScents',
-    scentCategory: 'Fresh',
+    notes: 'Fresh',
     details: {
       size: '120ml'
     }

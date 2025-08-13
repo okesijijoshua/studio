@@ -49,12 +49,12 @@ export default function ProductDetailPage() {
   
   const relatedProducts = allProducts.filter(p => 
     p.id !== product.id && 
-    (p.scentCategory === product.scentCategory || p.brand === product.brand)
+    (p.notes === product.notes || p.brand === product.brand)
   ).slice(0, 3);
   
   const productDetails = product.details ? Object.entries(product.details).filter(([_, value]) => value) : [];
-  if (product.scentCategory) {
-    productDetails.unshift(['Scent Category', product.scentCategory]);
+  if (product.notes) {
+    productDetails.unshift(['Notes', product.notes]);
   }
 
   return (

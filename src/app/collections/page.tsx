@@ -31,7 +31,7 @@ import { Filter } from 'lucide-react';
 
 const PERFUME_TYPES = ['All Perfumes', 'Dekemi Perfumes', 'Designer Perfumes', 'Signature Perfumes', 'Mini Perfumes'];
 const BRANDS = [...new Set(allProducts.filter(p => p.category === 'Perfume').map(p => p.brand))];
-const SCENT_CATEGORIES = [...new Set(allProducts.filter(p => p.scentCategory).map(p => p.scentCategory!))];
+const NOTE_CATEGORIES = [...new Set(allProducts.filter(p => p.notes).map(p => p.notes!))];
 const MAX_PRICE = Math.max(...allProducts.filter(p => p.category === 'Perfume').map(p => p.price));
 const PRODUCTS_PER_PAGE = 10;
 
@@ -86,7 +86,7 @@ export default function CollectionsPage() {
   const [sortOption, setSortOption] = useState('name-asc');
   const [selectedPerfumeType, setSelectedPerfumeType] = useState<string | null>(null);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
-  const [selectedScentCategories, setSelectedScentCategories] = useState<string[]>([]);
+  const [selectedNoteCategories, setSelectedNoteCategories] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState([0, MAX_PRICE]);
   const [currentPage, setCurrentPage] = useState(1);
   
@@ -103,7 +103,7 @@ export default function CollectionsPage() {
   useEffect(() => {
     // Reset to first page whenever filters change
     setCurrentPage(1);
-  }, [selectedPerfumeType, selectedBrands, selectedScentCategories, priceRange, sortOption]);
+  }, [selectedPerfumeType, selectedBrands, selectedNoteCategories, priceRange, sortOption]);
 
 
   const filteredAndSortedProducts = useMemo(() => {
@@ -118,8 +118,8 @@ export default function CollectionsPage() {
       products = products.filter(p => selectedBrands.includes(p.brand));
     }
     
-    if (selectedScentCategories.length > 0) {
-        products = products.filter(p => p.scentCategory && selectedScentCategories.includes(p.scentCategory));
+    if (selectedNoteCategories.length > 0) {
+        products = products.filter(p => p.notes && selectedNoteCategories.includes(p.notes));
     }
 
     products = products.filter(p => p.price >= priceRange[0] && p.price <= priceRange[1]);
@@ -129,7 +129,7 @@ export default function CollectionsPage() {
         products.sort((a, b) => a.price - b.price);
         break;
       case 'price-desc':
-        products.sort((a, b) => b.price - a.price);
+        products.sort((a, b) => b.price - b.price);
         break;
       case 'name-asc':
         products.sort((a, b) => a.name.localeCompare(b.name));
@@ -140,7 +140,7 @@ export default function CollectionsPage() {
     }
 
     return products;
-  }, [sortOption, selectedPerfumeType, selectedBrands, selectedScentCategories, priceRange]);
+  }, [sortOption, selectedPerfumeType, selectedBrands, selectedNoteCategories, priceRange]);
 
   const totalPages = Math.ceil(filteredAndSortedProducts.length / PRODUCTS_PER_PAGE);
 
@@ -206,11 +206,11 @@ export default function CollectionsPage() {
             </div>
         </div>
         <div>
-            <Label className="text-lg font-headline">Scent</Label>
+            <Label className="text-lg font-headline">Notes</Label>
             <div className="mt-2 space-y-2">
-            {SCENT_CATEGORIES.map(scent => (
-                    <Button key={scent} variant={selectedScentCategories.includes(scent) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleArrayFilter(setSelectedScentCategories, scent)}>
-                    {scent}
+            {NOTE_CATEGORIES.map(notes => (
+                    <Button key={notes} variant={selectedNoteCategories.includes(notes) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleArrayFilter(setSelectedNoteCategories, notes)}>
+                    {notes}
                 </Button>
             ))}
             </div>
@@ -281,13 +281,13 @@ export default function CollectionsPage() {
                 </div>
             </AccordionContent>
         </AccordionItem>
-        <AccordionItem value="scent">
-            <AccordionTrigger className="text-lg font-headline">Scent</AccordionTrigger>
+        <AccordionItem value="notes">
+            <AccordionTrigger className="text-lg font-headline">Notes</AccordionTrigger>
             <AccordionContent>
                 <div className="mt-2 space-y-2">
-                    {SCENT_CATEGORIES.map(scent => (
-                        <Button key={scent} variant={selectedScentCategories.includes(scent) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleArrayFilter(setSelectedScentCategories, scent)}>
-                            {scent}
+                    {NOTE_CATEGORIES.map(notes => (
+                        <Button key={notes} variant={selectedNoteCategories.includes(notes) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleArrayFilter(setSelectedNoteCategories, notes)}>
+                            {notes}
                         </Button>
                     ))}
                 </div>
