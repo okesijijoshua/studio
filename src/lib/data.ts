@@ -383,7 +383,7 @@ export const products: Product[] = [
     description: 'Floral, fruity, with hints of musk and sweet vanilla. Feminine and soft.',
     vibeCheck: 'Honeysuckle-draped balconies—floral and fruity, like a Mediterranean breeze.',
     price: 25000,
-    image: 'public/images/Ameerat Al Arab.JPG',
+    image: '/images/Ameerat Al Arab.JPG',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
