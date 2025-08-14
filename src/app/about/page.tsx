@@ -2,29 +2,26 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Facebook, Instagram, Twitter, ArrowRight } from 'lucide-react';
+import { Instagram, Linkedin, ArrowRight } from 'lucide-react';
 import { TestimonialCard } from '@/components/shared/testimonial-card';
 import { testimonials } from '@/lib/data';
 
-const TiktokIcon = () => (
+const WhatsAppIcon = () => (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-6 w-6"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-6 w-6"
     >
-      <path d="M12.52.02c1.31-.02 2.61.16 3.86.52v4.5a3.81 3.81 0 0 1-3.86-3.86v0A3.81 3.81 0 0 1 12.52 0Z" />
-      <path d="M12.52 0c-2.09.02-4.14.7-5.89 1.95v10.51a.07.07 0 0 0 .07.07h4.48V18a3.83 3.83 0 0 1-3.83-3.83V6.26a3.83 3.83 0 0 1 3.83-3.83v0" />
-      <path d="M16.38 5.02c.02 4.8-3.84 8.71-8.65 8.74v4.5a3.81 3.81 0 0 0 3.83-3.83v0" />
-      <path d="M7.73 22.25c4.81-.02 8.71-3.87 8.65-8.74h4.5a.07.07 0 0 1 .07.07v-4.5a.07.07 0 0 0-.07-.07h-4.5" />
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
     </svg>
-  );
+);
 
 export default function AboutPage() {
   return (
@@ -48,16 +45,13 @@ export default function AboutPage() {
               </p>
               <div className="mt-6 flex space-x-2">
                 <Button variant="ghost" size="icon" asChild>
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook className="h-6 w-6" /></a>
+                  <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><WhatsAppIcon /></a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
                   <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram className="h-6 w-6" /></a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><Twitter className="h-6 w-6" /></a>
-                </Button>
-                 <Button variant="ghost" size="icon" asChild>
-                  <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><TiktokIcon /></a>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin className="h-6 w-6" /></a>
                 </Button>
               </div>
                <Button asChild className="mt-8">
