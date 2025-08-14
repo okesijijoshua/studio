@@ -13,10 +13,6 @@ const faqs = [
         answer: "We offer a wide range of luxury fragrances, including Perfumes and Scented Accessories. Our collection features various scent categories like Floral, Woody, Oriental, and Fresh to suit every preference."
     },
     {
-        question: "How can I find the right perfume for me?",
-        answer: "You can use our innovative AI Perfume Finder tool to get personalized recommendations based on your scent preferences. Alternatively, you can browse our collections and filter by brand, scent category, or price."
-    },
-    {
         question: "Do you ship internationally?",
         answer: "Currently, we only ship within Nigeria. We are working on expanding our shipping capabilities to more countries in the future. Stay tuned for updates!"
     },
