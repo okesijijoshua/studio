@@ -22,7 +22,7 @@ const faqs = [
     },
     {
         question: "How can I track my order?",
-        answer: "Once your order is shipped, you will receive an email with a tracking number and a link to the courier's website where you can monitor your delivery status."
+        answer: "Once your order is shipped, you will receive an email or a text message with a driver or rider phone number where you can monitor delivery status from your end."
     },
      {
         question: "Are your products authentic?",
