@@ -48,13 +48,13 @@ export default function AboutPage() {
               </p>
               <div className="mt-6 flex space-x-2">
                 <Button variant="ghost" size="icon" asChild>
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook /></a>
+                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook className="h-6 w-6" /></a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram /></a>
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram className="h-6 w-6" /></a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><Twitter /></a>
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><Twitter className="h-6 w-6" /></a>
                 </Button>
                  <Button variant="ghost" size="icon" asChild>
                   <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><TiktokIcon /></a>
@@ -69,7 +69,7 @@ export default function AboutPage() {
             </div>
              <div className="order-1 md:order-2">
                 <Image
-                    src="https://placehold.co/600x700.png"
+                    src="/images/Perfume-bottles1.jpg"
                     alt="Perfume ingredients on a table"
                     width={600}
                     height={700}
