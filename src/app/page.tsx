@@ -1,7 +1,6 @@
 import { Hero } from '@/components/home/hero';
 import { FeaturedCollection } from '@/components/home/featured-collection';
 import { Testimonials } from '@/components/home/testimonials';
-import { AiRecommendations } from '@/components/home/ai-recommendations';
 import { Separator } from '@/components/ui/separator';
 
 export default function Home() {
@@ -11,8 +10,6 @@ export default function Home() {
       <FeaturedCollection />
       <Separator />
       <Testimonials />
-      <Separator />
-      <AiRecommendations />
     </>
   );
 }
