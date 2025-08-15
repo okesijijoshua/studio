@@ -44,7 +44,7 @@ export function Testimonials() {
 
         {/* Grid for Desktop */}
         <div className="hidden md:grid mt-10 grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {testimonials.slice(0, 3).map(testimonial => (
+          {testimonials.map(testimonial => (
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}
         </div>
