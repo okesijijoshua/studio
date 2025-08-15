@@ -54,7 +54,7 @@ export function Header() {
       className={cn(
         'sticky top-0 z-50 w-full bg-card transition-all duration-300',
         isScrolled
-          ? 'border-b border-border/40 bg-card/80 backdrop-blur-sm'
+          ? 'border-b bg-card/80 backdrop-blur-sm'
           : 'bg-card'
       )}
     >
