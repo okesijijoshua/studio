@@ -180,7 +180,7 @@ export default function CheckoutPage() {
                                 </FormItem>
                             )} />
                         </div>
-                         <Button type="button" onClick={handleProceedToPayment} disabled={formState.isSubmitting || totalItems === 0 || !selectedState} className="w-full text-lg py-6">
+                         <Button type="button" onClick={handleProceedToPayment} disabled={formState.isSubmitting || totalItems === 0 || !selectedState} className="w-full text-base sm:text-lg py-4">
                             {formState.isSubmitting ? 'Processing...' : `Proceed to Payment - ${formatPrice(finalTotal)}`}
                         </Button>
                     </form>
