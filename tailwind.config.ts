@@ -13,6 +13,7 @@ export default {
       fontFamily: {
         body: ['"Lato"', 'sans-serif'],
         headline: ['"Lato"', 'sans-serif'],
+        logo: ['"Cinzel"', 'serif'],
         code: ['monospace'],
       },
       colors: {
