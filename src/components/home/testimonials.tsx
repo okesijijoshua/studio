@@ -7,6 +7,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import { ReviewForm } from './review-form';
+import { Separator } from '@/components/ui/separator';
 
 
 export function Testimonials() {
@@ -46,6 +48,8 @@ export function Testimonials() {
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}
         </div>
+        <Separator className="my-16" />
+        <ReviewForm />
       </div>
     </section>
   );
