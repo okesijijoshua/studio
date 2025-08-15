@@ -172,7 +172,7 @@ export default function CheckoutPage() {
                                                 <SelectValue placeholder="Select a state" />
                                             </SelectTrigger>
                                         </FormControl>
-                                        <SelectContent>
+                                        <SelectContent position="popper">
                                             {nigerianStates.map(state => <SelectItem key={state} value={state}>{state}</SelectItem>)}
                                         </SelectContent>
                                     </Select>
