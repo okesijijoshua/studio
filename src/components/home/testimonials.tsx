@@ -1,3 +1,4 @@
+
 import { testimonials } from '@/lib/data';
 import { TestimonialCard } from '@/components/shared/testimonial-card';
 import {
@@ -29,7 +30,7 @@ export function Testimonials() {
                 }}
             >
                 <CarouselContent>
-                {testimonials.map(testimonial => (
+                {testimonials.slice(0, 2).map(testimonial => (
                     <CarouselItem key={testimonial.id} className="sm:basis-1/2">
                          <div className="p-1 h-full">
                             <TestimonialCard testimonial={testimonial} />
@@ -43,8 +44,8 @@ export function Testimonials() {
         </div>
 
         {/* Grid for Desktop */}
-        <div className="hidden md:grid mt-10 grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map(testimonial => (
+        <div className="hidden md:grid mt-10 grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
+          {testimonials.slice(0, 2).map(testimonial => (
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}
         </div>
