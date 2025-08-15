@@ -20,6 +20,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import type { Testimonial } from '@/lib/types';
 
 
 const formSchema = z.object({
@@ -30,8 +31,11 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+interface ReviewFormProps {
+    onReviewSubmit: (review: Testimonial) => void;
+}
 
-export function ReviewForm() {
+export function ReviewForm({ onReviewSubmit }: ReviewFormProps) {
     const { toast } = useToast();
     const [hoverRating, setHoverRating] = useState(0);
 
@@ -48,7 +52,11 @@ export function ReviewForm() {
     const currentRating = watch('rating');
 
     const onSubmit: SubmitHandler<FormValues> = (data) => {
-        console.log(data);
+        const newReview: Testimonial = {
+            id: new Date().toISOString(),
+            ...data
+        };
+        onReviewSubmit(newReview);
         toast({
             title: 'Review Submitted!',
             description: 'Thank you for your feedback. We appreciate you taking the time to share your thoughts.',

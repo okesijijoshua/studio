@@ -1473,47 +1473,4 @@ export const products: Product[] = [
   }
 ];
 
-export const testimonials: Testimonial[] = [
-  {
-    id: '1',
-    name: 'Aisha Bello',
-    rating: 5,
-    review: 'The Mystic Bloom is absolutely divine. I get compliments every time I wear it. The scent lasts all day!',
-    avatar: 'https://placehold.co/100x100.png',
-  },
-  {
-    id: '2',
-    name: 'David Chen',
-    rating: 4,
-    review: 'Amber Oud is my new signature scent. It\'s powerful but not overwhelming. The packaging was also very luxurious.',
-    avatar: 'https://placehold.co/100x100.png',
-  },
-  {
-    id: '3',
-    name: 'Fatima Diallo',
-    rating: 5,
-    review: 'I love how fresh and clean Ocean Breeze smells. It\'s perfect for everyday wear. The customer service was excellent too.',
-    avatar: 'https://placehold.co/100x100.png',
-  },
-  {
-    id: '4',
-    name: 'Michael Smith',
-    rating: 5,
-    review: 'The Rose Gold Atomizer is a game-changer for travel. It\'s so chic and easy to use. Highly recommend!',
-    avatar: 'https://placehold.co/100x100.png',
-  },
-  {
-    id: '5',
-    name: 'Chioma Okoro',
-    rating: 4,
-    review: 'Spiced Vanilla is a beautiful, cozy scent for the colder months. It feels like a warm hug in a bottle.',
-    avatar: 'https://placehold.co/100x100.png',
-  },
-  {
-    id: '6',
-    name: 'Liam Johnson',
-    rating: 5,
-    review: 'I bought the leather travel case and it exceeded my expectations. The quality is top-notch.',
-    avatar: 'https://placehold.co/100x100.png',
-  }
-];
+export const testimonials: Testimonial[] = [];
