@@ -64,7 +64,7 @@ export default function AboutPage() {
                   <a href="https://www.instagram.com/dekemiscents?igsh=MTFmaTJpOW1xbDZsZA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram className="h-6 w-6" /></a>
                 </Button>
                  <Button variant="ghost" size="icon" asChild>
-                    <a href="https://www.tiktok.com/@dekemi_scents" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                    <a href="https://www.tiktok.com/@dekemiscents?_t=ZS-8ytlSU2Qyji&_r=1" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
                         <TikTokIcon />
                     </a>
                 </Button>
