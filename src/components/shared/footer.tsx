@@ -34,7 +34,7 @@ export function Footer() {
               <div className="mt-4 flex space-x-4">
                 <Button variant="ghost" size="icon" asChild>
                   <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer">
-                    <img src="/pub/whatsapp.svg" alt="WhatsApp" className="h-5 w-5" />
+                    <img src="/pub/whatsapp1.svg" alt="WhatsApp" className="h-5 w-5" />
                   </a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>

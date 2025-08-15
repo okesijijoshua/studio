@@ -28,12 +28,12 @@ export default function AboutPage() {
               </p>
               <div className="mt-6 flex space-x-2">
                 <Button variant="ghost" size="icon" asChild>
-                  <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                    <img src="/pub/whatsapp.svg" alt="WhatsApp" className="h-5 w-5" />
+                  <a href="https://www.instagram.com/dekemiscents?igsh=MTFmaTJpOW1xbDZsZA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <img src="/pub/whatsapp1.svg" alt="WhatsApp" className="h-5 w-5" />
                   </a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram className="h-6 w-6" /></a>
+                  <a href="https://www.instagram.com/dekemiscents?igsh=MTFmaTJpOW1xbDZsZA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram className="h-6 w-6" /></a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
                   <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin className="h-6 w-6" /></a>
