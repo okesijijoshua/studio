@@ -47,7 +47,7 @@ export function Testimonials() {
   const displayedTestimonials = testimonials.slice(0, 2);
 
   return (
-    <section className="bg-secondary py-12 md:py-20">
+    <section id="reviews" className="bg-secondary py-12 md:py-20 scroll-mt-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center">
           <h2 className="font-headline text-3xl font-bold md:text-4xl">What Our Customers Say</h2>

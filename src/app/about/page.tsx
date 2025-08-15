@@ -1,12 +1,34 @@
 
+"use client";
+
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Instagram, Linkedin, ArrowRight } from 'lucide-react';
 import { TestimonialCard } from '@/components/shared/testimonial-card';
-import { testimonials } from '@/lib/data';
+import type { Testimonial } from '@/lib/types';
+
 
 export default function AboutPage() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [showAll, setShowAll] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    try {
+      const storedTestimonials = localStorage.getItem('dekemi_scents_testimonials');
+      if (storedTestimonials) {
+        setTestimonials(JSON.parse(storedTestimonials));
+      }
+    } catch (error) {
+      console.error("Could not access localStorage:", error);
+    }
+  }, []);
+
+  const visibleTestimonials = showAll ? testimonials : testimonials.slice(0, 3);
+
   return (
     <>
       <section className="bg-secondary py-16 md:py-24">
@@ -65,11 +87,29 @@ export default function AboutPage() {
           <div className="text-center">
             <h2 className="font-headline text-3xl font-bold">From Our Community</h2>
           </div>
-          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {testimonials.slice(3, 6).map(testimonial => (
-              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-            ))}
-          </div>
+            {isMounted && testimonials.length > 0 ? (
+                <>
+                    <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                        {visibleTestimonials.map(testimonial => (
+                        <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+                        ))}
+                    </div>
+                    {testimonials.length > 3 && !showAll && (
+                        <div className="mt-12 text-center">
+                        <Button onClick={() => setShowAll(true)}>
+                            See all reviews
+                        </Button>
+                        </div>
+                    )}
+                </>
+            ) : (
+                <div className="mt-10 text-center text-muted-foreground">
+                    <p>No reviews have been submitted yet.</p>
+                    <Button variant="link" asChild>
+                        <Link href="/#reviews">Be the first to leave a review</Link>
+                    </Button>
+                </div>
+            )}
         </div>
       </section>
     </>
