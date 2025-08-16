@@ -12,7 +12,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Afnan',
-    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Fresh',
     details: {
       size: '100ml'
     }
@@ -27,7 +27,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Afnan',
-    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
@@ -42,7 +42,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Afnan',
-    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -57,7 +57,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Afnan',
-    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -72,7 +72,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -87,7 +87,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -102,7 +102,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -117,7 +117,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Fresh',
     details: {
       size: '100ml'
     }
@@ -132,7 +132,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Oriental',
     details: {
       size: '100ml'
     }
@@ -147,7 +147,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    notes: 'Top: Citrus, Heart: Floral, Base: Woody',
+    notes: 'Oriental',
     details: {
       size: '100ml'
     }
@@ -162,7 +162,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Rose, Heart: Jasmine, Base: Musk & Oud',
+    notes: 'Oriental',
     details: {
       size: '100ml'
     }
@@ -177,7 +177,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Spicy Pepper, Heart: Vanilla, Base: Woody Amber',
+    notes: 'Spicy',
     details: {
       size: '100ml'
     }
@@ -192,7 +192,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Vanilla, Heart: Smoky Bourbon, Base: Woody',
+    notes: 'Oriental',
     details: {
       size: '100ml'
     }
@@ -207,7 +207,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Tropical Spices, Heart: Citrus, Base: Creamy Woods',
+    notes: 'Fresh',
     details: {
       size: '100ml'
     }
@@ -222,7 +222,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Soft Florals, Heart: Powdery Musk, Base: Amber',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
@@ -237,7 +237,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Sweet Rose, Heart: Creamy Vanilla, Base: Smoky Oud',
+    notes: 'Oriental',
     details: {
       size: '100ml'
     }
@@ -252,7 +252,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Spicy Saffron, Heart: Sweet Rose, Base: Resinous Oud',
+    notes: 'Oriental',
     details: {
       size: '100ml'
     }
@@ -267,7 +267,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Powdery Florals, Heart: Creamy Woods, Base: Gentle Sweetness',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
@@ -282,7 +282,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Bold Oud, Heart: Smoky Incense, Base: Sweet Amber',
+    notes: 'Oriental',
     details: {
       size: '100ml'
     }
@@ -297,7 +297,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Citrus, Heart: Woods, Base: Musk',
+    notes: 'Fresh',
     details: {
       size: '100ml'
     }
@@ -312,7 +312,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    notes: 'Top: Sweet Vanilla, Heart: Fruity Melon, Base: Warm Amber',
+    notes: 'Oriental',
     details: {
       size: '100ml'
     }
@@ -327,7 +327,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    notes: 'Top: Raspberry, Heart: Saffron, Base: Ambergris & Musk',
+    notes: 'Oriental',
     details: {
       size: '100ml'
     }
@@ -342,7 +342,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Al Haramain',
-    notes: 'Top: Warm Tobacco, Heart: Sweet Vanilla, Base: Spicy Cinnamon',
+    notes: 'Spicy',
     details: {
       size: '100ml'
     }
@@ -357,7 +357,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Woody, Heart: Musky, Base: Fruity',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
@@ -372,7 +372,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Strong Oud, Heart: Smoky Incense, Base: Amber',
+    notes: 'Oriental',
     details: {
       size: '100ml'
     }
@@ -387,7 +387,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Floral, Heart: Fruity, Base: Musk & Vanilla',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
@@ -402,7 +402,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Fruity, Heart: Floral, Base: Warm Amber',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
@@ -418,7 +418,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Ard Al Zaafaran',
-      notes: 'Top: Green Mandarin, Blackcurrant, Heart: Strawberry Candy, Gardenia, Base: Vanilla, Musk, Amber, Sandalwood',
+      notes: 'Floral',
       details: {
         size: '100ml'
       }
@@ -435,7 +435,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Bergamot, Marine Accords, Heart: Lavender, Saffron, Base: Ambergris, Sandalwood, Vanilla',
+      notes: 'Fresh',
       details: {
         size: '100ml'
       }
@@ -452,7 +452,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Armaf',
-      notes: 'Top: Citrus, Blackcurrant, Heart: Birch, Rose, Base: Vanilla, Musk, Patchouli',
+      notes: 'Woody',
       details: {
         size: '105ml'
       }
@@ -469,7 +469,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Peach, Heart: Jasmine, Base: Vanilla, Sandalwood',
+      notes: 'Floral',
       details: {
         size: '100ml'
       }
@@ -486,7 +486,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Citrus, Heart: Floral, Base: Musk, Woody Notes',
+      notes: 'Spicy',
       details: {
         size: '100ml'
       }
@@ -503,7 +503,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Berries, Heart: Florals, Base: Vanilla, Musk',
+      notes: 'Floral',
       details: {
         size: '100ml'
       }
@@ -518,7 +518,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Saffron, Heart: Amber, Base: Woods, Vanilla',
+      notes: 'Oriental',
       details: {
         size: '100ml'
       }
@@ -533,7 +533,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Apple, Citrus, Heart: Lavender, Base: Musk, Amber',
+      notes: 'Fresh',
       details: {
         size: '100ml'
       }
@@ -550,7 +550,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Citrus, Herbs, Heart: Aromatic Notes, Base: Woods',
+      notes: 'Fresh',
       details: {
         size: '100ml'
       }
@@ -565,7 +565,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Pear, Heart: Rose, Jasmine, Base: Vanilla, Amber',
+      notes: 'Floral',
       details: {
         size: '100ml'
       }
@@ -582,7 +582,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Citrus, Heart: Lavender, Cardamom, Base: Woods, Musk',
+      notes: 'Spicy',
       details: {
         size: '100ml'
       }
@@ -599,7 +599,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Spicy Notes, Heart: Floral, Base: Oud, Amber',
+      notes: 'Spicy',
       details: {
         size: '100ml'
       }
@@ -616,7 +616,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Cinnamon, Heart: Vanilla, Base: Incense',
+      notes: 'Spicy',
       details: {
         size: '100ml'
       }
@@ -631,7 +631,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Coffee, Caramel, Heart: Vanilla, Base: Cinnamon',
+      notes: 'Oriental',
       details: {
         size: '100ml'
       }
@@ -648,7 +648,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Citrus, Heart: Spices, Base: Oud, Amber',
+      notes: 'Oriental',
       details: {
         size: '100ml'
       }
@@ -665,7 +665,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Fruity, Heart: Floral, Base: Musk',
+      notes: 'Floral',
       details: {
         size: '100ml'
       }
@@ -680,7 +680,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Spices, Heart: Amber, Base: Oud',
+      notes: 'Spicy',
       details: {
         size: '100ml'
       }
@@ -695,7 +695,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Spices, Heart: Leather, Base: Oud',
+      notes: 'Spicy',
       details: {
         size: '100ml'
       }
@@ -712,7 +712,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Citrus, Heart: Marine, Base: Amber',
+      notes: 'Fresh',
       details: {
         size: '100ml'
       }
@@ -729,7 +729,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Floral, Heart: Vanilla, Base: Oud',
+      notes: 'Oriental',
       details: {
         size: '100ml'
       }
@@ -744,7 +744,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Spices, Heart: Woody, Base: Oud',
+      notes: 'Woody',
       details: {
         size: '100ml'
       }
@@ -759,7 +759,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Fruity, Heart: Rose, Base: Musk',
+      notes: 'Floral',
       details: {
         size: '100ml'
       }
@@ -776,7 +776,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Citrus, Herbs, Heart: Fresh, Base: Musk, Woods',
+      notes: 'Fresh',
       details: {
         size: '100ml'
       }
@@ -791,7 +791,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Fruity, Heart: Floral, Base: Musk',
+      notes: 'Floral',
       details: {
         size: '100ml'
       }
@@ -808,7 +808,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Chocolate, Heart: Spices, Base: Vanilla, Oud',
+      notes: 'Oriental',
       details: {
         size: '100ml'
       }
@@ -825,7 +825,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Spices, Heart: Amber, Base: Musk',
+      notes: 'Spicy',
       details: {
         size: '100ml'
       }
@@ -840,7 +840,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Floral, Heart: Powdery, Base: Musk',
+      notes: 'Floral',
       details: {
         size: '100ml'
       }
@@ -855,7 +855,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Spices, Heart: Amber, Base: Oud',
+      notes: 'Oriental',
       details: {
         size: '100ml'
       }
@@ -870,7 +870,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Pear, Blood Orange, Pink Pepper, Cardamom, Heart: Jasmine, Tuberose, Cognac, Heliotrope, Base: Oud, Vanilla, Amber, Sandalwood',
+      notes: 'Spicy',
       details: {
         size: '100ml'
       }
@@ -887,7 +887,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Floral, Heart: Amber, Base: Oud',
+      notes: 'Oriental',
       details: {
         size: '100ml'
       }
@@ -904,7 +904,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Pineapple, Apple, Heart: Fruity, Base: Vanilla, Woods',
+      notes: 'Woody',
       details: {
         size: '100ml'
       }
@@ -919,7 +919,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Tropical Fruits, Heart: Musk, Base: Woods',
+      notes: 'Woody',
       details: {
         size: '100ml'
       }
@@ -934,7 +934,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Spices, Heart: Woody, Base: Oud',
+      notes: 'Spicy',
       details: {
         size: '100ml'
       }
@@ -951,7 +951,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Citrus, Heart: Fresh, Base: Woods',
+      notes: 'Fresh',
       details: {
         size: '100ml'
       }
@@ -966,7 +966,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Sweet Notes, Heart: Amber, Base: Oud',
+      notes: 'Oriental',
       details: {
         size: '100ml'
       }
@@ -983,7 +983,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Floral, Heart: Soft Notes, Base: Musk',
+      notes: 'Floral',
       details: {
         size: '100ml'
       }
@@ -1000,7 +1000,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Spices, Heart: Leather, Base: Oud',
+      notes: 'Spicy',
       details: {
         size: '100ml'
       }
@@ -1017,7 +1017,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Sweet Notes, Heart: Vanilla, Base: Oud',
+      notes: 'Oriental',
       details: {
         size: '100ml'
       }
@@ -1034,7 +1034,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Afnan',
-      notes: 'Top: Spices, Heart: Amber, Base: Woods, Musk',
+      notes: 'Oriental',
       details: {
         size: '100ml'
       }
@@ -1049,7 +1049,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Afnan',
-      notes: 'Top: Saffron, Heart: Rose, Base: Oud, Amber',
+      notes: 'Oriental',
       details: {
         size: '100ml'
       }
@@ -1064,7 +1064,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Afnan',
-      notes: 'Top: Fruity, Heart: Amber, Base: Musk',
+      notes: 'Oriental',
       details: {
         size: '100ml'
       }
@@ -1079,7 +1079,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Afnan',
-      notes: 'Top: Fresh, Heart: Birch, Base: Woods',
+      notes: 'Fresh',
       details: {
         size: '100ml'
       }
@@ -1096,7 +1096,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Woody, Heart: Amber, Base: Warm Notes',
+      notes: 'Woody',
       details: {
         size: '100ml'
       }
@@ -1113,7 +1113,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Tropical Fruits, Heart: Vanilla, Base: Musk',
+      notes: 'Oriental',
       details: {
         size: '100ml'
       }
@@ -1128,7 +1128,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Fruity, Heart: Floral, Base: Vanilla',
+      notes: 'Floral',
       details: {
         size: '100ml'
       }
@@ -1143,7 +1143,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Sweet Notes, Heart: Creamy, Base: Vanilla',
+      notes: 'Oriental',
       details: {
         size: '100ml'
       }
@@ -1158,7 +1158,7 @@ export const products: Product[] = [
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
-    notes: 'Top: Tropical Fruits Coconut, Heart: Jasmine Peach , Base: Vanilla Musk Sandalwood',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
@@ -1175,7 +1175,7 @@ export const products: Product[] = [
       category: 'Perfume',
       perfumeType: 'Signature',
       brand: 'Lattafa',
-      notes: 'Top: Fruity, Heart: Caramel, Base: Vanilla',
+      notes: 'Oriental',
       details: {
         size: '100ml'
       }

@@ -137,7 +137,7 @@ export default function CollectionsPage() {
         products.sort((a, b) => a.price - b.price);
         break;
       case 'price-desc':
-        products.sort((a, b) => b.price - b.price);
+        products.sort((a, b) => b.price - a.price);
         break;
       case 'name-asc':
         products.sort((a, b) => a.name.localeCompare(b.name));

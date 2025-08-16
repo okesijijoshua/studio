@@ -43,7 +43,7 @@ export default function ProductDetailPage() {
     const details = [
         { key: 'Brand', value: product.brand },
         { key: 'Type', value: product.perfumeType },
-        { key: 'Notes', value: product.notes },
+        { key: 'Notes Category', value: product.notes },
         { key: 'Size', value: product.details?.size },
     ];
     
