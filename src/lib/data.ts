@@ -1154,7 +1154,7 @@ export const products: Product[] = [
     description: 'A sweet and feminine blend of tropical fruits, soft florals, vanilla and musk, creating a creamy and comforting scent.',
     vibeCheck: 'Charming, cozy, and elegant — perfect for everyday wear or special moments.',
     price: 30000,
-    image: '//images/Yara-Pink.PNG',
+    image: '/images/Yara-Pink.PNG',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
