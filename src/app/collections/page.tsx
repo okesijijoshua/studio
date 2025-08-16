@@ -98,11 +98,19 @@ export default function CollectionsPage() {
             setSelectedPerfumeType(matchingType);
         }
     }
+    const pageFromUrl = searchParams.get('page');
+    if (pageFromUrl && !isNaN(parseInt(pageFromUrl))) {
+        setCurrentPage(parseInt(pageFromUrl));
+    }
+
   }, [searchParams]);
   
   useEffect(() => {
-    // Reset to first page whenever filters change
-    setCurrentPage(1);
+    // Reset to first page whenever filters change, but not on initial page load with params
+    const pageParam = searchParams.get('page');
+    if (!pageParam) {
+      setCurrentPage(1);
+    }
   }, [selectedPerfumeType, selectedBrands, selectedNoteCategories, priceRange, sortOption]);
 
 
@@ -364,7 +372,7 @@ export default function CollectionsPage() {
             <>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {paginatedProducts.map(product => (
-                  <ProductCard key={product.id} product={product} />
+                  <ProductCard key={product.id} product={product} currentPage={currentPage} />
                   ))}
               </div>
                {totalPages > 1 && (

@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { products as allProducts } from '@/lib/data';
 import { useCurrency } from '@/hooks/use-currency';
@@ -22,6 +22,7 @@ const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 export default function ProductDetailPage() {
   const params = useParams();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { id } = params;
   const { formatPrice } = useCurrency();
   const { addToCart } = useCart();
@@ -49,6 +50,26 @@ export default function ProductDetailPage() {
     return details.filter(detail => detail.value);
   }, [product]);
 
+  const handleGoBack = () => {
+    const fromPage = searchParams.get('fromPage');
+    const category = product?.category?.toLowerCase();
+    
+    if (fromPage && category) {
+      let path = '';
+      if (category === 'perfume') {
+        path = '/collections';
+      } else if (category === 'accessory') {
+        path = '/accessories';
+      }
+      
+      if (path) {
+        router.push(`${path}?page=${fromPage}`);
+        return;
+      }
+    }
+    router.back();
+  };
+
 
   if (!product) {
     return <div className="container mx-auto py-10 text-center">Loading product...</div>;
@@ -69,7 +90,7 @@ export default function ProductDetailPage() {
 
   return (
     <div className="container mx-auto py-12">
-       <Button variant="ghost" onClick={() => router.back()} className="mb-8">
+       <Button variant="ghost" onClick={handleGoBack} className="mb-8">
         <ArrowLeft className="mr-2" />
         Go Back
       </Button>

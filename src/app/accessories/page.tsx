@@ -25,6 +25,7 @@ import { useCurrency } from '@/hooks/use-currency';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Filter } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
 
 
 const BRANDS = [...new Set(allProducts.filter(p => p.category === 'Accessory').map(p => p.brand))];
@@ -77,6 +78,7 @@ const usePagination = ({ totalPages, siblingCount = 1, currentPage }: { totalPag
 export default function AccessoriesPage() {
   const { formatPrice } = useCurrency();
   const isMobile = useIsMobile();
+  const searchParams = useSearchParams();
 
   const [sortOption, setSortOption] = useState('name-asc');
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
@@ -84,8 +86,18 @@ export default function AccessoriesPage() {
   const [currentPage, setCurrentPage] = useState(1);
   
   useEffect(() => {
+    const pageFromUrl = searchParams.get('page');
+    if (pageFromUrl && !isNaN(parseInt(pageFromUrl))) {
+      setCurrentPage(parseInt(pageFromUrl));
+    }
+  }, [searchParams]);
+
+  useEffect(() => {
     // Reset to first page whenever filters change
-    setCurrentPage(1);
+    const pageParam = searchParams.get('page');
+    if (!pageParam) {
+      setCurrentPage(1);
+    }
   }, [selectedBrands, priceRange, sortOption]);
 
 
@@ -103,7 +115,7 @@ export default function AccessoriesPage() {
         products.sort((a, b) => a.price - b.price);
         break;
       case 'price-desc':
-        products.sort((a, b) => b.price - b.price);
+        products.sort((a, b) => b.price - a.price);
         break;
       case 'name-asc':
         products.sort((a, b) => a.name.localeCompare(b.name));
@@ -264,7 +276,7 @@ export default function AccessoriesPage() {
             <>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {paginatedProducts.map(product => (
-                  <ProductCard key={product.id} product={product} />
+                  <ProductCard key={product.id} product={product} currentPage={currentPage} />
                   ))}
               </div>
                {totalPages > 1 && (

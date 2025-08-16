@@ -158,7 +158,7 @@ export const products: Product[] = [
     description: 'A rich floral-oriental blend with rose, jasmine, musk, and oud undertones.',
     vibeCheck: 'A velvet-curtained opera house—rose and jasmine crescendo over musk and oud\'s dramatic bassline.',
     price: 40000,
-    image: '/images/Angham.jpg',
+    image: '/images/Angham.PNG',
     category: 'Perfume',
     perfumeType: 'Signature',
     brand: 'Lattafa',
@@ -407,666 +407,781 @@ export const products: Product[] = [
       size: '100ml'
     }
   },
-  {
-    id: '28',
-    name: 'Cardamom Kiss',
-    description: 'A spicy, warm cardamom blended with sweet coffee.',
-    price: 63000,
-    image: '/images/Cardamom Kiss.jpg',
-    category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Oriental',
-    details: {
-      size: '50ml'
-    }
-  },
-  {
-    id: '29',
-    name: 'Gilded Lily',
-    description: 'A magnificent lily scent, touched with a hint of spice.',
-    price: 53000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Floral',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '30',
-    name: 'Mojito Twist',
-    description: 'A sparkling mix of lime, mint, and white rum notes.',
-    price: 42000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Fresh',
-    details: {
-      size: '120ml'
-    }
-  },
-  {
-    id: '31',
-    name: 'Oud Mystique',
-    description: 'A dark, resinous oud with a touch of rose and saffron.',
-    price: 85000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Woody',
-    details: {
-      size: '75ml'
-    }
-  },
-  {
-    id: '32',
-    name: 'Blackcurrant Bomb',
-    description: 'A juicy, explosive blackcurrant scent with green undertones.',
-    price: 47000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Fresh',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '33',
-    name: 'Tuberose Triumph',
-    description: 'A creamy, carnal tuberose that commands attention.',
-    price: 69000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Floral',
-    details: {
-      size: '50ml'
-    }
-  },
-  {
-    id: '34',
-    name: 'Sacred Frankincense',
-    description: 'A spiritual, resinous frankincense with a citrus lift.',
-    price: 71000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Oriental',
-    details: {
-      size: '75ml'
-    }
-  },
-  {
-    id: '35',
-    name: 'Whispering Woods',
-    description: 'A soft, gentle blend of light woods and white musk.',
-    price: 50000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Woody',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '36',
-    name: 'Mandarin Sun',
-    description: 'A bright, joyful mandarin orange scent.',
-    price: 44000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Fresh',
-    details: {
-      size: '120ml'
-    }
-  },
-  {
-    id: '37',
-    name: 'Cherry Blossom Dream',
-    description: 'A delicate and airy cherry blossom scent.',
-    price: 48000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Floral',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '38',
-    name: 'Ambergris Tide',
-    description: 'A salty, marine ambergris scent with mineralic tones.',
-    price: 95000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Woody',
-    details: {
-      size: '50ml'
-    }
-  },
-  {
-    id: '39',
-    name: 'Ginger Zest',
-    description: 'A spicy and sharp ginger fragrance, perfect for a pick-me-up.',
-    price: 45000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Fresh',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '40',
-    name: 'Myrrh Imperial',
-    description: 'A rich, balsamic myrrh with a touch of vanilla sweetness.',
-    price: 76000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Oriental',
-    details: {
-      size: '75ml'
-    }
-  },
-  {
-    id: '41',
-    name: 'Violet Volt',
-    description: 'An electric, powdery violet with a modern twist.',
-    price: 57000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Floral',
-    details: {
-      size: '75ml'
-    }
-  },
-  {
-    id: '42',
-    name: 'Palo Santo',
-    description: 'A cleansing, aromatic scent of sacred palo santo wood.',
-    price: 64000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Woody',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '43',
-    name: 'Peach Paradise',
-    description: 'A juicy, ripe peach scent that feels like summer.',
-    price: 49000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Fresh',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '44',
-    name: 'Incense Smoke',
-    description: 'A contemplative, smoky incense with notes of spice.',
-    price: 67000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Oriental',
-    details: {
-      size: '50ml'
-    }
-  },
-  {
-    id: '45',
-    name: 'Freesia Fields',
-    description: 'A light, peppery freesia that dances in the air.',
-    price: 52000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Floral',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '46',
-    name: 'Guaiac Gold',
-    description: 'A smoky, leathery guaiac wood with a touch of sweetness.',
-    price: 73000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Woody',
-    details: {
-      size: '75ml'
-    }
-  },
-  {
-    id: '47',
-    name: 'Coconut Cream',
-    description: 'A creamy, tropical coconut scent with a hint of vanilla.',
-    price: 48000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Fresh',
-    details: {
-      size: '120ml'
-    }
-  },
-  {
-    id: '48',
-    name: 'Saffron Silk',
-    description: 'A luxurious, warm saffron with a leathery nuance.',
-    price: 88000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Oriental',
-    details: {
-      size: '50ml'
-    }
-  },
-  {
-    id: '49',
-    name: 'Magnolia Charm',
-    description: 'A creamy, citrusy magnolia blossom.',
-    price: 59000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Floral',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '50',
-    name: 'Birch Bark',
-    description: 'A cool, crisp scent of birch trees in winter.',
-    price: 60000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Woody',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '51',
-    name: 'Royal Oud',
-    description: 'A majestic oud, fit for royalty, with spices and woods.',
-    price: 105000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Woody',
-    details: {
-      size: '75ml'
-    }
-  },
-  {
-    id: '52',
-    name: 'Lavender Lullaby',
-    description: 'A calming and aromatic lavender for peaceful moments.',
-    price: 47000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Fresh',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '53',
-    name: 'Jasmine Sambac',
-    description: 'A sweet, green, and animalic jasmine from India.',
-    price: 66000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Floral',
-    details: {
-      size: '50ml'
-    }
-  },
-  {
-    id: '54',
-    name: 'Clove Ember',
-    description: 'A warm, spicy clove that glows like an ember.',
-    price: 62000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Oriental',
-    details: {
-      size: '75ml'
-    }
-  },
-  {
-    id: '55',
-    name: 'Cypress Grove',
-    description: 'A green, coniferous scent of a sun-drenched cypress grove.',
-    price: 55000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Woody',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '56',
-    name: 'Rainy Meadow',
-    description: 'The fresh scent of rain on green grass and wildflowers.',
-    price: 43000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Fresh',
-    details: {
-      size: '120ml'
-    }
-  },
-  {
-    id: '57',
-    name: 'Honeysuckle Haze',
-    description: 'A sweet, nectarous honeysuckle in a summer haze.',
-    price: 53000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Floral',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '58',
-    name: 'Tobacco Vanille',
-    description: 'A rich blend of tobacco leaf, vanilla, and spices.',
-    price: 82000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Oriental',
-    details: {
-      size: '50ml'
-    }
-  },
-  {
-    id: '59',
-    name: 'Pine Forest',
-    description: 'A crisp, aromatic journey through a pine forest.',
-    price: 54000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Woody',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '60',
-    name: 'Grapefruit Glow',
-    description: 'A sharp, bitter, and refreshing pink grapefruit.',
-    price: 46000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Fresh',
-    details: {
-      size: '120ml'
-    }
-  },
-  {
-    id: '61',
-    name: 'Osmanthus Oolong',
-    description: 'A delicate osmanthus flower with apricot notes and oolong tea.',
-    price: 68000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Floral',
-    details: {
-      size: '75ml'
-    }
-  },
-  {
-    id: '62',
-    name: 'Patchouli Purity',
-    description: 'A clean, refined patchouli, stripped of its earthiness.',
-    price: 58000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Woody',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '63',
-    name: 'Chai Latte',
-    description: 'A comforting, spicy scent of chai tea and steamed milk.',
-    price: 56000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Oriental',
-    details: {
-      size: '50ml'
-    }
-  },
-  {
-    id: '64',
-    name: 'Waterlily Whisper',
-    description: 'A gentle, aquatic floral that whispers on the skin.',
-    price: 50000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Fresh',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '65',
-    name: 'Ylang-Ylang Elixir',
-    description: 'A rich, tropical, and slightly fruity ylang-ylang.',
-    price: 65000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Floral',
-    details: {
-      size: '75ml'
-    }
-  },
-  {
-    id: '66',
-    name: 'Teakwood Treasure',
-    description: 'A warm and comforting scent of polished teakwood.',
-    price: 61000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Woody',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '67',
-    name: 'Bergamot Bliss',
-    description: 'A bright, sparkling bergamot that brings pure bliss.',
-    price: 47000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Fresh',
-    details: {
-      size: '120ml'
-    }
-  },
-  {
-    id: '68',
-    name: 'Olibanum Obscur',
-    description: 'A deep, dark, and resinous olibanum (frankincense).',
-    price: 79000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Oriental',
-    details: {
-      size: '50ml'
-    }
-  },
-  {
-    id: '69',
-    name: 'Carnation Cadence',
-    description: 'A spicy, peppery carnation with a vintage feel.',
-    price: 54000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Floral',
-    details: {
-      size: '100ml'
-    }
-  },
-  {
-    id: '70',
-    name: 'Oakmoss Aura',
-    description: 'An earthy, mossy scent of a damp forest floor.',
-    price: 63000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Woody',
-    details: {
-      size: '75ml'
-    }
-  },
-  {
-    id: '71',
-    name: 'Cucumber Splash',
-    description: 'A cool, watery, and refreshing cucumber fragrance.',
-    price: 41000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Fresh',
-    details: {
-      size: '120ml'
-    }
-  },
-  {
-    id: '72',
-    name: 'Labdanum Leather',
-    description: 'A warm, ambery labdanum with a smooth leather accord.',
-    price: 81000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Oriental',
-    details: {
-      size: '50ml'
-    }
-  },
-  {
-    id: '73',
-    name: 'Mimosa Mist',
-    description: 'A soft, powdery mimosa with a hint of almond.',
-    price: 56000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Floral',
-    details: {
-      size: '100ml'
-    }
-  },
+    // ===== BINT HOORAN =====
+    {
+      id: '28',
+      name: 'Bint Hooran Rose Passion',
+      description: 'A playful gourmand floral with green mandarin, blackcurrant, strawberry candy, gardenia, vanilla syrup, musk, amber and sandalwood.',
+      vibeCheck: 'Soft powdery romance perfect for brunch dates or sunny afternoons',
+      price: 28000,
+      image: '/images/Bint-Hooran.png',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Ard Al Zaafaran',
+      notes: 'Top: Green Mandarin, Blackcurrant, Heart: Strawberry Candy, Gardenia, Base: Vanilla, Musk, Amber, Sandalwood',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== BLUE OUD =====
+    {
+      id: '29',
+      name: 'Blue Oud',
+      description: 'An amber-woody blend with marine accords, bergamot, black pepper, lavender, fruits, saffron, ambergris, sandalwood and vanilla.',
+      vibeCheck: 'Fresh yet mysterious—ideal for evenings by the water or casual night-outs',
+      price: 25000,
+      image: '/images/blue-oud.jpg',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Bergamot, Marine Accords, Heart: Lavender, Saffron, Base: Ambergris, Sandalwood, Vanilla',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== CLUB DE NUIT =====
+    {
+      id: '30',
+      name: 'Club de Nuit Intense Man',
+      description: 'Bright citrus and blackcurrant burst into a smoky birch-rose heart, drying down to vanilla, musk and patchouli.',
+      vibeCheck: 'Signature scent energy: perfect for nights that demand confidence or sharp boardroom moments',
+      price: 60000,
+      image: '/images/Club de Nuit-Intense man.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Armaf',
+      notes: 'Top: Citrus, Blackcurrant, Heart: Birch, Rose, Base: Vanilla, Musk, Patchouli',
+      details: {
+        size: '105ml'
+      }
+    },
+  
+    // ===== ECLAIRE =====
+    {
+      id: '31',
+      name: 'Eclaire',
+      description: 'A luscious gourmand floral with sparkling peach, jasmine, creamy vanilla and sandalwood.',
+      vibeCheck: 'For when you want to feel soft, cozy and a little bit spectacular',
+      price: 60000,
+      image: '/images/Eclaire.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Peach, Heart: Jasmine, Base: Vanilla, Sandalwood',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== FAKHAR =====
+    {
+      id: '32',
+      name: 'Fakhar',
+      description: 'A vibrant citrus and floral opening wrapped in a warm, musky-woody base with hints of spice.',
+      vibeCheck: 'A confident, all-day signature scent for someone who commands respect',
+      price: 35000,
+      image: '/images/Fakhar.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Citrus, Heart: Floral, Base: Musk, Woody Notes',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== HAYAATI =====
+    {
+      id: '33',
+      name: 'Hayaati Florence',
+      description: 'Sweet berries and soft florals meet creamy vanilla and musk in this charming feminine scent.',
+      vibeCheck: 'For romantic walks and special dinners when you want to be remembered',
+      price: 25000,
+      image: '/images/Florence.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Berries, Heart: Florals, Base: Vanilla, Musk',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '34',
+      name: 'Hayaati Gold Elixir',
+      description: 'A luxurious mix of saffron, amber, warm woods and vanilla.',
+      vibeCheck: 'Opulence bottled—ideal for weddings and grand events',
+      price: 30000,
+      image: 'images/Gold Elixir.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Saffron, Heart: Amber, Base: Woods, Vanilla',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '35',
+      name: 'Hayaati',
+      description: 'Fresh apple and citrus top notes blend into aromatic lavender and a cozy musk-amber base.',
+      vibeCheck: 'A daily go-to for anyone who likes their scent fresh yet memorable',
+      price: 25000,
+      image: '/images/Hayaati.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Apple, Citrus, Heart: Lavender, Base: Musk, Amber',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== CONFESSION SERIES =====
+    {
+      id: '36',
+      name: 'His Confession',
+      description: 'Aromatic herbs and citrus brightness with warm woods, masculine yet refined.',
+      vibeCheck: 'The "mystery man" fragrance—great for evening meetups',
+      price: 50000,
+      image: '/images/His Confession.jpg',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Citrus, Herbs, Heart: Aromatic Notes, Base: Woods',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '37',
+      name: 'Her Confession',
+      description: 'A delicate dance of pear, rose and jasmine wrapped in soft vanilla and amber.',
+      vibeCheck: 'Perfect for date nights when you want to feel like the main character',
+      price: 50500,
+      image: '/images/her-confession.jpg',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Pear, Heart: Rose, Jasmine, Base: Vanilla, Amber',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== ISHQ AL SHUYUKH =====
+    {
+      id: '38',
+      name: 'Ishq Al Shuyukh Silver',
+      description: 'Bright citrus opening with lavender and spicy cardamom, melting into woody-musk dry down.',
+      vibeCheck: 'For the bold achiever who walks into a room and owns it instantly',
+      price: 40000,
+      image: '/images/Ishq Al Shuyukh-Silver.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Citrus, Heart: Lavender, Cardamom, Base: Woods, Musk',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== JAZZAB =====
+    {
+      id: '39',
+      name: 'Jazzab',
+      description: 'A spicy-floral fragrance with a warm oud and amber base - distinct, deep and slightly smoky.',
+      vibeCheck: 'Best for cold evenings, formal occasions or when you want mystery and depth',
+      price: 28000,
+      image: '/images/Jazzab.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Spicy Notes, Heart: Floral, Base: Oud, Amber',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== KHAMRAH =====
+    {
+      id: '40',
+      name: 'Khamrah Dukhan',
+      description: 'Sweet cinnamon, warm vanilla and smoky incense - rich and comforting.',
+      vibeCheck: 'Warmth in a bottle—perfect for cozy nights and festive seasons',
+      price: 48000,
+      image: '/images/Khamrah Dukhan.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Cinnamon, Heart: Vanilla, Base: Incense',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '41',
+      name: 'Khamrah Qahwa',
+      description: 'Coffee and caramel lead into creamy vanilla and spicy cinnamon - a gourmand dream.',
+      vibeCheck: 'Your "luxury café" scent—ideal for coffee dates and artistic meetups',
+      price: 48000,
+      image: '/images/Khamrah-Qahwa.JPG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Coffee, Caramel, Heart: Vanilla, Base: Cinnamon',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== LUXE RAED =====
+    {
+      id: '42',
+      name: 'Luxe Raed Gold',
+      description: 'A crisp citrus opening balanced with spices, oud and amber - rich yet wearable.',
+      vibeCheck: 'For those who enjoy elegance without excess—great for office days and evening dinners',
+      price: 40000,
+      image: '/images/Luxe Raed Gold Lattafa Unisex.png',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Citrus, Heart: Spices, Base: Oud, Amber',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== MAAHIR =====
+    {
+      id: '43',
+      name: 'Maahir Legacy',
+      description: 'A smooth blend of fruity sweetness, soft florals and a creamy musky base - refined yet approachable.',
+      vibeCheck: 'Ideal for special celebrations and leaving graceful impressions',
+      price: 38500,
+      image: '/images/Maahir Legacy.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Fruity, Heart: Floral, Base: Musk',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '44',
+      name: 'Maahir',
+      description: 'Warm amber and oud layered with spicy notes - deep and slightly smoky.',
+      vibeCheck: 'A statement fragrance for nights out and power moves',
+      price: 38500,
+      image: '/images/Maahir.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Spices, Heart: Amber, Base: Oud',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '45',
+      name: 'Maahir Black Edition',
+      description: 'Dark, rich oud blended with leather, spice and subtle sweetness.',
+      vibeCheck: 'Confident and bold—the "boardroom and black-tie event" scent',
+      price: 38500,
+      image: '/images/Maahir-Black-Edition.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Spices, Heart: Leather, Base: Oud',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== MASHAIR =====
+    {
+      id: '46',
+      name: 'Mashair Amber Turquoise',
+      description: 'Exotic amber meets refreshing marine and citrus notes - a luxurious fresh-oriental blend.',
+      vibeCheck: 'Perfect for summer vacations, yacht parties and sunlit brunches',
+      price: 52000,
+      image: '/images/MASHAER MASHAIR AMBER TURQOISE.png',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Citrus, Heart: Marine, Base: Amber',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== MOUSUF =====
+    {
+      id: '47',
+      name: 'Mousuf',
+      description: 'A rich oriental blend of sweet oud, vanilla and soft floral undertones - warm and inviting.',
+      vibeCheck: 'Your go-to for traditional gatherings and elegant evenings',
+      price: 42000,
+      image: '/images/MoUsuf.jpg',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Floral, Heart: Vanilla, Base: Oud',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '48',
+      name: 'Mousuf Ramadi',
+      description: 'Smoky oud and woody spices balanced with subtle sweetness - masculine and mysterious.',
+      vibeCheck: 'The scent of a confident leader who keeps people guessing',
+      price: 25000,
+      image: '/images/Mosuf-Ramadi.png',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Spices, Heart: Woody, Base: Oud',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '49',
+      name: 'Mousuf Wardi',
+      description: 'Fruity sweetness layered with rose and musk - soft and romantic.',
+      vibeCheck: 'Perfect for weddings, date nights and feeling effortlessly graceful',
+      price: 25000,
+      image: '/images/Mosuf-Wardi.png',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Fruity, Heart: Rose, Base: Musk',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== NOW =====
+    {
+      id: '50',
+      name: 'Now',
+      description: 'Fresh citrus and herbs over a woody-musky base - crisp, clean and energetic.',
+      vibeCheck: 'Ideal for everyday wear, gym sessions and casual hangouts',
+      price: 32000,
+      image: '/images/Now.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Citrus, Herbs, Heart: Fresh, Base: Musk, Woods',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '51',
+      name: 'Now Women',
+      description: 'A lively mix of florals, fruits and musk - playful yet sophisticated.',
+      vibeCheck: 'The "girls day out" perfume—bright, fun and perfect for sunny moods',
+      price: 32000,
+      image: '/images/Now-Women.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Fruity, Heart: Floral, Base: Musk',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== ODYSSEY =====
+    {
+      id: '52',
+      name: 'Odyssey Dubai Chocolate',
+      description: 'Decadent dark chocolate blended with warm spices, vanilla and a hint of oud.',
+      vibeCheck: 'For the gourmand lover who wants to smell irresistibly delicious yet elegant',
+      price: 55000,
+      image: '/images/Odyssey-Dubai-Chocolate.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Chocolate, Heart: Spices, Base: Vanilla, Oud',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== OPULENT =====
+    {
+      id: '53',
+      name: 'Opulent Dubai',
+      description: 'A luxurious mix of amber, musk and exotic spices - evoking Middle Eastern opulence.',
+      vibeCheck: 'Rich, regal and perfect for evening galas or VIP events',
+      price: 30000,
+      image: '/images/Opulent-Dubai.JPG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Spices, Heart: Amber, Base: Musk',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '54',
+      name: 'Opulent Musk',
+      description: 'Soft, powdery white musk layered with delicate florals and a touch of sweetness.',
+      vibeCheck: 'Clean and sensual—ideal for intimate settings and cozy nights in',
+      price: 30000,
+      image: '/images/Opulent-Musk.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Floral, Heart: Powdery, Base: Musk',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '55',
+      name: 'Opulent Oud',
+      description: 'A deep, resinous oud paired with amber and smoky spices for a powerful statement.',
+      vibeCheck: 'The scent of prestige—commanding attention in any room',
+      price: 30000,
+      image: '/images/Opulent-Oud.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Spices, Heart: Amber, Base: Oud',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '56',
+      name: 'Opulent Red',
+      description: 'Sweet, fruity top notes with a spicy-floral heart and an amber-oud base.',
+      vibeCheck: 'Dramatic and opulent - like wearing a couture red gown to a gala.',
+      price: 30000,
+      image: '/images/Opulent-Red.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Pear, Blood Orange, Pink Pepper, Cardamom, Heart: Jasmine, Tuberose, Cognac, Heliotrope, Base: Oud, Vanilla, Amber, Sandalwood',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== OUD MOOD =====
+    {
+      id: '57',
+      name: 'Oud Mood',
+      description: 'A warm, woody oud infused with sweet amber and soft florals - balanced Arabian signature.',
+      vibeCheck: 'Traditional yet timeless—perfect for weddings and evening wear',
+      price: 28000,
+      image: '/images/Oud-Mood.JPG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Floral, Heart: Amber, Base: Oud',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== QAED AL FURSAN =====
+    {
+      id: '58',
+      name: 'Qaed Al Fursan',
+      description: 'Fruity pineapple and apple blended with sweet vanilla and creamy woods.',
+      vibeCheck: 'Energetic, adventurous and playful—perfect for daytime charm',
+      price: 25000,
+      image: '/images/Qaed Al Fursan.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Pineapple, Apple, Heart: Fruity, Base: Vanilla, Woods',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '59',
+      name: 'Qaed Al Fursan Unlimited',
+      description: 'Tropical fruits, smooth musk and woody undertones with creamy finish.',
+      vibeCheck: 'Summer vibes in a bottle—great for vacations and beach parties',
+      price: 25000,
+      image: '/images/Qaed Al Fursan-Unlimited.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Tropical Fruits, Heart: Musk, Base: Woods',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '60',
+      name: 'Qaed Al Fursan Untamed',
+      description: 'Spicy, woody and smoky oud with untamed wild energy.',
+      vibeCheck: 'The scent of a rebel leader—unapologetic and daring',
+      price: 25000,
+      image: '/images/Qaed Al Fursan-Untamed.jpg',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Spices, Heart: Woody, Base: Oud',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== RAMZ =====
+    {
+      id: '61',
+      name: 'Ramz Silver',
+      description: 'Fresh citrus top with woody, slightly smoky dry down - confident and sharp.',
+      vibeCheck: 'Perfect for the boardroom or making strong first impressions',
+      price: 25500,
+      image: '/images/Ramz.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Citrus, Heart: Fresh, Base: Woods',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '62',
+      name: 'Ramz Gold',
+      description: 'Sweet amber, warm vanilla and light oud for rich golden aura.',
+      vibeCheck: 'Glamorous and classy—made for elegant evenings',
+      price: 25500,
+      image: '/images/Ramz-Lattafa.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Sweet Notes, Heart: Amber, Base: Oud',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== RAYHAAN =====
+    {
+      id: '63',
+      name: 'Rayhaan Floriana For Her',
+      description: 'Floral bouquet with soft musk and hint of sweetness - feminine grace.',
+      vibeCheck: 'Perfect for daily wear or romantic dates',
+      price: 30000,
+      image: '/images/Rayhaan-Floriana-For Her.jpg',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Floral, Heart: Soft Notes, Base: Musk',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== SAHEB =====
+    {
+      id: '64',
+      name: 'Saheb',
+      description: 'Bold oud with leather and smoky spices - dominant and powerful.',
+      vibeCheck: 'The scent of a true alpha—commanding and intense',
+      price: 32000,
+      image: '/images/Saheb.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Spices, Heart: Leather, Base: Oud',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== SUGER OUD =====
+    {
+      id: '65',
+      name: 'Suger Oud',
+      description: 'Sweet caramel-like oud with hints of vanilla - dessert-like indulgence.',
+      vibeCheck: 'Great for cozy nights and festive occasions',
+      price: 25000,
+      image: '/images/Suger-Oud.png',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Sweet Notes, Heart: Vanilla, Base: Oud',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== SUPREMACY =====
+    {
+      id: '66',
+      name: 'Supremacy Collector\'s Edition',
+      description: 'Rich woody amber mixed with spices and musk - luxury in a bottle.',
+      vibeCheck: 'Exclusive and statement-making',
+      price: 65000,
+      image: '/images/Supremacy Collectors-Edition.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Afnan',
+      notes: 'Top: Spices, Heart: Amber, Base: Woods, Musk',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '67',
+      name: 'Supremacy In Oud',
+      description: 'Oud-forward with saffron, spicy rose and amber warmth - regal and mysterious.',
+      vibeCheck: 'Perfect for evening occasions and special events',
+      price: 75000,
+      image: '/images/Supremacy In Oud.png',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Afnan',
+      notes: 'Top: Saffron, Heart: Rose, Base: Oud, Amber',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '68',
+      name: 'Supremacy Gold',
+      description: 'Fruity top with sweet amber-musk base - stylish and uplifting.',
+      vibeCheck: 'Ideal for all-day wear with sophisticated charm',
+      price: 76000,
+      image: '/images/Supremacy-Gold.png',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Afnan',
+      notes: 'Top: Fruity, Heart: Amber, Base: Musk',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '69',
+      name: 'Supremacy Silver',
+      description: 'Crisp fresh opening with smoky birch and woody undertones.',
+      vibeCheck: 'Adventurous and charming—great for casual and semi-formal wear',
+      price: 60000,
+      image: '/images/supremacy-silver.png',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Afnan',
+      notes: 'Top: Fresh, Heart: Birch, Base: Woods',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== VINTAGE RADIO =====
+    {
+      id: '70',
+      name: 'Vintage Radio',
+      description: 'Warm woody base with touches of amber and nostalgia-inducing accords.',
+      vibeCheck: 'Retro and cool—like a throwback with style',
+      price: 55000,
+      image: '/images/Vintage-Radio.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Woody, Heart: Amber, Base: Warm Notes',
+      details: {
+        size: '100ml'
+      }
+    },
+  
+    // ===== YARA =====
+    {
+      id: '71',
+      name: 'Yara Moi',
+      description: 'Creamy vanilla, tropical fruits and soft musk - sweet and dreamy.',
+      vibeCheck: 'Irresistibly feminine—perfect for date nights or brunch with friends',
+      price: 30000,
+      image: '/images/Yara-Moi.jpg',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Tropical Fruits, Heart: Vanilla, Base: Musk',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '72',
+      name: 'Yara Tous',
+      description: 'Fruity-floral mix with hints of coconut and vanilla - fun and vibrant.',
+      vibeCheck: 'Youthful and energetic—ideal for everyday wear',
+      price: 30000,
+      image: '/images/Yara-Gold.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Fruity, Heart: Floral, Base: Vanilla',
+      details: {
+        size: '100ml'
+      }
+    },
+    {
+      id: '73',
+      name: 'Yara Candy',
+      description: 'Cotton candy sweetness with creamy undertones - playful and flirty.',
+      vibeCheck: 'Perfect for parties or casual hangouts',
+      price: 30000,
+      image: '/images/Yara-Candy.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Sweet Notes, Heart: Creamy, Base: Vanilla',
+      details: {
+        size: '100ml'
+      }
+    },
   {
     id: '74',
-    name: 'Redwood Rise',
-    description: 'The majestic scent of towering redwood trees at sunrise.',
-    price: 69000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Lattafa Yara',
+    description: 'A sweet and feminine blend of tropical fruits, soft florals, vanilla and musk, creating a creamy and comforting scent.',
+    vibeCheck: 'Charming, cozy, and elegant — perfect for everyday wear or special moments.',
+    price: 30000,
+    image: '//images/Yara-Pink.PNG',
     category: 'Perfume',
-    perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Woody',
+    perfumeType: 'Signature',
+    brand: 'Lattafa',
+    notes: 'Top: Tropical Fruits Coconut, Heart: Jasmine Peach , Base: Vanilla Musk Sandalwood',
     details: {
       size: '100ml'
     }
   },
+  
+    // ===== YUM YUM =====
+    {
+      id: '75',
+      name: 'Yum Yum',
+      description: 'Dessert-inspired with notes of vanilla, caramel and fruity syrup.',
+      vibeCheck: 'Warm and cozy—like wrapping yourself in candy',
+      price: 57000,
+      image: '/images/Yom Yom.PNG',
+      category: 'Perfume',
+      perfumeType: 'Signature',
+      brand: 'Lattafa',
+      notes: 'Top: Fruity, Heart: Caramel, Base: Vanilla',
+      details: {
+        size: '100ml'
+      }
+    },
   {
-    id: '75',
+    id: '755',
     name: 'Verbena Verde',
     description: 'A zesty, lemony verbena that is intensely green.',
     price: 48000,

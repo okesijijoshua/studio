@@ -14,9 +14,10 @@ import { Badge } from '@/components/ui/badge';
 
 interface ProductCardProps {
   product: Product;
+  currentPage?: number;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, currentPage }: ProductCardProps) {
   const { formatPrice } = useCurrency();
   const { addToCart } = useCart();
   const { toast } = useToast();
@@ -30,10 +31,12 @@ export function ProductCard({ product }: ProductCardProps) {
       description: `${product.name} has been added to your cart.`,
     });
   };
+  
+  const productLink = currentPage ? `/products/${product.id}?fromPage=${currentPage}` : `/products/${product.id}`;
 
   return (
     <Card className="flex h-full flex-col overflow-hidden transition-shadow duration-300 hover:shadow-lg group">
-      <Link href={`/products/${product.id}`} className="flex flex-col flex-1">
+      <Link href={productLink} className="flex flex-col flex-1">
         <CardHeader className="p-0">
             <div className="relative aspect-square w-full">
             <Image
