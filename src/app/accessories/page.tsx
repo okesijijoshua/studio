@@ -253,7 +253,7 @@ export default function AccessoriesPage() {
           <SheetTitle className="font-headline text-2xl">Filters</SheetTitle>
         </SheetHeader>
         <ScrollArea className="flex-1">
-          <div className="p-4">
+          <div className="py-4 pr-4 pl-3">
             <AccordionFilters />
           </div>
         </ScrollArea>
