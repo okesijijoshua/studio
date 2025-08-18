@@ -27,6 +27,7 @@ import { Badge } from '@/components/ui/badge';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Filter } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 
 const PERFUME_TYPES = ['All Perfumes', 'Dekemi Perfumes', 'Designer Perfumes', 'Signature Perfumes', 'Mini Perfumes'];
@@ -81,7 +82,7 @@ const usePagination = ({ totalPages, siblingCount = 1, currentPage }: { totalPag
 export default function CollectionsPage() {
   const { formatPrice } = useCurrency();
   const searchParams = useSearchParams();
-  const isMobile = useIsMobile();
+  const { isMobile, isMounted } = useIsMobile();
 
   const [sortOption, setSortOption] = useState('name-asc');
   const [selectedPerfumeType, setSelectedPerfumeType] = useState<string | null>(null);
@@ -339,7 +340,16 @@ export default function CollectionsPage() {
             </div>
         </SheetContent>
       </Sheet>
-  )
+  );
+  
+  const FilterSkeleton = () => (
+    <div className="space-y-6">
+      <Skeleton className="h-10 w-full" />
+      <Skeleton className="h-40 w-full" />
+      <Skeleton className="h-24 w-full" />
+      <Skeleton className="h-20 w-full" />
+    </div>
+  );
 
   return (
     <div className="container mx-auto px-4 py-8 md:px-6">
@@ -363,7 +373,7 @@ export default function CollectionsPage() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Filters Sidebar */}
         <aside className="md:col-span-1">
-            {isMobile ? <MobileFilters /> : <Filters />}
+           {!isMounted ? <FilterSkeleton /> : (isMobile ? <MobileFilters /> : <Filters />)}
         </aside>
 
         {/* Products Grid */}

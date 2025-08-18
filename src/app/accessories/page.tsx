@@ -26,6 +26,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Filter } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
+import { Skeleton } from '@/components/ui/skeleton';
 
 
 const BRANDS = [...new Set(allProducts.filter(p => p.category === 'Accessory').map(p => p.brand))];
@@ -77,7 +78,7 @@ const usePagination = ({ totalPages, siblingCount = 1, currentPage }: { totalPag
 
 export default function AccessoriesPage() {
   const { formatPrice } = useCurrency();
-  const isMobile = useIsMobile();
+  const { isMobile, isMounted } = useIsMobile();
   const searchParams = useSearchParams();
 
   const [sortOption, setSortOption] = useState('name-asc');
@@ -256,6 +257,14 @@ export default function AccessoriesPage() {
         </SheetContent>
       </Sheet>
   )
+  
+   const FilterSkeleton = () => (
+    <div className="space-y-6">
+      <Skeleton className="h-10 w-full" />
+      <Skeleton className="h-20 w-full" />
+      <Skeleton className="h-20 w-full" />
+    </div>
+  );
 
   return (
     <div className="container mx-auto px-4 py-8 md:px-6">
@@ -267,7 +276,7 @@ export default function AccessoriesPage() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Filters Sidebar */}
         <aside className="md:col-span-1">
-            {isMobile ? <MobileFilters /> : <Filters />}
+            {!isMounted ? <FilterSkeleton /> : (isMobile ? <MobileFilters /> : <Filters />)}
         </aside>
 
         {/* Products Grid */}
