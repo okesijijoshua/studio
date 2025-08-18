@@ -275,7 +275,7 @@ export default function AccessoriesPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Filters Sidebar */}
-        <aside className="md:col-span-1">
+        <aside className="md:col-span-1 md:sticky md:top-24 md:h-[calc(100vh-12rem)] md:overflow-y-auto pr-4">
             {!isMounted ? <FilterSkeleton /> : (isMobile ? <MobileFilters /> : <Filters />)}
         </aside>
 
