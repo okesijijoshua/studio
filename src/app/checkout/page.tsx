@@ -46,7 +46,7 @@ type FormValues = z.infer<typeof formSchema>;
 export default function CheckoutPage() {
   const { toast } = useToast();
   const { cartItems, totalPrice, totalItems, clearCart } = useCart();
-  const { formatPrice, currency } = useCurrency();
+  const { formatPrice, currency, isMounted } = useCurrency();
   const [selectedState, setSelectedState] = useState<string>('');
   const [formValues, setFormValues] = useState<FormValues | null>(null);
 
@@ -120,6 +120,8 @@ export default function CheckoutPage() {
         </div>
     )
   }
+  
+  const formattedFinalTotal = formatPrice(finalTotal);
 
   return (
     <div className="container mx-auto px-4 py-16 md:py-24">
@@ -181,7 +183,7 @@ export default function CheckoutPage() {
                             )} />
                         </div>
                          <Button type="button" onClick={handleProceedToPayment} disabled={formState.isSubmitting || totalItems === 0 || !selectedState} className="w-full text-base sm:text-lg py-4">
-                            {formState.isSubmitting ? 'Processing...' : `Proceed to Payment - ${formatPrice(finalTotal)}`}
+                            {formState.isSubmitting ? 'Processing...' : `Proceed to Payment - ${!isMounted ? "Calculating..." : formattedFinalTotal}`}
                         </Button>
                     </form>
                 </Form>
@@ -222,7 +224,7 @@ export default function CheckoutPage() {
                 <Separator className="my-6" />
                 <div className="flex justify-between font-bold text-xl">
                     <p>Total</p>
-                    <p>{formatPrice(finalTotal)}</p>
+                    <p>{formattedFinalTotal || 'Calculating...'}</p>
                 </div>
             </CardContent>
         </Card>

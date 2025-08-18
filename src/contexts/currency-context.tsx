@@ -43,16 +43,14 @@ export const CurrencyProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const formatPrice = useMemo(() => {
-    return (priceInNgn: number) => {
-      // Always use the current currency for calculation
+    return (priceInNgn: number): string => {
+      if (!isMounted) {
+        return ''; // Return empty string or a placeholder string during SSR
+      }
+      
       const { symbol, rate } = currencies[currency];
       const convertedPrice = priceInNgn * rate;
 
-      if (!isMounted) {
-        // During SSR or before hydration, render a loading state.
-        return <span className="w-20 h-5 bg-muted rounded animate-pulse" />;
-      }
-      
       return `${symbol}${convertedPrice.toLocaleString(undefined, {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
