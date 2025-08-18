@@ -28,6 +28,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Filter } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 
 const PERFUME_TYPES = ['All Perfumes', 'Dekemi Perfumes', 'Designer Perfumes', 'Signature Perfumes', 'Mini Perfumes'];
@@ -324,22 +325,24 @@ export default function CollectionsPage() {
   );
   
   const MobileFilters = () => (
-      <Sheet>
-        <SheetTrigger asChild>
-            <Button variant="outline" className="w-full">
-                <Filter className="mr-2 h-4 w-4" />
-                Filter By
-            </Button>
-        </SheetTrigger>
-        <SheetContent side="left" className="w-full max-w-sm">
-            <SheetHeader>
-                <SheetTitle className="font-headline text-2xl">Filters</SheetTitle>
-            </SheetHeader>
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="outline" className="w-full">
+          <Filter className="mr-2 h-4 w-4" />
+          Filter By
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="left" className="w-full max-w-sm flex flex-col">
+        <SheetHeader>
+          <SheetTitle className="font-headline text-2xl">Filters</SheetTitle>
+        </SheetHeader>
+        <ScrollArea className="flex-1">
             <div className="p-4">
                 <AccordionFilters />
             </div>
-        </SheetContent>
-      </Sheet>
+        </ScrollArea>
+      </SheetContent>
+    </Sheet>
   );
   
   const FilterSkeleton = () => (
@@ -372,7 +375,7 @@ export default function CollectionsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Filters Sidebar */}
-        <aside className="md:col-span-1 md:sticky md:top-24 md:h-[calc(100vh-12rem)] md:overflow-y-auto pr-4">
+        <aside className="md:col-span-1 md:sticky md:top-24 h-fit md:h-[calc(100vh-12rem)] md:overflow-y-auto pr-4">
            {!isMounted ? <FilterSkeleton /> : (isMobile ? <MobileFilters /> : <Filters />)}
         </aside>
 
