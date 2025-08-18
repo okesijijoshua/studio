@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/carousel"
 import { ReviewForm } from './review-form';
 import { Separator } from '@/components/ui/separator';
+import { Skeleton } from '../ui/skeleton';
 
 export function Testimonials() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
@@ -54,7 +55,12 @@ export function Testimonials() {
           <p className="mt-2 text-muted-foreground">Real stories from our valued patrons.</p>
         </div>
         
-        {isMounted && (
+        {!isMounted ? (
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
+                <Skeleton className="h-48 w-full" />
+                <Skeleton className="h-48 w-full" />
+            </div>
+        ) : (
           <>
             {displayedTestimonials.length > 0 ? (
               <>

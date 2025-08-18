@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Instagram, Linkedin, ArrowRight } from 'lucide-react';
 import { TestimonialCard } from '@/components/shared/testimonial-card';
 import type { Testimonial } from '@/lib/types';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const TikTokIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -98,7 +99,13 @@ export default function AboutPage() {
           <div className="text-center">
             <h2 className="font-headline text-3xl font-bold">From Our Community</h2>
           </div>
-            {isMounted && testimonials.length > 0 ? (
+            {!isMounted ? (
+                <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <Skeleton className="h-48 w-full" />
+                    <Skeleton className="h-48 w-full" />
+                    <Skeleton className="h-48 w-full" />
+                </div>
+            ) : testimonials.length > 0 ? (
                 <>
                     <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                         {visibleTestimonials.map(testimonial => (

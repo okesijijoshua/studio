@@ -183,7 +183,7 @@ export default function CheckoutPage() {
                             )} />
                         </div>
                          <Button type="button" onClick={handleProceedToPayment} disabled={formState.isSubmitting || totalItems === 0 || !selectedState} className="w-full text-base sm:text-lg py-4">
-                            {formState.isSubmitting ? 'Processing...' : `Proceed to Payment - ${!isMounted ? "Calculating..." : formattedFinalTotal}`}
+                            {formState.isSubmitting ? 'Processing...' : `Proceed to Payment - ${!isMounted || !formattedFinalTotal ? "Calculating..." : formattedFinalTotal}`}
                         </Button>
                     </form>
                 </Form>
@@ -218,13 +218,13 @@ export default function CheckoutPage() {
                     </div>
                     <div className="flex justify-between">
                         <p className="text-muted-foreground">Shipping</p>
-                        <p className="font-medium">{shippingCost ? formatPrice(shippingCost) : 'Select a state'}</p>
+                        <p className="font-medium">{isMounted && shippingCost ? formatPrice(shippingCost) : 'Select a state'}</p>
                     </div>
                 </div>
                 <Separator className="my-6" />
                 <div className="flex justify-between font-bold text-xl">
                     <p>Total</p>
-                    <p>{formattedFinalTotal || 'Calculating...'}</p>
+                    <p>{isMounted && formattedFinalTotal ? formattedFinalTotal : 'Calculating...'}</p>
                 </div>
             </CardContent>
         </Card>

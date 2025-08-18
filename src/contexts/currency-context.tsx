@@ -45,7 +45,7 @@ export const CurrencyProvider = ({ children }: { children: ReactNode }) => {
   const formatPrice = useMemo(() => {
     return (priceInNgn: number): string => {
       if (!isMounted) {
-        return ''; // Return empty string or a placeholder string during SSR
+        return ''; // Return empty string during SSR or before mount
       }
       
       const { symbol, rate } = currencies[currency];
