@@ -1181,56 +1181,45 @@ export const products: Product[] = [
       }
     },
   {
-    id: '755',
-    name: 'Verbena Verde',
-    description: 'A zesty, lemony verbena that is intensely green.',
-    price: 48000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Fresh',
-    details: {
-      size: '120ml'
-    }
-  },
-  {
     id: '76',
-    name: 'Vanilla Bourbon',
-    description: 'A rich, boozy vanilla with a hint of oak barrel.',
-    price: 70000,
-    image: 'https://placehold.co/600x600.png',
+    name: '1 Million Eau de Parfum',
+    brand: 'Paco Rabanne',
+    description: 'Warm spicy gourmand – cinnamon, amber, leather, and blood mandarin.',
+    vibeCheck: 'A sweet, playful, and luxurious scent. Perfect for nightlife and youthful confidence.',
+    price: 185000,
+    image: '/images/76.jpg',
     category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Oriental',
+    perfumeType: 'Designer',
+    notes: 'Spicy',
     details: {
-      size: '75ml'
+      size: '100ml'
     }
   },
   {
     id: '77',
-    name: 'Heliotrope Heaven',
-    description: 'A soft, almond-like heliotrope with a vanilla base.',
-    price: 58000,
-    image: 'https://placehold.co/600x600.png',
+    name: '212 Black',
+    brand: 'Carolina Herrera',
+    description: 'Aromatic fougère – lavender, musk, and citrus.',
+    vibeCheck: 'Urban youthful freshness. Ideal for casual everyday wear.',
+    price: 65000,
+    image: '/images/77.jpg',
     category: 'Perfume',
     perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Floral',
+    notes: 'Fresh',
     details: {
       size: '100ml'
     }
   },
   {
     id: '78',
-    name: 'Cashmere Woods',
-    description: 'A soft, cozy scent that feels like wrapping up in cashmere.',
-    price: 66000,
-    image: 'https://placehold.co/600x600.png',
+    name: '212 Men NYC',
+    brand: 'Carolina Herrera',
+    description: 'Citrus woody – grapefruit, ginger, sandalwood.',
+    vibeCheck: 'Energetic, youthful, and masculine. Perfect for city life and casual wear.',
+    price: 130000,
+    image: '/images/78.jpg',
     category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
+    perfumeType: 'Designer',
     notes: 'Woody',
     details: {
       size: '100ml'
@@ -1238,97 +1227,104 @@ export const products: Product[] = [
   },
   {
     id: '79',
-    name: 'Mint Mojito',
-    description: 'An icy blast of fresh mint, lime, and sugar.',
-    price: 44000,
-    image: 'https://placehold.co/600x600.png',
+    name: '212 VIP',
+    brand: 'Carolina Herrera',
+    description: 'Boozy oriental – rum, passionfruit, leather.',
+    vibeCheck: 'Party fragrance with bold energy. A true attention-grabber for nightlife.',
+    price: 145000,
+    image: '/images/79.jpg',
     category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Fresh',
+    perfumeType: 'Designer',
+    notes: 'Oriental',
     details: {
-      size: '120ml'
+      size: '100ml'
     }
   },
   {
     id: '80',
-    name: 'Amber Absolute',
-    description: 'A dense, powerful, and uncompromising amber.',
-    price: 85000,
-    image: 'https://placehold.co/600x600.png',
+    name: '212 VIP Black Eau de Parfum',
+    brand: 'Carolina Herrera',
+    description: 'Sweet spicy – absinthe, vanilla, and lavender.',
+    vibeCheck: 'Club-ready, seductive, and energetic. Perfect for bold men.',
+    price: 180000,
+    image: '/images/80.jpg',
     category: 'Perfume',
     perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Oriental',
+    notes: 'Spicy',
     details: {
-      size: '50ml'
+      size: '100ml'
     }
   },
   {
     id: '81',
-    name: 'Gardenia Grandeur',
-    description: 'A grand, opulent gardenia scent for special occasions.',
-    price: 72000,
-    image: 'https://placehold.co/600x600.png',
+    name: '212 VIP Black Elixir',
+    brand: 'Carolina Herrera',
+    description: 'Deep sweet oriental – vanilla, absinthe, and spices.',
+    vibeCheck: 'More intense and darker than the original. Ideal for night seduction.',
+    price: 200000,
+    image: '/images/81.jpg',
     category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Floral',
+    perfumeType: 'Designer',
+    notes: 'Oriental',
     details: {
-      size: '75ml'
+      size: '100ml'
     }
   },
   {
     id: '82',
-    name: 'Hinoki Calm',
-    description: 'A meditative, lemony scent of Japanese hinoki wood.',
-    price: 70000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Amouage Guidance',
+    brand: 'Amouage',
+    description: 'Floral woody – pear, hazelnut, rose, and sandalwood.',
+    vibeCheck: 'Luxurious, elegant, and artistic. Best for special occasions and high fashion.',
+    price: 600000,
+    image: '/images/82.jpg',
     category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Woody',
+    perfumeType: 'Designer',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
   },
   {
     id: '83',
-    name: 'Bamboo Harmony',
-    description: 'A clean, green scent of bamboo leaves and white tea.',
-    price: 51000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Azzaro The Most Wanted',
+    brand: 'Azzaro',
+    description: 'Spicy gourmand – cardamom, toffee, vanilla, amberwood.',
+    vibeCheck: 'Bold, daring, and addictive. Perfect for nightlife and confident energy.',
+    price: 180000,
+    image: '/images/83.jpg',
     category: 'Perfume',
     perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Fresh',
+    notes: 'Spicy',
     details: {
       size: '100ml'
     }
   },
   {
     id: '84',
-    name: 'Cinnamon Spice',
-    description: 'A warm, sweet, and spicy cinnamon bark.',
-    price: 60000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Baccarat Rouge 540 Eau de Parfum',
+    brand: 'Maison Francis Kurkdjian',
+    description: 'Amber woody – saffron, jasmine, ambergris, cedar.',
+    vibeCheck: 'Sophisticated, luxurious, and radiant. A modern cult fragrance for both men and women.',
+    price: 680000,
+    image: '/images/84.jpg',
     category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Oriental',
+    perfumeType: 'Designer',
+    notes: 'Woody',
     details: {
-      size: '50ml'
+      size: '70ml'
     }
   },
   {
     id: '85',
-    name: 'Lotus Lagoon',
-    description: 'An aquatic, slightly sweet lotus blossom.',
-    price: 55000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Baccarat Rouge 540 Extrait de Parfum',
+    brand: 'Maison Francis Kurkdjian',
+    description: 'Amber floral – saffron, bitter almond, cedar, and ambergris.',
+    vibeCheck: 'Richer, deeper, and longer-lasting than the Eau de Parfum. Intense luxury.',
+    price: 800000,
+    image: '/images/85.jpg',
     category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
+    perfumeType: 'Designer',
     notes: 'Floral',
     details: {
       size: '100ml'
@@ -1336,254 +1332,392 @@ export const products: Product[] = [
   },
   {
     id: '86',
-    name: 'Mahogany Soul',
-    description: 'A rich, dark, and slightly sweet mahogany wood.',
-    price: 74000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Baccarat Rouge 540 Extrait de Parfum',
+    brand: 'Maison Francis Kurkdjian',
+    description: 'Amber floral – saffron, bitter almond, cedar, ambergris.',
+    vibeCheck: 'The ultimate statement of luxury and opulence in a larger bottle.',
+    price: 1200000,
+    image: '/images/86.jpg',
     category: 'Perfume',
     perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Woody',
+    notes: 'Floral',
     details: {
-      size: '75ml'
+      size: '200ml'
     }
   },
   {
     id: '87',
-    name: 'Juniper Sling',
-    description: 'A crisp, aromatic scent of gin and juniper berries.',
-    price: 53000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Black Opium',
+    brand: 'Yves Saint Laurent',
+    description: 'Coffee-vanilla floral – coffee, vanilla, jasmine, cedarwood.',
+    vibeCheck: 'Sexy, mysterious, and intoxicating. Perfect for nightlife and evening outings.',
+    price: 195000,
+    image: '/images/87.jpg',
     category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Fresh',
+    perfumeType: 'Designer',
+    notes: 'Floral',
+    details: {
+      size: '90ml'
+    }
+  },
+  {
+    id: '88',
+    name: 'Bleu de Chanel Eau de Parfum',
+    brand: 'Chanel',
+    description: 'Woody aromatic – grapefruit, incense, ginger, sandalwood.',
+    vibeCheck: 'Clean, fresh, yet sensual. Extremely versatile for all occasions.',
+    price: 95000,
+    image: '/images/88.jpg',
+    category: 'Perfume',
+    perfumeType: 'Designer',
+    notes: 'Woody',
     details: {
       size: '100ml'
     }
   },
   {
-    id: '88',
-    name: 'Plum Petal',
-    description: 'A juicy, dark plum with floral undertones.',
-    price: 59000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Oriental',
-    details: {
-      size: '75ml'
-    }
-  },
-  {
     id: '89',
-    name: 'Frangipani Fever',
-    description: 'A tropical, creamy, and exotic frangipani flower.',
-    price: 64000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Bvlgari Man in Black',
+    brand: 'Bvlgari',
+    description: 'Spicy leather – rum, tuberose, tonka bean, leather.',
+    vibeCheck: 'Luxe evenings, confident masculinity. Bold and powerful presence.',
+    price: 88000,
+    image: '/images/89.jpg',
     category: 'Perfume',
     perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Floral',
+    notes: 'Spicy',
     details: {
       size: '100ml'
     }
   },
   {
     id: '90',
-    name: 'Sandalwood Supreme',
-    description: 'The ultimate sandalwood, creamy, rich, and spiritual.',
-    price: 98000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Coco Mademoiselle',
+    brand: 'Chanel',
+    description: 'Patchouli citrus floral – bergamot, rose, patchouli, vanilla.',
+    vibeCheck: 'Timeless feminine elegance. Ideal for both day and evening wear.',
+    price: 180000,
+    image: '/images/90.jpg',
     category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Woody',
+    perfumeType: 'Designer',
+    notes: 'Floral',
     details: {
-      size: '50ml'
+      size: '100ml'
     }
   },
   {
     id: '91',
-    name: 'Sea Salt & Sage',
-    description: 'A windswept coast, with salt spray and earthy sage.',
-    price: 52000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Cool Water',
+    brand: 'Davidoff',
+    description: 'Aquatic fresh – mint, lavender, amber, and sea notes.',
+    vibeCheck: 'Refreshing, clean, and casual. Great everyday fragrance.',
+    price: 120000,
+    image: '/images/91.jpg',
     category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
+    perfumeType: 'Designer',
+    notes: 'Fresh',
+    details: {
+      size: '125ml'
+    }
+  },
+  {
+    id: '92',
+    name: 'Creed Aventus',
+    brand: 'Creed',
+    description: 'Fruity woody – pineapple, birch, musk, and oakmoss.',
+    vibeCheck: 'Powerful, confident, and luxurious. A compliment magnet and icon.',
+    price: 560000,
+    image: '/images/92.jpg',
+    category: 'Perfume',
+    perfumeType: 'Designer',
+    notes: 'Woody',
+    details: {
+      size: '100ml'
+    }
+  },
+  {
+    id: '93',
+    name: 'Dior Sauvage Eau de Toilette',
+    brand: 'Dior',
+    description: 'Fresh woody – bergamot, pepper, ambroxan.',
+    vibeCheck: 'Modern masculine classic. Sharp, versatile, and confident.',
+    price: 250000,
+    image: '/images/93.jpg',
+    category: 'Perfume',
+    perfumeType: 'Designer',
     notes: 'Fresh',
     details: {
       size: '100ml'
     }
   },
   {
-    id: '92',
-    name: 'Rose de Mai',
-    description: 'A precious, honeyed rose harvested in May.',
-    price: 110000,
-    image: 'https://placehold.co/600x600.png',
+    id: '94',
+    name: 'Dior Sauvage Eau de Parfum',
+    brand: 'Dior',
+    description: 'Fresh woody – bergamot, star anise, nutmeg, ambroxan.',
+    vibeCheck: 'Richer and deeper than the Eau de Toilette. Powerful and long-lasting.',
+    price: 310000,
+    image: '/images/94.jpg',
     category: 'Perfume',
     perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Floral',
-    details: {
-      size: '50ml'
-    }
-  },
-  {
-    id: '93',
-    name: 'Myrrh Mystere',
-    description: 'A mysterious, dark myrrh with smoky facets.',
-    price: 77000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Oriental',
-    details: {
-      size: '75ml'
-    }
-  },
-  {
-    id: '94',
-    name: 'Driftwood Dusk',
-    description: 'The scent of sun-bleached driftwood on a beach at dusk.',
-    price: 61000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Woody',
+    notes: 'Fresh',
     details: {
       size: '100ml'
     }
   },
   {
     id: '95',
-    name: 'Lime Basil & Mandarin',
-    description: 'A classic combination of peppery basil and zesty lime.',
-    price: 50000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Gucci Bloom',
+    brand: 'Gucci',
+    description: 'White floral – jasmine, tuberose, Rangoon creeper.',
+    vibeCheck: 'Romantic, feminine, and graceful. Perfect for daytime wear.',
+    price: 240000,
+    image: '/images/95.jpg',
     category: 'Perfume',
     perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Fresh',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
   },
   {
     id: '96',
-    name: 'Orange Blossom Opus',
-    description: 'A grand, operatic orange blossom with a honeyed drydown.',
-    price: 73000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'J’adore Eau de Parfum',
+    brand: 'Dior',
+    description: 'Floral fruity – ylang-ylang, jasmine, pear, peach, musk.',
+    vibeCheck: 'Sophisticated, radiant, and classy. Golden beauty in a bottle.',
+    price: 250000,
+    image: '/images/96.jpg',
     category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
+    perfumeType: 'Designer',
     notes: 'Floral',
-    details: {
-      size: '75ml'
-    }
-  },
-  {
-    id: '97',
-    name: 'Vetiver Virtuoso',
-    description: 'A masterful vetiver, showcasing its green, earthy, and smoky sides.',
-    price: 76000,
-    image: 'https://placehold.co/600x600.png',
-    category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Woody',
     details: {
       size: '100ml'
     }
   },
   {
-    id: '98',
-    name: 'Gingerbread Gourmand',
-    description: 'A delicious, edible scent of gingerbread cookies.',
-    price: 57000,
-    image: 'https://placehold.co/600x600.png',
+    id: '97',
+    name: 'Jimmy Choo I Want Choo',
+    brand: 'Jimmy Choo',
+    description: 'Caramel-vanilla gourmand – peach, jasmine, caramel, vanilla.',
+    vibeCheck: 'Flirty, sweet, and glamorous. Ideal for young confident women.',
+    price: 190000,
+    image: '/images/97.jpg',
     category: 'Perfume',
     perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Oriental',
+    notes: 'Floral',
     details: {
-      size: '50ml'
+      size: '80ml'
+    }
+  },
+  {
+    id: '98',
+    name: 'Jean Paul Gaultier Ultra Male Intense',
+    brand: 'Jean Paul Gaultier',
+    description: 'Sweet spicy – pear, vanilla, cinnamon, lavender.',
+    vibeCheck: 'Playful, bold, and seductive. Perfect for dates and nightlife.',
+    price: 190000,
+    image: '/images/98.jpg',
+    category: 'Perfume',
+    perfumeType: 'Designer',
+    notes: 'Spicy',
+    details: {
+      size: '125ml'
     }
   },
   {
     id: '99',
-    name: 'Neroli Nirvana',
-    description: 'A blissful, bright, and slightly bitter neroli.',
-    price: 63000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Jean Paul Gaultier Scandal Le Parfum',
+    brand: 'Jean Paul Gaultier',
+    description: 'Sweet floral gourmand – caramel, jasmine, vanilla, honey.',
+    vibeCheck: 'Rich, sexy, and seductive. Femme-fatale energy for nights out.',
+    price: 220000,
+    image: '/images/99.jpg',
     category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Fresh',
+    perfumeType: 'Designer',
+    notes: 'Floral',
     details: {
       size: '100ml'
     }
   },
   {
     id: '100',
-    name: 'Iris Pallida',
-    description: 'The rooty, powdery, and precious scent of iris pallida butter.',
-    price: 125000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Jean Paul Gaultier Scandal Eau de Toilette',
+    brand: 'Jean Paul Gaultier',
+    description: 'Sweet woody – caramel, tonka bean, vetiver, clary sage.',
+    vibeCheck: 'Playful yet masculine. Youthful energy with bold projection.',
+    price: 190000,
+    image: '/images/100.jpg',
     category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
-    notes: 'Floral',
+    perfumeType: 'Designer',
+    notes: 'Woody',
     details: {
-      size: '50ml'
+      size: '125ml'
     }
   },
   {
     id: '101',
-    name: 'Cedar Atlas',
-    description: 'A dry, slightly animalic cedar from the Atlas mountains.',
-    price: 68000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'La Vie Est Belle',
+    brand: 'Lancôme',
+    description: 'Iris-praline gourmand – iris, pear, praline, vanilla, patchouli.',
+    vibeCheck: 'Comforting, sweet, and romantic. A true best-seller among women.',
+    price: 135000,
+    image: '/images/101.jpg',
     category: 'Perfume',
     perfumeType: 'Designer',
-    brand: 'Aura Fragrances',
-    notes: 'Woody',
+    notes: 'Oriental',
     details: {
       size: '100ml'
     }
   },
   {
     id: '102',
-    name: 'Tonka Imperiale',
-    description: 'An imperial tonka bean, rich with notes of tobacco and hay.',
-    price: 84000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'Louis Vuitton Imagination Eau de Parfum',
+    brand: 'Louis Vuitton',
+    description: 'Citrus aromatic – bergamot, black tea, ginger, ambroxan.',
+    vibeCheck: 'Fresh, modern, and luxurious. Sophisticated everyday wear.',
+    price: 850000,
+    image: '/images/102.jpg',
     category: 'Perfume',
-    perfumeType: 'Signature',
-    brand: 'Scentoria',
-    notes: 'Oriental',
+    perfumeType: 'Designer',
+    notes: 'Fresh',
     details: {
-      size: '75ml'
+      size: '100ml'
     }
   },
   {
     id: '103',
-    name: 'Aqua Celestia',
-    description: 'A heavenly water, with notes of lime, mint, and blackcurrant.',
-    price: 54000,
-    image: 'https://placehold.co/600x600.png',
+    name: 'My Way',
+    brand: 'Giorgio Armani',
+    description: 'White floral – orange blossom, tuberose, vanilla.',
+    vibeCheck: 'Feminine, soft, and elegant. Perfect for everyday or date nights.',
+    price: 200000,
+    image: '/images/103.jpg',
     category: 'Perfume',
-    perfumeType: 'Dekemi',
-    brand: 'DekemiScents',
+    perfumeType: 'Designer',
+    notes: 'Floral',
+    details: {
+      size: '100ml'
+    }
+  },
+  {
+    id: '104',
+    name: 'Reef 33 Black',
+    brand: 'Reef Perfumes',
+    description: 'Woody aromatic – citrus, spices, leather, amber.',
+    vibeCheck: 'Mysterious, bold, and refined. Ideal for confident men.',
+    price: 125000,
+    image: '/images/104.jpg',
+    category: 'Perfume',
+    perfumeType: 'Designer',
+    notes: 'Woody',
+    details: {
+      size: '100ml'
+    }
+  },
+  {
+    id: '105',
+    name: 'Si Eau de Parfum',
+    brand: 'Giorgio Armani',
+    description: 'Chypre fruity – cassis, vanilla, freesia, patchouli.',
+    vibeCheck: 'Elegant, feminine, and confident. A classy signature scent.',
+    price: 250000,
+    image: '/images/105.jpg',
+    category: 'Perfume',
+    perfumeType: 'Designer',
     notes: 'Fresh',
     details: {
-      size: '120ml'
+      size: '100ml'
+    }
+  },
+  {
+    id: '106',
+    name: 'Stronger With You Intensely',
+    brand: 'Emporio Armani',
+    description: 'Sweet spicy – toffee, cinnamon, vanilla, amber.',
+    vibeCheck: 'Warm and seductive. Perfect for dates and winter evenings.',
+    price: 180000,
+    image: '/images/106.jpg',
+    category: 'Perfume',
+    perfumeType: 'Designer',
+    notes: 'Spicy',
+    details: {
+      size: '100ml'
+    }
+  },
+  {
+    id: '107',
+    name: 'Tom Ford Black Orchid',
+    brand: 'Tom Ford',
+    description: 'Dark floral oriental – truffle, orchid, chocolate, patchouli.',
+    vibeCheck: 'Daring, sensual, and mysterious. Ideal for bold personalities.',
+    price: 280000,
+    image: '/images/107.jpg',
+    category: 'Perfume',
+    perfumeType: 'Designer',
+    notes: 'Oriental',
+    details: {
+      size: '100ml'
+    }
+  },
+  {
+    id: '108',
+    name: 'Tom Ford Noir Extreme',
+    brand: 'Tom Ford',
+    description: 'Warm gourmand – cardamom, nutmeg, kulfi dessert, vanilla, amber.',
+    vibeCheck: 'Luxurious, exotic, and unforgettable. A statement-making fragrance.',
+    price: 280000,
+    image: '/images/108.jpg',
+    category: 'Perfume',
+    perfumeType: 'Designer',
+    notes: 'Oriental',
+    details: {
+      size: '100ml'
+    }
+  },
+  {
+    id: '109',
+    name: 'Versace Eros Eau de Parfum',
+    brand: 'Versace',
+    description: 'Fresh woody vanilla – mint, lemon, vanilla, cedarwood.',
+    vibeCheck: 'Playful and magnetic. A fragrance full of youthful seduction.',
+    price: 190000,
+    image: '/images/109.jpg',
+    category: 'Perfume',
+    perfumeType: 'Designer',
+    notes: 'Fresh',
+    details: {
+      size: '100ml'
+    }
+  },
+  {
+    id: '110',
+    name: 'Versace Eros Eau de Toilette',
+    brand: 'Versace',
+    description: 'Fresh sweet aromatic – mint, apple, vanilla, tonka bean.',
+    vibeCheck: 'Vibrant and attention-grabbing. A clubbing essential for men.',
+    price: 190000,
+    image: '/images/110.jpg',
+    category: 'Perfume',
+    perfumeType: 'Designer',
+    notes: 'Fresh',
+    details: {
+      size: '100ml'
+    }
+  },
+  {
+    id: '111',
+    name: 'Yves Saint Laurent Libre Eau de Parfum Intense',
+    brand: 'Yves Saint Laurent',
+    description: 'Rich floral vanilla – lavender, tonka bean, orange blossom.',
+    vibeCheck: 'Bold, powerful, and elegant. Perfect for nighttime sophistication.',
+    price: 250000,
+    image: '/images/111.jpg',
+    category: 'Perfume',
+    perfumeType: 'Designer',
+    notes: 'Floral',
+    details: {
+      size: '90ml'
     }
   }
 ];
