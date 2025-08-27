@@ -30,7 +30,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 import { Truck, CreditCard, Info } from 'lucide-react';
-import { allDeliveryLocations, getShippingCost, abujaLocalPrices } from '@/lib/shipping';
+import { getShippingCost, abujaLocalPrices, abujaLocations, nigeriaStates } from '@/lib/shipping';
 import { usePaystackPayment } from 'react-paystack';
 import { GLOBAL_DISCOUNT } from '@/lib/config';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -41,7 +41,11 @@ const formSchema = z.object({
   phone: z.string().min(10, 'Please enter a valid phone number.'),
   address: z.string().min(10, 'Please enter a valid delivery address.').optional(),
   city: z.string().min(2, 'Please enter a city.').optional(),
-  state: z.string({ required_error: "Please select a location." }),
+  abujaLocation: z.string().optional(),
+  stateLocation: z.string().optional(),
+}).refine(data => data.abujaLocation || data.stateLocation, {
+    message: "Please select a delivery location.",
+    path: ['abujaLocation'], // you can assign the error to one of the fields
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -52,7 +56,7 @@ export default function CheckoutPage() {
   const { formatPrice, currency, isMounted } = useCurrency();
   const [selectedState, setSelectedState] = useState<string>('');
   const [formValues, setFormValues] = useState<FormValues | null>(null);
-  const [isLocalDelivery, setIsLocalDelivery] = useState(true);
+  const [isLocalDelivery, setIsLocalDelivery] = useState(false);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -62,29 +66,34 @@ export default function CheckoutPage() {
       phone: '',
       address: '',
       city: '',
-      state: '',
+      abujaLocation: '',
+      stateLocation: '',
     },
   });
   
-  const { formState, reset, trigger, setValue, watch } = form;
-  const watchedState = watch('state');
+  const { formState, reset, trigger, setValue, watch, getValues } = form;
+  const watchedAbujaLocation = watch('abujaLocation');
+  const watchedStateLocation = watch('stateLocation');
 
   useEffect(() => {
-    if (watchedState) {
-        const isLocal = Object.keys(abujaLocalPrices).includes(watchedState);
-        setIsLocalDelivery(isLocal);
-        if (!isLocal) {
-            setValue('address', 'N/A');
-            setValue('city', 'N/A');
-        } else {
-            const currentAddress = form.getValues('address');
-            if (currentAddress === 'N/A') {
-                setValue('address', '');
-                setValue('city', '');
-            }
+    const location = watchedAbujaLocation || watchedStateLocation;
+    setSelectedState(location || '');
+    
+    const isLocal = !!watchedAbujaLocation;
+    setIsLocalDelivery(isLocal);
+
+    if (!isLocal) {
+        setValue('address', 'N/A');
+        setValue('city', 'N/A');
+    } else {
+        if (getValues('address') === 'N/A') {
+            setValue('address', '');
+        }
+        if (getValues('city') === 'N/A') {
+            setValue('city', '');
         }
     }
-  }, [watchedState, setValue, form]);
+  }, [watchedAbujaLocation, watchedStateLocation, setValue, getValues]);
   
   const shippingCost = getShippingCost(selectedState);
   const finalTotal = totalPrice + (shippingCost || 0);
@@ -180,24 +189,43 @@ export default function CheckoutPage() {
                                 <FormItem><FormLabel>Phone Number</FormLabel><FormControl><Input type="tel" placeholder="08012345678" {...field} /></FormControl><FormMessage /></FormItem>
                             )} />
                         </div>
-                        <FormField control={form.control} name="state" render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Location (State or Abuja Area)</FormLabel>
-                                <Select onValueChange={(value) => { field.onChange(value); setSelectedState(value); }} defaultValue={field.value}>
-                                    <FormControl>
-                                        <SelectTrigger>
-                                            <SelectValue placeholder="Select a location" />
-                                        </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent position="popper">
-                                        {allDeliveryLocations.map(location => <SelectItem key={location} value={location}>{location}</SelectItem>)}
-                                    </SelectContent>
-                                </Select>
-                                <FormMessage />
-                            </FormItem>
-                        )} />
-
-                        {!isLocalDelivery && selectedState && (
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <FormField control={form.control} name="abujaLocation" render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Location (Within FCT-Abuja)</FormLabel>
+                                    <Select onValueChange={(value) => { field.onChange(value); setValue('stateLocation', ''); }} value={field.value}>
+                                        <FormControl>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Select Abuja Area" />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent position="popper">
+                                            {abujaLocations.map(location => <SelectItem key={location} value={location}>{location}</SelectItem>)}
+                                        </SelectContent>
+                                    </Select>
+                                    <FormMessage />
+                                </FormItem>
+                            )} />
+                             <FormField control={form.control} name="stateLocation" render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Location (Outside FCT-Abuja)</FormLabel>
+                                    <Select onValueChange={(value) => { field.onChange(value); setValue('abujaLocation', ''); }} value={field.value}>
+                                        <FormControl>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Select State" />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent position="popper">
+                                            {nigeriaStates.map(location => <SelectItem key={location} value={location}>{location}</SelectItem>)}
+                                        </SelectContent>
+                                    </Select>
+                                    <FormMessage />
+                                </FormItem>
+                            )} />
+                        </div>
+                        
+                         {!isLocalDelivery && selectedState && (
                             <Alert>
                                 <Info className="h-4 w-4" />
                                 <AlertTitle>Interstate Delivery</AlertTitle>
@@ -206,6 +234,16 @@ export default function CheckoutPage() {
                                 </AlertDescription>
                             </Alert>
                         )}
+                        
+                        <FormField control={form.control} name="city" render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>City</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="Lekki" {...field} disabled={!isLocalDelivery} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )} />
 
                         <FormField control={form.control} name="address" render={({ field }) => (
                             <FormItem>
@@ -214,16 +252,6 @@ export default function CheckoutPage() {
                                     <Input placeholder="123, Luxe Avenue" {...field} disabled={!isLocalDelivery} />
                                 </FormControl>
                                 {isLocalDelivery && <FormDescription>Street address is only for deliveries within Abuja.</FormDescription>}
-                                <FormMessage />
-                            </FormItem>
-                        )} />
-
-                        <FormField control={form.control} name="city" render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>City</FormLabel>
-                                <FormControl>
-                                    <Input placeholder="Lekki" {...field} disabled={!isLocalDelivery} />
-                                </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )} />
@@ -289,5 +317,3 @@ export default function CheckoutPage() {
     </div>
   );
 }
-
-    

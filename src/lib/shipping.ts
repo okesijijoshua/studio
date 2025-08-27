@@ -77,6 +77,10 @@ export const nigeriaStatesPrices: Record<string, number> = {
     "FCT-Abuja": 3000, // Default FCT price if a specific area isn't chosen
 };
 
+export const abujaLocations = Object.keys(abujaLocalPrices).sort((a,b) => a.localeCompare(b));
+export const nigeriaStates = Object.keys(nigeriaStatesPrices).sort((a,b) => a.localeCompare(b));
+
+
 // Combine all locations into a single sorted list for the dropdown
 export const allDeliveryLocations: string[] = [
     ...Object.keys(abujaLocalPrices),
@@ -103,5 +107,3 @@ export function getShippingCost(location: string): number | null {
     // Fallback if the location is somehow not in either list
     return 8000;
 }
-
-    
