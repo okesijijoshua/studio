@@ -73,7 +73,6 @@ export const products: Product[] = [
     perfumeType: 'Signature',
     brand: 'Lattafa',
     notes: 'Woody',
-    discount: 10,
     details: {
       size: '100ml'
     }

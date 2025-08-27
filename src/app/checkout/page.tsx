@@ -29,7 +29,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 import { Truck, CreditCard } from 'lucide-react';
-import { nigerianStates, getShippingCost } from '@/lib/shipping';
+import { allDeliveryLocations, getShippingCost } from '@/lib/shipping';
 import { usePaystackPayment } from 'react-paystack';
 import { GLOBAL_DISCOUNT } from '@/lib/config';
 
@@ -39,7 +39,7 @@ const formSchema = z.object({
   phone: z.string().min(10, 'Please enter a valid phone number.'),
   address: z.string().min(10, 'Please enter a valid delivery address.'),
   city: z.string().min(2, 'Please enter a city.'),
-  state: z.string({ required_error: "Please select a state." }),
+  state: z.string({ required_error: "Please select a location." }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -168,15 +168,15 @@ export default function CheckoutPage() {
                             )} />
                            <FormField control={form.control} name="state" render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>State</FormLabel>
+                                    <FormLabel>Location (State or Abuja Area)</FormLabel>
                                     <Select onValueChange={(value) => { field.onChange(value); setSelectedState(value); }} defaultValue={field.value}>
                                         <FormControl>
                                             <SelectTrigger>
-                                                <SelectValue placeholder="Select a state" />
+                                                <SelectValue placeholder="Select a location" />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent position="popper">
-                                            {nigerianStates.map(state => <SelectItem key={state} value={state}>{state}</SelectItem>)}
+                                            {allDeliveryLocations.map(location => <SelectItem key={location} value={location}>{location}</SelectItem>)}
                                         </SelectContent>
                                     </Select>
                                     <FormMessage />
@@ -230,7 +230,7 @@ export default function CheckoutPage() {
                     </div>
                     <div className="flex justify-between">
                         <p className="text-muted-foreground">Shipping</p>
-                        <p className="font-medium">{isMounted && shippingCost ? formatPrice(shippingCost) : 'Select a state'}</p>
+                        <p className="font-medium">{isMounted && shippingCost ? formatPrice(shippingCost) : 'Select a location'}</p>
                     </div>
                 </div>
                 <Separator className="my-6" />

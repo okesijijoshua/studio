@@ -1,89 +1,104 @@
 
-export const nigerianStates: string[] = [
-    "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue",
-    "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu",
-    "Gombe", "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi",
-    "Kwara", "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun", "Oyo",
-    "Plateau", "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara", "FCT-Abuja"
-];
-
-// --- New Distance-Based Pricing Configuration ---
-
-// You can adjust these values to fit your business model.
-const BASE_PRICE = 1500; // A flat fee for every order, in NGN.
-const PER_KM_RATE = 15; // The price per kilometer, in NGN.
-
-// Wuse Market, Abuja, is our starting point.
-// These are approximate road distances from Wuse Market to each state capital.
-const distancesFromAbuja: Record<string, number> = {
-    // FCT
-    "FCT-Abuja": 20, // Local delivery distance
-    
-    // North Central
-    "Nasarawa": 220, // Lafia
-    "Niger": 155, // Minna
-    "Kogi": 200, // Lokoja
-    "Kwara": 310, // Ilorin
-    "Plateau": 245, // Jos
-    "Benue": 340, // Makurdi
-
-    // North West
-    "Kaduna": 215,
-    "Kano": 440,
-    "Katsina": 600,
-    "Jigawa": 570, // Dutse
-    "Sokoto": 700,
-    "Zamfara": 580, // Gusau
-    "Kebbi": 650, // Birnin Kebbi
-
-    // North East
-    "Bauchi": 430,
-    "Gombe": 560,
-    "Adamawa": 760, // Yola
-    "Taraba": 680, // Jalingo
-    "Yobe": 860, // Damaturu
-    "Borno": 870, // Maiduguri
-
-    // South West
-    "Lagos": 760,
-    "Ogun": 680, // Abeokuta
-    "Oyo": 540, // Ibadan
-    "Osun": 530, // Oshogbo
-    "Ondo": 460, // Akure
-    "Ekiti": 440, // Ado-Ekiti
-
-    // South East
-    "Enugu": 470,
-    "Imo": 540, // Owerri
-    "Abia": 610, // Umuahia
-    "Anambra": 470, // Awka
-    "Ebonyi": 540, // Abakaliki
-    
-    // South South
-    "Edo": 540, // Benin City
-    "Delta": 550, // Asaba
-    "Rivers": 630, // Port Harcourt
-    "Bayelsa": 640, // Yenagoa
-    "Akwa Ibom": 680, // Uyo
-    "Cross River": 770, // Calabar
+export const abujaLocalPrices: Record<string, number> = {
+    "Maitama": 2000,
+    "Asokoro": 2300,
+    "Garki": 2000,
+    "Gwarimpa": 2500,
+    "Utako": 2000,
+    "Jabi": 2000,
+    "Apo": 2500,
+    "Nyanya": 3500,
+    "Mararaba": 4000,
+    "Lugbe": 3000,
+    "Kubwa": 3000,
+    "Kuje": 4500,
+    "Karu": 3500,
+    "Lokogoma": 3000,
+    "LifeCamp": 2500,
+    "Mpape": 2500,
+    "AirportRoad": 3500,
+    "Galadimawa": 3000,
+    "DeiDei": 4000,
+    "Zuba": 4500,
 };
 
-/**
- * Calculates the shipping cost based on distance from Abuja.
- * @param state The destination state.
- * @returns The calculated shipping cost, or null if no state is provided.
- */
-export function getShippingCost(state: string): number | null {
-    if (!state) return null;
+export const nigeriaStatesPrices: Record<string, number> = {
+    "Lagos": 8000,
+    "Kano": 8000,
+    "PortHarcourt": 8000,
+    "Ibadan": 8000,
+    "Kaduna": 5000,
+    "Jos": 5000,
+    "BeninCity": 8000,
+    "Enugu": 8000,
+    "Maiduguri": 8000,
+    "Yola": 8000,
+    "Bauchi": 7000,
+    "Ilorin": 7000,
+    "Calabar": 8000,
+    "Owerri": 8000,
+    "Akure": 8000,
+    "Sokoto": 8000,
+    "Gusau": 8000,
+    "Katsina": 8000,
+    "Minna": 4000,
+    "Lokoja": 4000,
+    "Uyo": 8000,
+    "Makurdi": 6000,
+    "AdoEkiti": 8000,
+    "Abeokuta": 8000,
+    "Warri": 8000,
+    "Onitsha": 8000,
+    "Umuahia": 8000,
+    "Jalingo": 8000,
+    "Damaturu": 8000,
+    "Lafia": 3000,
+    "BirninKebbi": 8000,
+    "Dutse": 7500,
+    "Gombe": 8000,
+    "Yenagoa": 8000,
+    "Awka": 8000,
+    "Ogbomoso": 8000,
+    "Oyo": 8000,
+    "IjebuOde": 8000,
+    "Ekpoma": 8000,
+    "Idah": 6000,
+    "Okene": 5000,
+    "Kontagora": 5000,
+    "Gboko": 6500,
+    "Nsukka": 8000,
+    "Ilesha": 8000,
+    "Osogbo": 8000,
+    "Akwanga": 3000,
+    "Keffi": 3000,
+    "Bida": 5000,
+    "Azare": 7000,
+    "FCT-Abuja": 3000, // Default FCT price if a specific area isn't chosen
+};
 
-    const distance = distancesFromAbuja[state];
-    
-    // If the state is not in our list, use a default high distance (e.g., 1000km)
-    if (distance === undefined) {
-        return BASE_PRICE + (1000 * PER_KM_RATE);
+// Combine all locations into a single sorted list for the dropdown
+export const allDeliveryLocations: string[] = [
+    ...Object.keys(abujaLocalPrices),
+    ...Object.keys(nigeriaStatesPrices)
+].sort();
+
+
+/**
+ * Calculates the shipping cost from the fixed pricing table.
+ * @param location The destination location (local Abuja area or state/city).
+ * @returns The shipping cost, or null if no location is provided.
+ */
+export function getShippingCost(location: string): number | null {
+    if (!location) return null;
+
+    if (abujaLocalPrices[location] !== undefined) {
+        return abujaLocalPrices[location];
     }
 
-    // Round to the nearest 50 for cleaner pricing
-    const calculatedCost = BASE_PRICE + (distance * PER_KM_RATE);
-    return Math.round(calculatedCost / 50) * 50;
+    if (nigeriaStatesPrices[location] !== undefined) {
+        return nigeriaStatesPrices[location];
+    }
+    
+    // Fallback if the location is somehow not in either list
+    return 8000;
 }
