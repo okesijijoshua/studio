@@ -124,7 +124,8 @@ export default function CollectionsPage() {
     if (searchTerm) {
         products = products.filter(p => 
             p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            p.description.toLowerCase().includes(searchTerm.toLowerCase())
+            p.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            p.brand.toLowerCase().includes(searchTerm.toLowerCase())
         );
     }
 
@@ -346,7 +347,7 @@ export default function CollectionsPage() {
           <SheetTitle className="font-headline text-2xl">Filters</SheetTitle>
         </SheetHeader>
         <ScrollArea className="flex-1">
-            <div className="p-6">
+            <div className="p-6 pl-3">
                 <AccordionFilters />
             </div>
         </ScrollArea>
@@ -374,7 +375,7 @@ export default function CollectionsPage() {
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
         <Input
             type="search"
-            placeholder="Search perfumes by name or description..."
+            placeholder="Search by name, brand, or description..."
             className="pl-10 w-full"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
