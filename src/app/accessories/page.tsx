@@ -24,10 +24,11 @@ import { Label } from '@/components/ui/label';
 import { useCurrency } from '@/hooks/use-currency';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { Filter } from 'lucide-react';
+import { Filter, Search } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Input } from '@/components/ui/input';
 
 
 const BRANDS = [...new Set(allProducts.filter(p => p.category === 'Accessory').map(p => p.brand))];
@@ -85,6 +86,7 @@ export default function AccessoriesPage() {
   const [sortOption, setSortOption] = useState('name-asc');
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState([0, MAX_PRICE]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   
   useEffect(() => {
@@ -100,11 +102,18 @@ export default function AccessoriesPage() {
     if (!pageParam) {
       setCurrentPage(1);
     }
-  }, [selectedBrands, priceRange, sortOption]);
+  }, [selectedBrands, priceRange, sortOption, searchTerm]);
 
 
   const filteredAndSortedProducts = useMemo(() => {
     let products = allProducts.filter(p => p.category === 'Accessory');
+
+    if (searchTerm) {
+        products = products.filter(p => 
+            p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            p.description.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    }
 
     if (selectedBrands.length > 0) {
       products = products.filter(p => selectedBrands.includes(p.brand));
@@ -128,7 +137,7 @@ export default function AccessoriesPage() {
     }
 
     return products;
-  }, [sortOption, selectedBrands, priceRange]);
+  }, [sortOption, selectedBrands, priceRange, searchTerm]);
 
   const totalPages = Math.ceil(filteredAndSortedProducts.length / PRODUCTS_PER_PAGE);
 
@@ -248,12 +257,12 @@ export default function AccessoriesPage() {
           Filter By
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="w-full max-w-sm flex flex-col">
-        <SheetHeader>
+      <SheetContent side="left" className="w-full max-w-sm flex flex-col p-0">
+        <SheetHeader className="p-6 pb-0">
           <SheetTitle className="font-headline text-2xl">Filters</SheetTitle>
         </SheetHeader>
         <ScrollArea className="flex-1">
-          <div className="py-4 pr-4 pl-3">
+          <div className="p-6">
             <AccordionFilters />
           </div>
         </ScrollArea>
@@ -276,10 +285,23 @@ export default function AccessoriesPage() {
         <p className="mt-2 text-muted-foreground">Browse our stylish and functional accessories.</p>
       </div>
 
+       <div className="relative mb-8 max-w-lg mx-auto">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+        <Input
+            type="search"
+            placeholder="Search accessories by name or description..."
+            className="pl-10 w-full"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Filters Sidebar */}
-        <aside className="md:col-span-1 md:sticky md:top-24 h-fit md:h-[calc(100vh-12rem)] md:overflow-y-auto pr-4">
+        <aside className="md:col-span-1 md:sticky md:top-24 h-fit md:h-[calc(100vh-12rem)]">
+          <ScrollArea className="h-full pr-4">
             {!isMounted ? <FilterSkeleton /> : (isMobile ? <MobileFilters /> : <Filters />)}
+          </ScrollArea>
         </aside>
 
         {/* Products Grid */}
@@ -330,7 +352,7 @@ export default function AccessoriesPage() {
           ) : (
             <div className="flex flex-col items-center justify-center h-full text-center">
                 <p className="text-lg font-semibold">No accessories found</p>
-                <p className="text-muted-foreground">Try adjusting your filters.</p>
+                <p className="text-muted-foreground">Try adjusting your search or filters.</p>
             </div>
           )}
         </main>

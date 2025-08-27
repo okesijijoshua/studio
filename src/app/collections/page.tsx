@@ -26,9 +26,10 @@ import { useCurrency } from '@/hooks/use-currency';
 import { Badge } from '@/components/ui/badge';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { Filter } from 'lucide-react';
+import { Filter, Search } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Input } from '@/components/ui/input';
 
 
 const PERFUME_TYPES = ['All Perfumes', 'Dekemi Perfumes', 'Designer Perfumes', 'Signature Perfumes', 'Mini Perfumes'];
@@ -90,6 +91,7 @@ export default function CollectionsPage() {
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedNoteCategories, setSelectedNoteCategories] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState([0, MAX_PRICE]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   
   useEffect(() => {
@@ -108,16 +110,23 @@ export default function CollectionsPage() {
   }, [searchParams]);
   
   useEffect(() => {
-    // Reset to first page whenever filters change, but not on initial page load with params
+    // Reset to first page whenever filters change
     const pageParam = searchParams.get('page');
     if (!pageParam) {
       setCurrentPage(1);
     }
-  }, [selectedPerfumeType, selectedBrands, selectedNoteCategories, priceRange, sortOption]);
+  }, [selectedPerfumeType, selectedBrands, selectedNoteCategories, priceRange, sortOption, searchTerm]);
 
 
   const filteredAndSortedProducts = useMemo(() => {
     let products = allProducts.filter(p => p.category === 'Perfume');
+
+    if (searchTerm) {
+        products = products.filter(p => 
+            p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            p.description.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    }
 
     if (selectedPerfumeType && selectedPerfumeType !== 'All Perfumes') {
       const internalType = selectedPerfumeType.split(' ')[0];
@@ -150,7 +159,7 @@ export default function CollectionsPage() {
     }
 
     return products;
-  }, [sortOption, selectedPerfumeType, selectedBrands, selectedNoteCategories, priceRange]);
+  }, [sortOption, selectedPerfumeType, selectedBrands, selectedNoteCategories, priceRange, searchTerm]);
 
   const totalPages = Math.ceil(filteredAndSortedProducts.length / PRODUCTS_PER_PAGE);
 
@@ -332,12 +341,12 @@ export default function CollectionsPage() {
           Filter By
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="w-full max-w-sm flex flex-col">
-        <SheetHeader>
+      <SheetContent side="left" className="w-full max-w-sm flex flex-col p-0">
+        <SheetHeader className="p-6 pb-0">
           <SheetTitle className="font-headline text-2xl">Filters</SheetTitle>
         </SheetHeader>
         <ScrollArea className="flex-1">
-            <div className="py-4 pr-4 pl-3">
+            <div className="p-6">
                 <AccordionFilters />
             </div>
         </ScrollArea>
@@ -361,6 +370,17 @@ export default function CollectionsPage() {
         <p className="mt-2 text-muted-foreground">Browse our exquisite collection of fragrances.</p>
       </div>
 
+      <div className="relative mb-8 max-w-lg mx-auto">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+        <Input
+            type="search"
+            placeholder="Search perfumes by name or description..."
+            className="pl-10 w-full"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+
        {selectedPerfumeType && (
         <div className="mb-8 flex flex-wrap items-center justify-center gap-2">
             <span className="text-sm font-medium">Active Filter:</span>
@@ -375,8 +395,10 @@ export default function CollectionsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Filters Sidebar */}
-        <aside className="md:col-span-1 md:sticky md:top-24 h-fit md:h-[calc(100vh-12rem)] md:overflow-y-auto pr-4">
-           {!isMounted ? <FilterSkeleton /> : (isMobile ? <MobileFilters /> : <Filters />)}
+        <aside className="md:col-span-1 md:sticky md:top-24 h-fit md:h-[calc(100vh-12rem)]">
+          <ScrollArea className="h-full pr-4">
+            {!isMounted ? <FilterSkeleton /> : (isMobile ? <MobileFilters /> : <Filters />)}
+          </ScrollArea>
         </aside>
 
         {/* Products Grid */}
@@ -427,7 +449,7 @@ export default function CollectionsPage() {
           ) : (
             <div className="flex flex-col items-center justify-center h-full text-center">
                 <p className="text-lg font-semibold">No products found</p>
-                <p className="text-muted-foreground">Try adjusting your filters.</p>
+                <p className="text-muted-foreground">Try adjusting your search or filters.</p>
             </div>
           )}
         </main>
