@@ -15,6 +15,7 @@ import type { Product } from '@/lib/types';
 import { useEffect, useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Badge } from '@/components/ui/badge';
 
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -77,6 +78,9 @@ export default function ProductDetailPage() {
     return <div className="container mx-auto py-10 text-center">Loading product...</div>;
   }
 
+  const originalPrice = product.price;
+  const discountedPrice = product.discount ? originalPrice - (originalPrice * product.discount / 100) : originalPrice;
+
   const handleAddToCart = () => {
     addToCart(product, 1);
     toast({
@@ -105,6 +109,11 @@ export default function ProductDetailPage() {
                 className="object-cover rounded-lg shadow-lg"
                 data-ai-hint="perfume bottle lifestyle"
             />
+            {product.discount && (
+                <Badge variant="destructive" className="absolute top-4 left-4 text-lg">
+                    {product.discount}% OFF
+                </Badge>
+            )}
         </div>
         <div className="space-y-6">
             <div className="space-y-2">
@@ -112,7 +121,12 @@ export default function ProductDetailPage() {
                 <h1 className="font-headline text-4xl font-bold">{product.name}</h1>
             </div>
             
-            <p className="text-3xl font-semibold">{formatPrice(product.price)}</p>
+             <div className="flex items-baseline gap-4">
+                <p className="text-3xl font-semibold">{formatPrice(discountedPrice)}</p>
+                {product.discount && (
+                    <p className="text-xl text-muted-foreground line-through">{formatPrice(originalPrice)}</p>
+                )}
+            </div>
             
             <Tabs defaultValue="description" className="w-full">
                 <TabsList className="grid w-full grid-cols-2">

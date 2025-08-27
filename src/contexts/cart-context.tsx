@@ -81,7 +81,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }, [cartItems]);
 
   const totalPrice = useMemo(() => {
-    return cartItems.reduce((total, item) => total + item.product.price * item.quantity, 0);
+    return cartItems.reduce((total, item) => {
+      const price = item.product.discount 
+        ? item.product.price - (item.product.price * item.product.discount / 100)
+        : item.product.price;
+      return total + price * item.quantity;
+    }, 0);
   }, [cartItems]);
 
   const value = {

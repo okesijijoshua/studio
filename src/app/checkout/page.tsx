@@ -197,18 +197,28 @@ export default function CheckoutPage() {
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">
-                    {cartItems.map(item => (
-                        <div key={item.product.id} className="flex items-center justify-between">
-                            <div className="flex items-center gap-4">
-                                <Image src={item.product.image} alt={item.product.name} width={60} height={60} className="rounded-md" />
-                                <div>
-                                    <p className="font-semibold">{item.product.name}</p>
-                                    <p className="text-sm text-muted-foreground">Qty: {item.quantity}</p>
+                    {cartItems.map(item => {
+                        const originalPrice = item.product.price;
+                        const discountedPrice = item.product.discount ? originalPrice - (originalPrice * item.product.discount / 100) : originalPrice;
+                        
+                        return (
+                            <div key={item.product.id} className="flex items-center justify-between">
+                                <div className="flex items-center gap-4">
+                                    <Image src={item.product.image} alt={item.product.name} width={60} height={60} className="rounded-md" />
+                                    <div>
+                                        <p className="font-semibold">{item.product.name}</p>
+                                        <p className="text-sm text-muted-foreground">Qty: {item.quantity}</p>
+                                    </div>
+                                </div>
+                                <div className="text-right">
+                                    <p className="font-medium">{formatPrice(discountedPrice * item.quantity)}</p>
+                                    {item.product.discount && (
+                                        <p className="text-sm text-muted-foreground line-through">{formatPrice(originalPrice * item.quantity)}</p>
+                                    )}
                                 </div>
                             </div>
-                            <p className="font-medium">{formatPrice(item.product.price * item.quantity)}</p>
-                        </div>
-                    ))}
+                        )
+                    })}
                 </div>
                 <Separator className="my-6" />
                 <div className="space-y-2">

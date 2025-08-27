@@ -10,6 +10,7 @@ export type Product = {
   perfumeType?: 'Dekemi' | 'Designer' | 'Signature' | 'Mini';
   brand: string;
   notes?: 'Woody' | 'Floral' | 'Oriental' | 'Fresh' | 'Spicy';
+  discount?: number; // Discount percentage
   details?: {
     size?: string;
     color?: string;
