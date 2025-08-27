@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -19,6 +19,7 @@ import {
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -28,17 +29,18 @@ import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
-import { Truck, CreditCard } from 'lucide-react';
-import { allDeliveryLocations, getShippingCost } from '@/lib/shipping';
+import { Truck, CreditCard, Info } from 'lucide-react';
+import { allDeliveryLocations, getShippingCost, abujaLocalPrices } from '@/lib/shipping';
 import { usePaystackPayment } from 'react-paystack';
 import { GLOBAL_DISCOUNT } from '@/lib/config';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 const formSchema = z.object({
   fullName: z.string().min(3, 'Full name must be at least 3 characters.'),
   email: z.string().email('Please enter a valid email address.'),
   phone: z.string().min(10, 'Please enter a valid phone number.'),
-  address: z.string().min(10, 'Please enter a valid delivery address.'),
-  city: z.string().min(2, 'Please enter a city.'),
+  address: z.string().min(10, 'Please enter a valid delivery address.').optional(),
+  city: z.string().min(2, 'Please enter a city.').optional(),
   state: z.string({ required_error: "Please select a location." }),
 });
 
@@ -50,6 +52,7 @@ export default function CheckoutPage() {
   const { formatPrice, currency, isMounted } = useCurrency();
   const [selectedState, setSelectedState] = useState<string>('');
   const [formValues, setFormValues] = useState<FormValues | null>(null);
+  const [isLocalDelivery, setIsLocalDelivery] = useState(true);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -62,8 +65,26 @@ export default function CheckoutPage() {
       state: '',
     },
   });
+  
+  const { formState, reset, trigger, setValue, watch } = form;
+  const watchedState = watch('state');
 
-  const { formState, reset, trigger } = form;
+  useEffect(() => {
+    if (watchedState) {
+        const isLocal = Object.keys(abujaLocalPrices).includes(watchedState);
+        setIsLocalDelivery(isLocal);
+        if (!isLocal) {
+            setValue('address', 'N/A');
+            setValue('city', 'N/A');
+        } else {
+            const currentAddress = form.getValues('address');
+            if (currentAddress === 'N/A') {
+                setValue('address', '');
+                setValue('city', '');
+            }
+        }
+    }
+  }, [watchedState, setValue, form]);
   
   const shippingCost = getShippingCost(selectedState);
   const finalTotal = totalPrice + (shippingCost || 0);
@@ -159,30 +180,54 @@ export default function CheckoutPage() {
                                 <FormItem><FormLabel>Phone Number</FormLabel><FormControl><Input type="tel" placeholder="08012345678" {...field} /></FormControl><FormMessage /></FormItem>
                             )} />
                         </div>
-                        <FormField control={form.control} name="address" render={({ field }) => (
-                            <FormItem><FormLabel>Street Address</FormLabel><FormControl><Input placeholder="123, Luxe Avenue" {...field} /></FormControl><FormMessage /></FormItem>
+                        <FormField control={form.control} name="state" render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Location (State or Abuja Area)</FormLabel>
+                                <Select onValueChange={(value) => { field.onChange(value); setSelectedState(value); }} defaultValue={field.value}>
+                                    <FormControl>
+                                        <SelectTrigger>
+                                            <SelectValue placeholder="Select a location" />
+                                        </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent position="popper">
+                                        {allDeliveryLocations.map(location => <SelectItem key={location} value={location}>{location}</SelectItem>)}
+                                    </SelectContent>
+                                </Select>
+                                <FormMessage />
+                            </FormItem>
                         )} />
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <FormField control={form.control} name="city" render={({ field }) => (
-                                <FormItem><FormLabel>City</FormLabel><FormControl><Input placeholder="Lekki" {...field} /></FormControl><FormMessage /></FormItem>
-                            )} />
-                           <FormField control={form.control} name="state" render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Location (State or Abuja Area)</FormLabel>
-                                    <Select onValueChange={(value) => { field.onChange(value); setSelectedState(value); }} defaultValue={field.value}>
-                                        <FormControl>
-                                            <SelectTrigger>
-                                                <SelectValue placeholder="Select a location" />
-                                            </SelectTrigger>
-                                        </FormControl>
-                                        <SelectContent position="popper">
-                                            {allDeliveryLocations.map(location => <SelectItem key={location} value={location}>{location}</SelectItem>)}
-                                        </SelectContent>
-                                    </Select>
-                                    <FormMessage />
-                                </FormItem>
-                            )} />
-                        </div>
+
+                        {!isLocalDelivery && selectedState && (
+                            <Alert>
+                                <Info className="h-4 w-4" />
+                                <AlertTitle>Interstate Delivery</AlertTitle>
+                                <AlertDescription>
+                                    Deliveries to {selectedState} will be sent to a central park/hub for pickup.
+                                </AlertDescription>
+                            </Alert>
+                        )}
+
+                        <FormField control={form.control} name="address" render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Street Address</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="123, Luxe Avenue" {...field} disabled={!isLocalDelivery} />
+                                </FormControl>
+                                {isLocalDelivery && <FormDescription>Street address is only for deliveries within Abuja.</FormDescription>}
+                                <FormMessage />
+                            </FormItem>
+                        )} />
+
+                        <FormField control={form.control} name="city" render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>City</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="Lekki" {...field} disabled={!isLocalDelivery} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )} />
+
                          <Button type="button" onClick={handleProceedToPayment} disabled={formState.isSubmitting || totalItems === 0 || !selectedState} className="w-full text-base sm:text-lg py-4">
                             {formState.isSubmitting ? 'Processing...' : `Proceed to Payment - ${!isMounted || !formattedFinalTotal ? "Calculating..." : formattedFinalTotal}`}
                         </Button>
@@ -244,3 +289,5 @@ export default function CheckoutPage() {
     </div>
   );
 }
+
+    

@@ -1,4 +1,5 @@
 
+
 export const abujaLocalPrices: Record<string, number> = {
     "Maitama": 2000,
     "Asokoro": 2300,
@@ -80,7 +81,7 @@ export const nigeriaStatesPrices: Record<string, number> = {
 export const allDeliveryLocations: string[] = [
     ...Object.keys(abujaLocalPrices),
     ...Object.keys(nigeriaStatesPrices)
-].sort();
+].sort((a, b) => a.localeCompare(b));
 
 
 /**
@@ -102,3 +103,5 @@ export function getShippingCost(location: string): number | null {
     // Fallback if the location is somehow not in either list
     return 8000;
 }
+
+    
