@@ -89,7 +89,7 @@ export default function ProductDetailPage() {
   ).slice(0, 3);
 
   return (
-    <div className="container mx-auto py-12">
+    <div className="container mx-auto px-4 py-12">
        <Button variant="ghost" onClick={handleGoBack} className="mb-8">
         <ArrowLeft className="mr-2" />
         Go Back
