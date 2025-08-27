@@ -31,6 +31,7 @@ import { Separator } from '@/components/ui/separator';
 import { Truck, CreditCard } from 'lucide-react';
 import { nigerianStates, getShippingCost } from '@/lib/shipping';
 import { usePaystackPayment } from 'react-paystack';
+import { GLOBAL_DISCOUNT } from '@/lib/config';
 
 const formSchema = z.object({
   fullName: z.string().min(3, 'Full name must be at least 3 characters.'),
@@ -198,8 +199,9 @@ export default function CheckoutPage() {
             <CardContent>
                 <div className="space-y-4">
                     {cartItems.map(item => {
+                        const activeDiscount = item.product.discount ?? GLOBAL_DISCOUNT;
                         const originalPrice = item.product.price;
-                        const discountedPrice = item.product.discount ? originalPrice - (originalPrice * item.product.discount / 100) : originalPrice;
+                        const discountedPrice = activeDiscount > 0 ? originalPrice - (originalPrice * activeDiscount / 100) : originalPrice;
                         
                         return (
                             <div key={item.product.id} className="flex items-center justify-between">
@@ -212,7 +214,7 @@ export default function CheckoutPage() {
                                 </div>
                                 <div className="text-right">
                                     <p className="font-medium">{formatPrice(discountedPrice * item.quantity)}</p>
-                                    {item.product.discount && (
+                                    {activeDiscount > 0 && (
                                         <p className="text-sm text-muted-foreground line-through">{formatPrice(originalPrice * item.quantity)}</p>
                                     )}
                                 </div>

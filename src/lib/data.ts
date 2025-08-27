@@ -13,7 +13,6 @@ export const products: Product[] = [
     perfumeType: 'Signature',
     brand: 'Afnan',
     notes: 'Fresh',
-    discount: 15,
     details: {
       size: '100ml'
     }

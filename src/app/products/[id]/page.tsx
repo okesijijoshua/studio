@@ -16,6 +16,7 @@ import { useEffect, useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
+import { GLOBAL_DISCOUNT } from '@/lib/config';
 
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -78,8 +79,9 @@ export default function ProductDetailPage() {
     return <div className="container mx-auto py-10 text-center">Loading product...</div>;
   }
 
+  const activeDiscount = product.discount ?? GLOBAL_DISCOUNT;
   const originalPrice = product.price;
-  const discountedPrice = product.discount ? originalPrice - (originalPrice * product.discount / 100) : originalPrice;
+  const discountedPrice = activeDiscount > 0 ? originalPrice - (originalPrice * activeDiscount / 100) : originalPrice;
 
   const handleAddToCart = () => {
     addToCart(product, 1);
@@ -109,9 +111,9 @@ export default function ProductDetailPage() {
                 className="object-cover rounded-lg shadow-lg"
                 data-ai-hint="perfume bottle lifestyle"
             />
-            {product.discount && (
+            {activeDiscount > 0 && (
                 <Badge variant="destructive" className="absolute top-4 left-4 text-lg">
-                    {product.discount}% OFF
+                    {activeDiscount}% OFF
                 </Badge>
             )}
         </div>
@@ -123,7 +125,7 @@ export default function ProductDetailPage() {
             
              <div className="flex items-baseline gap-4">
                 <p className="text-3xl font-semibold">{formatPrice(discountedPrice)}</p>
-                {product.discount && (
+                {activeDiscount > 0 && (
                     <p className="text-xl text-muted-foreground line-through">{formatPrice(originalPrice)}</p>
                 )}
             </div>

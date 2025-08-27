@@ -11,6 +11,7 @@ import { useCart } from '@/hooks/use-cart';
 import { useToast } from '@/hooks/use-toast';
 import { ShoppingCart, Eye } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { GLOBAL_DISCOUNT } from '@/lib/config';
 
 interface ProductCardProps {
   product: Product;
@@ -34,8 +35,9 @@ export function ProductCard({ product, currentPage }: ProductCardProps) {
   
   const productLink = currentPage ? `/products/${product.id}?fromPage=${currentPage}` : `/products/${product.id}`;
 
+  const activeDiscount = product.discount ?? GLOBAL_DISCOUNT;
   const originalPrice = product.price;
-  const discountedPrice = product.discount ? originalPrice - (originalPrice * product.discount / 100) : originalPrice;
+  const discountedPrice = activeDiscount > 0 ? originalPrice - (originalPrice * activeDiscount / 100) : originalPrice;
 
 
   return (
@@ -50,9 +52,9 @@ export function ProductCard({ product, currentPage }: ProductCardProps) {
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
                 data-ai-hint="perfume bottle"
             />
-             {product.discount && (
+             {activeDiscount > 0 && (
                 <Badge variant="destructive" className="absolute top-2 left-2 text-sm">
-                    {product.discount}% OFF
+                    {activeDiscount}% OFF
                 </Badge>
             )}
              <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -73,7 +75,7 @@ export function ProductCard({ product, currentPage }: ProductCardProps) {
       <CardFooter className="flex flex-col items-start gap-2 p-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
          <div className="flex flex-col items-start sm:flex-row sm:items-center sm:gap-2">
             <p className="text-lg font-semibold">{formatPrice(discountedPrice)}</p>
-            {product.discount && (
+            {activeDiscount > 0 && (
                 <p className="text-sm text-muted-foreground line-through">{formatPrice(originalPrice)}</p>
             )}
         </div>

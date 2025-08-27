@@ -3,6 +3,7 @@
 
 import React, { createContext, useState, useEffect, useMemo, type ReactNode } from 'react';
 import type { CartItem, Product } from '@/lib/types';
+import { GLOBAL_DISCOUNT } from '@/lib/config';
 
 interface CartContextType {
   cartItems: CartItem[];
@@ -82,8 +83,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const totalPrice = useMemo(() => {
     return cartItems.reduce((total, item) => {
-      const price = item.product.discount 
-        ? item.product.price - (item.product.price * item.product.discount / 100)
+      const activeDiscount = item.product.discount ?? GLOBAL_DISCOUNT;
+      const price = activeDiscount > 0
+        ? item.product.price - (item.product.price * activeDiscount / 100)
         : item.product.price;
       return total + price * item.quantity;
     }, 0);
