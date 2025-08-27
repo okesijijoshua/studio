@@ -30,7 +30,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 import { Truck, CreditCard, Info } from 'lucide-react';
-import { getShippingCost, abujaLocalPrices, abujaLocations, nigeriaStates } from '@/lib/shipping';
+import { getShippingCost, abujaLocations, nigeriaStates } from '@/lib/shipping';
 import { usePaystackPayment } from 'react-paystack';
 import { GLOBAL_DISCOUNT } from '@/lib/config';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -40,7 +40,6 @@ const formSchema = z.object({
   email: z.string().email('Please enter a valid email address.'),
   phone: z.string().min(10, 'Please enter a valid phone number.'),
   address: z.string().min(10, 'Please enter a valid delivery address.').optional(),
-  city: z.string().min(2, 'Please enter a city.').optional(),
   abujaLocation: z.string().optional(),
   stateLocation: z.string().optional(),
 }).refine(data => data.abujaLocation || data.stateLocation, {
@@ -65,7 +64,6 @@ export default function CheckoutPage() {
       email: '',
       phone: '',
       address: '',
-      city: '',
       abujaLocation: '',
       stateLocation: '',
     },
@@ -84,13 +82,9 @@ export default function CheckoutPage() {
 
     if (!isLocal) {
         setValue('address', 'N/A');
-        setValue('city', 'N/A');
     } else {
         if (getValues('address') === 'N/A') {
             setValue('address', '');
-        }
-        if (getValues('city') === 'N/A') {
-            setValue('city', '');
         }
     }
   }, [watchedAbujaLocation, watchedStateLocation, setValue, getValues]);
@@ -235,16 +229,6 @@ export default function CheckoutPage() {
                             </Alert>
                         )}
                         
-                        <FormField control={form.control} name="city" render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>City</FormLabel>
-                                <FormControl>
-                                    <Input placeholder="Lekki" {...field} disabled={!isLocalDelivery} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )} />
-
                         <FormField control={form.control} name="address" render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Street Address</FormLabel>
