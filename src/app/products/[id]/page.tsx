@@ -45,6 +45,8 @@ export default function ProductDetailPage() {
         { key: 'Type', value: product.perfumeType },
         { key: 'Notes Category', value: product.notes },
         { key: 'Size', value: product.details?.size },
+        { key: 'Color', value: product.details?.color },
+        { key: 'Material', value: product.details?.material },
     ];
     
     return details.filter(detail => detail.value);
