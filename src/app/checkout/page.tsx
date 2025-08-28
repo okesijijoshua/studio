@@ -34,6 +34,7 @@ import { getShippingCost, abujaLocations, nigeriaStates } from '@/lib/shipping';
 import { usePaystackPayment } from 'react-paystack';
 import { GLOBAL_DISCOUNT } from '@/lib/config';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { initializePayment } from '@/services/paymentService';
 
 const formSchema = z.object({
   fullName: z.string().min(3, 'Full name must be at least 3 characters.'),
@@ -54,7 +55,6 @@ export default function CheckoutPage() {
   const { cartItems, totalPrice, totalItems, clearCart } = useCart();
   const { formatPrice, currency, isMounted } = useCurrency();
   const [selectedState, setSelectedState] = useState<string>('');
-  const [formValues, setFormValues] = useState<FormValues | null>(null);
   const [isLocalDelivery, setIsLocalDelivery] = useState(false);
 
   const form = useForm<FormValues>({
@@ -92,14 +92,6 @@ export default function CheckoutPage() {
   const shippingCost = getShippingCost(selectedState);
   const finalTotal = totalPrice + (shippingCost || 0);
 
-  const paystackConfig = {
-      reference: (new Date()).getTime().toString(),
-      email: formValues?.email || '',
-      amount: finalTotal * 100, // Paystack amount is in kobo
-      publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || '',
-  };
-
-  const initializePayment = usePaystackPayment(paystackConfig);
 
   const onPaymentSuccess = (reference: any) => {
     console.log('Payment successful:', reference);
@@ -109,7 +101,6 @@ export default function CheckoutPage() {
     });
     clearCart();
     reset();
-    setFormValues(null);
   };
 
   const onPaymentClose = () => {
@@ -122,8 +113,16 @@ export default function CheckoutPage() {
   };
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    setFormValues(data);
-    initializePayment(onPaymentSuccess, onPaymentClose);
+    const paymentConfig = {
+      email: data.email,
+      amount: finalTotal,
+      metadata: {
+        fullName: data.fullName,
+        phone: data.phone,
+        cartItems: JSON.stringify(cartItems.map(item => ({ id: item.product.id, name: item.product.name, quantity: item.quantity }))),
+      }
+    };
+    initializePayment(paymentConfig, onPaymentSuccess, onPaymentClose);
   };
 
   const handleProceedToPayment = async () => {
