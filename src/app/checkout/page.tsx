@@ -34,7 +34,6 @@ import { getShippingCost, abujaLocations, nigeriaStates } from '@/lib/shipping';
 import { usePaystackPayment } from 'react-paystack';
 import { GLOBAL_DISCOUNT } from '@/lib/config';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { initializePayment } from '@/services/paymentService';
 
 const formSchema = z.object({
   fullName: z.string().min(3, 'Full name must be at least 3 characters.'),
@@ -92,7 +91,6 @@ export default function CheckoutPage() {
   const shippingCost = getShippingCost(selectedState);
   const finalTotal = totalPrice + (shippingCost || 0);
 
-
   const onPaymentSuccess = (reference: any) => {
     console.log('Payment successful:', reference);
     toast({
@@ -112,17 +110,22 @@ export default function CheckoutPage() {
     });
   };
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    const paymentConfig = {
-      email: data.email,
-      amount: finalTotal,
+  const config = {
+      reference: new Date().getTime().toString(),
+      email: getValues('email'),
+      amount: finalTotal * 100, // Paystack amount is in kobo
+      publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || '',
       metadata: {
-        fullName: data.fullName,
-        phone: data.phone,
+        fullName: getValues('fullName'),
+        phone: getValues('phone'),
         cartItems: JSON.stringify(cartItems.map(item => ({ id: item.product.id, name: item.product.name, quantity: item.quantity }))),
-      }
-    };
-    initializePayment(paymentConfig, onPaymentSuccess, onPaymentClose);
+      },
+  };
+
+  const initializePayment = usePaystackPayment(config);
+
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+     initializePayment(onPaymentSuccess, onPaymentClose);
   };
 
   const handleProceedToPayment = async () => {
