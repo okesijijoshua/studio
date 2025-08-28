@@ -5,16 +5,13 @@
  *
  * This file defines a Genkit flow that is triggered when a customer
  * successfully completes the checkout process. The flow's purpose is to
- * capture all relevant order information and log it.
- *
- * In a production environment, this flow would be extended to integrate
- * with an email service (like SendGrid, Nodemailer, etc.) to send a
- * formatted email confirmation to the business owner.
+ * capture all relevant order information, format it into an email,
+ * and send it to the business owner for fulfillment.
  */
 
 import { ai } from '@/ai/genkit';
-import type { CartItem } from '@/lib/types';
 import { z } from 'zod';
+import * as nodemailer from 'nodemailer';
 
 // Define the schema for the customer's information.
 const CustomerInfoSchema = z.object({
@@ -32,7 +29,6 @@ const CartItemSchema = z.object({
     id: z.string(),
     name: z.string(),
     price: z.number(),
-    // Add any other product fields you want to include in the notification
   }),
   quantity: z.number(),
 });
@@ -64,47 +60,82 @@ const orderNotificationFlow = ai.defineFlow(
     outputSchema: z.void(),
   },
   async (input) => {
+    // Log the order for debugging and record-keeping purposes
     console.log('============================================');
     console.log('          🎉 NEW ORDER RECEIVED 🎉          ');
     console.log('============================================');
-    console.log('CUSTOMER DETAILS:');
-    console.log(`- Name: ${input.customer.fullName}`);
-    console.log(`- Email: ${input.customer.email}`);
-    console.log(`- Phone: ${input.customer.phone}`);
-    if (input.customer.abujaLocation) {
-      console.log(`- Delivery Location (Abuja): ${input.customer.abujaLocation}`);
-      console.log(`- Address: ${input.customer.address}`);
-    } else {
-      console.log(`- Delivery Location (State): ${input.customer.stateLocation}`);
+    console.log('Order details received:', JSON.stringify(input, null, 2));
+
+    try {
+      // 1. Create a transporter object using SMTP transport.
+      // You must provide your email service credentials in the .env file.
+      const transporter = nodemailer.createTransport({
+        host: process.env.MAIL_HOST,
+        port: Number(process.env.MAIL_PORT || 587),
+        secure: process.env.MAIL_PORT === '465', // true for 465, false for other ports
+        auth: {
+          user: process.env.MAIL_USER, // Your email address
+          pass: process.env.MAIL_PASS, // Your email password or app-specific password
+        },
+      });
+
+      // 2. Construct the HTML for the email
+      const cartItemsHtml = input.cart.map(item => `
+        <tr>
+          <td>${item.product.name}</td>
+          <td style="text-align: center;">${item.quantity}</td>
+          <td style="text-align: right;">₦${item.product.price.toFixed(2)}</td>
+        </tr>
+      `).join('');
+
+      const emailHtml = `
+        <div style="font-family: sans-serif; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px;">
+          <h1 style="color: #333;">🎉 New Order Received!</h1>
+          <p>You've received a new order from your DekemiScents store.</p>
+          
+          <h2 style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">Customer Details</h2>
+          <p><strong>Name:</strong> ${input.customer.fullName}</p>
+          <p><strong>Email:</strong> ${input.customer.email}</p>
+          <p><strong>Phone:</strong> ${input.customer.phone}</p>
+          <p><strong>Delivery Location:</strong> ${input.customer.abujaLocation || input.customer.stateLocation}</p>
+          ${input.customer.address && input.customer.address !== 'N/A' ? `<p><strong>Address:</strong> ${input.customer.address}</p>` : ''}
+          
+          <h2 style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">Order Summary</h2>
+          <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+              <tr>
+                <th style="text-align: left; padding: 8px; border-bottom: 1px solid #ddd;">Product</th>
+                <th style="text-align: center; padding: 8px; border-bottom: 1px solid #ddd;">Quantity</th>
+                <th style="text-align: right; padding: 8px; border-bottom: 1px solid #ddd;">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${cartItemsHtml}
+            </tbody>
+          </table>
+
+          <h3 style="text-align: right; margin-top: 20px;">Subtotal: ₦${(input.total - input.shipping).toFixed(2)}</h3>
+          <h3 style="text-align: right;">Shipping: ₦${input.shipping.toFixed(2)}</h3>
+          <h2 style="text-align: right; color: #333;">Total: ₦${input.total.toFixed(2)}</h2>
+        </div>
+      `;
+      
+      // 3. Define the email options
+      const mailOptions = {
+        from: `"DekemiScents Orders" <${process.env.MAIL_FROM_ADDRESS}>`, // Sender address
+        to: process.env.MAIL_TO_ADDRESS, // Your email address to receive notifications
+        subject: `New Order Confirmation from ${input.customer.fullName}`,
+        html: emailHtml,
+      };
+      
+      // 4. Send the email
+      const info = await transporter.sendMail(mailOptions);
+      console.log('Message sent: %s', info.messageId);
+
+    } catch (error) {
+      console.error('Failed to send order notification email:', error);
+      // It's important to not throw the error here, as it would
+      // make the user's checkout process fail. We just log it.
     }
-    console.log('--------------------------------------------');
-    console.log('ORDER SUMMARY:');
-    input.cart.forEach(item => {
-      console.log(`- ${item.product.name} (x${item.quantity})`);
-    });
-    console.log('--------------------------------------------');
-    console.log(`SHIPPING COST: ${input.shipping.toFixed(2)}`);
-    console.log(`ORDER TOTAL: ${input.total.toFixed(2)}`);
-    console.log('============================================');
-    
-    // DEVELOPER NOTE:
-    // This is where you would integrate an email sending service.
-    // You could use a library like Nodemailer, or an API service like
-    // SendGrid, Resend, etc.
-    //
-    // Example using a hypothetical email service:
-    //
-    // import { EmailService } from '@/services/emailService';
-    //
-    // const emailHtml = `<h1>New Order Received!</h1>...`; // build your email content
-    //
-    // await EmailService.send({
-    //   to: 'your-email@example.com',
-    //   from: 'noreply@dekemiscents.com',
-    //   subject: `New Order from ${input.customer.fullName}`,
-    //   html: emailHtml,
-    // });
-    
-    console.log('Order details logged. Email sending logic would be implemented here.');
   }
 );
