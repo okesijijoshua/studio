@@ -34,6 +34,7 @@ import { getShippingCost, abujaLocations, nigeriaStates } from '@/lib/shipping';
 import { usePaystackPayment } from 'react-paystack';
 import { GLOBAL_DISCOUNT } from '@/lib/config';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { notifyOrder } from '@/ai/flows/order-notification';
 
 const formSchema = z.object({
   fullName: z.string().min(3, 'Full name must be at least 3 characters.'),
@@ -102,6 +103,19 @@ export default function CheckoutPage() {
 
   const onPaymentSuccess = (reference: any) => {
     console.log('Payment successful:', reference);
+    
+    // Notify backend about the order
+    notifyOrder({
+      customer: getValues(),
+      cart: cartItems,
+      total: finalTotal,
+      shipping: shippingCost || 0,
+    }).then(() => {
+        console.log("Order notification sent to backend.");
+    }).catch(error => {
+        console.error("Failed to send order notification:", error);
+    });
+
     toast({
       title: 'Payment Successful!',
       description: 'Your order has been placed. We will process it shortly.',
