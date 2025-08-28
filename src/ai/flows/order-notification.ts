@@ -5,8 +5,9 @@
  *
  * This file defines a Genkit flow that is triggered when a customer
  * successfully completes the checkout process. The flow's purpose is to
- * capture all relevant order information, format it into an email,
- * and send it to the business owner for fulfillment.
+ * capture all relevant order information, format it into two emails:
+ * 1. A detailed notification for the business owner.
+ * 2. A confirmation receipt for the customer.
  */
 
 import { ai } from '@/ai/genkit';
@@ -79,19 +80,20 @@ const orderNotificationFlow = ai.defineFlow(
         },
       });
 
-      // 2. Construct the HTML for the email
+      // 2. Construct the HTML for the cart items table (reused in both emails)
       const cartItemsHtml = input.cart.map(item => `
         <tr>
-          <td>${item.product.name}</td>
-          <td style="text-align: center;">${item.quantity}</td>
-          <td style="text-align: right;">₦${item.product.price.toFixed(2)}</td>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd;">${item.product.name}</td>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: center;">${item.quantity}</td>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">₦${item.product.price.toFixed(2)}</td>
         </tr>
       `).join('');
 
-      const emailHtml = `
+      // 3. Construct the HTML for the email to the BUSINESS OWNER
+      const ownerEmailHtml = `
         <div style="font-family: sans-serif; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px;">
           <h1 style="color: #333;">🎉 New Order Received!</h1>
-          <p>You've received a new order from your DekemiScents store.</p>
+          <p>You've received a new order from your DekemiScents store. Please process it for fulfillment.</p>
           
           <h2 style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">Customer Details</h2>
           <p><strong>Name:</strong> ${input.customer.fullName}</p>
@@ -120,20 +122,66 @@ const orderNotificationFlow = ai.defineFlow(
         </div>
       `;
       
-      // 3. Define the email options
-      const mailOptions = {
-        from: `"DekemiScents Orders" <${process.env.MAIL_FROM_ADDRESS}>`, // Sender address
-        to: process.env.MAIL_TO_ADDRESS, // Your email address to receive notifications
+      // 4. Construct the HTML for the email to the CUSTOMER
+      const customerEmailHtml = `
+        <div style="font-family: sans-serif; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px;">
+          <h1 style="color: #333;">Thank You for Your Order!</h1>
+          <p>Hi ${input.customer.fullName},</p>
+          <p>We've received your order and will begin processing it shortly. Here is a summary of your purchase:</p>
+          
+           <h2 style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">Order Summary</h2>
+          <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+              <tr>
+                <th style="text-align: left; padding: 8px; border-bottom: 1px solid #ddd;">Product</th>
+                <th style="text-align: center; padding: 8px; border-bottom: 1px solid #ddd;">Quantity</th>
+                <th style="text-align: right; padding: 8px; border-bottom: 1px solid #ddd;">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${cartItemsHtml}
+            </tbody>
+          </table>
+
+          <h3 style="text-align: right; margin-top: 20px;">Subtotal: ₦${(input.total - input.shipping).toFixed(2)}</h3>
+          <h3 style="text-align: right;">Shipping: ₦${input.shipping.toFixed(2)}</h3>
+          <h2 style="text-align: right; color: #333;">Total: ₦${input.total.toFixed(2)}</h2>
+
+          <h2 style="border-top: 1px solid #ddd; padding-top: 20px; margin-top: 30px;">Shipping Details</h2>
+          <p><strong>Name:</strong> ${input.customer.fullName}</p>
+          <p><strong>Delivery Location:</strong> ${input.customer.abujaLocation || input.customer.stateLocation}</p>
+          ${input.customer.address && input.customer.address !== 'N/A' ? `<p><strong>Address:</strong> ${input.customer.address}</p>` : ''}
+          <p>We will contact you via your provided phone number (${input.customer.phone}) regarding delivery.</p>
+
+          <p style="margin-top: 20px;">Thanks again for shopping with DekemiScents!</p>
+        </div>
+      `;
+
+      // 5. Define mail options for the business owner
+      const ownerMailOptions = {
+        from: `"DekemiScents Orders" <${process.env.MAIL_FROM_ADDRESS}>`,
+        to: process.env.MAIL_TO_ADDRESS, 
         subject: `New Order Confirmation from ${input.customer.fullName}`,
-        html: emailHtml,
+        html: ownerEmailHtml,
+      };
+
+      // 6. Define mail options for the customer
+      const customerMailOptions = {
+        from: `"DekemiScents" <${process.env.MAIL_FROM_ADDRESS}>`,
+        to: input.customer.email,
+        subject: `Your DekemiScents Order is Confirmed!`,
+        html: customerEmailHtml,
       };
       
-      // 4. Send the email
-      const info = await transporter.sendMail(mailOptions);
-      console.log('Message sent: %s', info.messageId);
+      // 7. Send both emails
+      const ownerEmailInfo = await transporter.sendMail(ownerMailOptions);
+      console.log('Owner notification sent: %s', ownerEmailInfo.messageId);
+
+      const customerEmailInfo = await transporter.sendMail(customerMailOptions);
+      console.log('Customer confirmation sent: %s', customerEmailInfo.messageId);
 
     } catch (error) {
-      console.error('Failed to send order notification email:', error);
+      console.error('Failed to send order notification email(s):', error);
       // It's important to not throw the error here, as it would
       // make the user's checkout process fail. We just log it.
     }

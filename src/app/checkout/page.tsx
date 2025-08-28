@@ -104,14 +104,16 @@ export default function CheckoutPage() {
   const onPaymentSuccess = (reference: any) => {
     console.log('Payment successful:', reference);
     
-    // Notify backend about the order
-    notifyOrder({
+    const orderData = {
       customer: getValues(),
       cart: cartItems,
       total: finalTotal,
       shipping: shippingCost || 0,
-    }).then(() => {
-        console.log("Order notification sent to backend.");
+    };
+    
+    console.log("Triggering order notification flow with data:", orderData);
+    notifyOrder(orderData).then(() => {
+        console.log("Order notification flow completed.");
     }).catch(error => {
         console.error("Failed to send order notification:", error);
     });
