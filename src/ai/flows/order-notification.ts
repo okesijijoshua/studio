@@ -5,7 +5,7 @@
  *
  * This file defines a Genkit flow that is triggered when a customer
  * successfully completes the checkout process. The flow's purpose is to
- * capture all relevant order information, format it into two emails:
+ * capture all relevant order information and send two emails:
  * 1. A detailed notification for the business owner.
  * 2. A confirmation receipt for the customer.
  */
