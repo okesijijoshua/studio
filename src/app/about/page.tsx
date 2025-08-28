@@ -70,7 +70,7 @@ export default function AboutPage() {
                     </a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin className="h-6 w-6" /></a>
+                  <a href="https://www.linkedin.com/in/fadekemi-laoke-1697b7237?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin className="h-6 w-6" /></a>
                 </Button>
               </div>
                <Button asChild className="mt-8">
