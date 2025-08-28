@@ -39,12 +39,21 @@ const formSchema = z.object({
   fullName: z.string().min(3, 'Full name must be at least 3 characters.'),
   email: z.string().email('Please enter a valid email address.'),
   phone: z.string().min(10, 'Please enter a valid phone number.'),
-  address: z.string().min(10, 'Please enter a valid delivery address.').optional(),
+  address: z.string().optional(),
   abujaLocation: z.string().optional(),
   stateLocation: z.string().optional(),
 }).refine(data => data.abujaLocation || data.stateLocation, {
     message: "Please select a delivery location.",
-    path: ['abujaLocation'], // you can assign the error to one of the fields
+    path: ['abujaLocation'], 
+}).refine(data => {
+    // If an Abuja location is selected, address is required
+    if (data.abujaLocation) {
+        return !!data.address && data.address.length >= 10;
+    }
+    return true;
+}, {
+    message: "Please enter a valid delivery address for Abuja locations.",
+    path: ["address"],
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -79,7 +88,7 @@ export default function CheckoutPage() {
     const isLocal = !!watchedAbujaLocation;
     setIsLocalDelivery(isLocal);
 
-    if (!isLocal) {
+    if (!isLocal && watchedStateLocation) {
         setValue('address', 'N/A');
     } else {
         if (getValues('address') === 'N/A') {
