@@ -73,11 +73,14 @@ const orderNotificationFlow = ai.defineFlow(
       const transporter = nodemailer.createTransport({
         host: process.env.MAIL_HOST,
         port: Number(process.env.MAIL_PORT || 587),
-        secure: process.env.MAIL_PORT === '465', // true for 465, false for other ports
+        secure: false, // Explicitly set to false for port 587 (STARTTLS)
         auth: {
           user: process.env.MAIL_USER, // Your email address
           pass: process.env.MAIL_PASS, // Your email password or app-specific password
         },
+        tls: {
+            rejectUnauthorized: false
+        }
       });
 
       // 2. Construct the HTML for the cart items table (reused in both emails)
@@ -133,7 +136,7 @@ const orderNotificationFlow = ai.defineFlow(
           <table style="width: 100%; border-collapse: collapse;">
             <thead>
               <tr>
-                <th style="text-align: left; padding: 8px; border-bottom: 1px solid #ddd;">Product</th>
+                <th style="text-allign: left; padding: 8px; border-bottom: 1px solid #ddd;">Product</th>
                 <th style="text-align: center; padding: 8px; border-bottom: 1px solid #ddd;">Quantity</th>
                 <th style="text-align: right; padding: 8px; border-bottom: 1px solid #ddd;">Price</th>
               </tr>
