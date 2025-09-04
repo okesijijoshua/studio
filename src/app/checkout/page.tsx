@@ -267,7 +267,7 @@ export default function CheckoutPage() {
                             </FormItem>
                         )} />
 
-                         <Button type="button" onClick={handleProceedToPayment} disabled={formState.isSubmitting || totalItems === 0 || !selectedState} className="w-full text-base sm:text-lg py-4">
+                         <Button type="button" onClick={handleProceedToPayment} disabled={formState.isSubmitting || totalItems === 0 || !selectedState} className="w-full text-base sm:text-lg py-3 h-auto">
                             {formState.isSubmitting ? 'Processing...' : `Proceed to Payment - ${!isMounted || !formattedFinalTotal ? "Calculating..." : formattedFinalTotal}`}
                         </Button>
                     </form>
@@ -327,4 +327,5 @@ export default function CheckoutPage() {
       </div>
     </div>
   );
-}
+
+    
