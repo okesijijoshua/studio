@@ -73,7 +73,7 @@ const orderNotificationFlow = ai.defineFlow(
       const transporter = nodemailer.createTransport({
         host: process.env.MAIL_HOST,
         port: Number(process.env.MAIL_PORT || 587),
-        secure: false, // Explicitly set to false for port 587 (STARTTLS)
+        secure: process.env.MAIL_PORT === '465', // true for 465, false for other ports
         auth: {
           user: process.env.MAIL_USER, // Your email address
           pass: process.env.MAIL_PASS, // Your email password or app-specific password
