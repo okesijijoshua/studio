@@ -20,7 +20,7 @@ export function Footer() {
             <p className="text-sm text-muted-foreground">Discover your signature scent with our exclusive collection of luxury perfumes.</p>
              <div className="flex items-start gap-2 text-sm text-muted-foreground">
                 <MapPin className="h-5 w-5 mt-0.5" />
-                <span>4th Avenue, FHA Lugbe FCT-Abuja</span>
+                <span>FCT-Abuja</span>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-8 md:col-span-2 md:grid-cols-3">
