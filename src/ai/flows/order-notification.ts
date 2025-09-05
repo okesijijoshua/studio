@@ -136,7 +136,7 @@ const orderNotificationFlow = ai.defineFlow(
           <table style="width: 100%; border-collapse: collapse;">
             <thead>
               <tr>
-                <th style="text-allign: left; padding: 8px; border-bottom: 1px solid #ddd;">Product</th>
+                <th style="text-align: left; padding: 8px; border-bottom: 1px solid #ddd;">Product</th>
                 <th style="text-align: center; padding: 8px; border-bottom: 1px solid #ddd;">Quantity</th>
                 <th style="text-align: right; padding: 8px; border-bottom: 1px solid #ddd;">Price</th>
               </tr>
