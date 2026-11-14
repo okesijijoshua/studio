@@ -108,5 +108,5 @@ export function getShippingCost(location: string): number | null {
   if (nigeriaStatesPrices[location] !== undefined) {
     return nigeriaStatesPrices[location];
   }
-  return 4000;
+  return null;
 }

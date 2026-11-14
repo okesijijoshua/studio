@@ -503,7 +503,7 @@ export const products: Product[] = [
     "description": "A luxurious mix of saffron, amber, warm woods and vanilla.",
     "vibeCheck": "Opulence bottled—ideal for weddings and grand events",
     "price": 30000,
-    "image": "images/Gold Elixir.PNG",
+    "image": "/images/Gold Elixir.PNG",
     "category": "Perfume",
     "perfumeType": "Signature",
     "brand": "Lattafa",

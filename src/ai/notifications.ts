@@ -7,28 +7,28 @@ import * as nodemailer from 'nodemailer';
 
 // Schemas (same as original order-notification flow)
 const CustomerInfoSchema = z.object({
-  fullName: z.string(),
-  email: z.string(),
-  phone: z.string(),
-  address: z.string().optional(),
-  abujaLocation: z.string().optional(),
-  stateLocation: z.string().optional(),
+  fullName: z.string().trim().min(1).max(120),
+  email: z.string().email().max(254),
+  phone: z.string().trim().max(30),
+  address: z.string().trim().max(300).optional(),
+  abujaLocation: z.string().trim().max(100).optional(),
+  stateLocation: z.string().trim().max(100).optional(),
 });
 
 const CartItemSchema = z.object({
   product: z.object({
-    id: z.string(),
-    name: z.string(),
-    price: z.number(),
+    id: z.string().max(100),
+    name: z.string().max(200),
+    price: z.number().finite().nonnegative(),
   }),
-  quantity: z.number(),
+  quantity: z.number().int().positive().max(100),
 });
 
 const OrderNotificationInputSchema = z.object({
   customer: CustomerInfoSchema,
-  cart: z.array(CartItemSchema),
-  total: z.number(),
-  shipping: z.number(),
+  cart: z.array(CartItemSchema).min(1).max(50),
+  total: z.number().finite().nonnegative(),
+  shipping: z.number().finite().nonnegative(),
 });
 
 export type OrderNotificationInput = z.infer<typeof OrderNotificationInputSchema>;
@@ -37,13 +37,32 @@ export type OrderNotificationInput = z.infer<typeof OrderNotificationInputSchema
  * Sends order notification emails to the store owner and the customer.
  * This function replaces the previous Genkit flow.
  */
-export async function sendOrderNotification(input: OrderNotificationInput): Promise<void> {
+function escapeHtml(value: string): string {
+  return value.replace(/[&<>"']/g, (character) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+  })[character]!);
+}
+
+export async function sendOrderNotification(input: OrderNotificationInput): Promise<boolean> {
+  const parsed = OrderNotificationInputSchema.safeParse(input);
+  if (!parsed.success) {
+    console.error('Order notification input was invalid');
+    return false;
+  }
+  input = parsed.data;
+  const customerName = escapeHtml(input.customer.fullName);
+  const customerPhone = escapeHtml(input.customer.phone);
+  const deliveryLocation = escapeHtml(input.customer.abujaLocation || input.customer.stateLocation || '');
+  const address = input.customer.address && input.customer.address !== 'N/A'
+    ? `<p><strong>Address:</strong> ${escapeHtml(input.customer.address)}</p>`
+    : '';
+
   // Build HTML for cart items (shared between emails)
   const cartItemsHtml = input.cart
     .map(
       (item) => `
         <tr>
-          <td style="padding: 8px; border-bottom: 1px solid #ddd;">${item.product.name}</td>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd;">${escapeHtml(item.product.name)}</td>
           <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: center;">${item.quantity}</td>
           <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">₦${item.product.price.toFixed(2)}</td>
         </tr>
@@ -57,11 +76,11 @@ export async function sendOrderNotification(input: OrderNotificationInput): Prom
       <h1 style="color: #333;">🎉 New Order Received!</h1>
       <p>You've received a new order from your DekemiScents store. Please process it for fulfillment.</p>
       <h2 style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">Customer Details</h2>
-      <p><strong>Name:</strong> ${input.customer.fullName}</p>
-      <p><strong>Email:</strong> ${input.customer.email}</p>
-      <p><strong>Phone:</strong> ${input.customer.phone}</p>
-      <p><strong>Delivery Location:</strong> ${input.customer.abujaLocation || input.customer.stateLocation}</p>
-      ${input.customer.address && input.customer.address !== 'N/A' ? `<p><strong>Address:</strong> ${input.customer.address}</p>` : ''}
+      <p><strong>Name:</strong> ${customerName}</p>
+      <p><strong>Email:</strong> ${escapeHtml(input.customer.email)}</p>
+      <p><strong>Phone:</strong> ${customerPhone}</p>
+      <p><strong>Delivery Location:</strong> ${deliveryLocation}</p>
+      ${address}
       <h2 style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">Order Summary</h2>
       <table style="width: 100%; border-collapse: collapse;">
         <thead>
@@ -85,7 +104,7 @@ export async function sendOrderNotification(input: OrderNotificationInput): Prom
   const customerEmailHtml = `
     <div style="font-family: sans-serif; max-width: 600px; margin: auto; border: 1px solid #ddd; padding: 20px;">
       <h1 style="color: #333;">Thank You for Your Order!</h1>
-      <p>Hi ${input.customer.fullName},</p>
+      <p>Hi ${customerName},</p>
       <p>We've received your order and will begin processing it shortly. Here is a summary of your purchase:</p>
       <h2 style="border-bottom: 1px solid #ddd; padding-bottom: 5px;">Order Summary</h2>
       <table style="width: 100%; border-collapse: collapse;">
@@ -104,46 +123,54 @@ export async function sendOrderNotification(input: OrderNotificationInput): Prom
       <h3 style="text-align: right;">Shipping: ₦${input.shipping.toFixed(2)}</h3>
       <h2 style="text-align: right; color: #333;">Total: ₦${input.total.toFixed(2)}</h2>
       <h2 style="border-top: 1px solid #ddd; padding-top: 20px; margin-top: 30px;">Shipping Details</h2>
-      <p><strong>Name:</strong> ${input.customer.fullName}</p>
-      <p><strong>Delivery Location:</strong> ${input.customer.abujaLocation || input.customer.stateLocation}</p>
-      ${input.customer.address && input.customer.address !== 'N/A' ? `<p><strong>Address:</strong> ${input.customer.address}</p>` : ''}
-      <p>We will contact you via your provided phone number (${input.customer.phone}) regarding delivery.</p>
+      <p><strong>Name:</strong> ${customerName}</p>
+      <p><strong>Delivery Location:</strong> ${deliveryLocation}</p>
+      ${address}
+      <p>We will contact you via your provided phone number (${customerPhone}) regarding delivery.</p>
       <p style="margin-top: 20px;">Thanks again for shopping with DekemiScents!</p>
     </div>
   `;
 
   // Create transporter using environment variables
-  const transporter = nodemailer.createTransport({
-    host: process.env.MAIL_HOST,
-    port: Number(process.env.MAIL_PORT || 587),
-    auth: {
-      user: process.env.MAIL_USER,
-      pass: process.env.MAIL_PASS,
-    },
-    tls: { rejectUnauthorized: false },
-  });
-
+  const { MAIL_HOST, MAIL_USER, MAIL_PASS, MAIL_FROM_ADDRESS, MAIL_TO_ADDRESS } = process.env;
+  if (!MAIL_HOST || !MAIL_USER || !MAIL_PASS || !MAIL_FROM_ADDRESS || !MAIL_TO_ADDRESS) {
+    console.error('Order notification email configuration is incomplete');
+    return false;
+  }
   const ownerMailOptions = {
-    from: `"DekemiScents Orders" <${process.env.MAIL_FROM_ADDRESS}>`,
-    to: process.env.MAIL_TO_ADDRESS,
-    subject: `New Order Confirmation from ${input.customer.fullName}`,
+    from: `"DekemiScents Orders" <${MAIL_FROM_ADDRESS}>`,
+    to: MAIL_TO_ADDRESS,
+    subject: `New Order Confirmation from ${input.customer.fullName.replace(/[\r\n]/g, ' ')}`,
     html: ownerEmailHtml,
   };
 
   const customerMailOptions = {
-    from: `"DekemiScents" <${process.env.MAIL_FROM_ADDRESS}>`,
+    from: `"DekemiScents" <${MAIL_FROM_ADDRESS}>`,
     to: input.customer.email,
     subject: `Your DekemiScents Order is Confirmed!`,
     html: customerEmailHtml,
   };
 
   try {
-    const ownerInfo = await transporter.sendMail(ownerMailOptions);
-    console.log('Owner notification sent: %s', ownerInfo.messageId);
-    const customerInfo = await transporter.sendMail(customerMailOptions);
-    console.log('Customer confirmation sent: %s', customerInfo.messageId);
+    const transporter = nodemailer.createTransport({
+      host: MAIL_HOST,
+      port: Number(process.env.MAIL_PORT || 587),
+      auth: { user: MAIL_USER, pass: MAIL_PASS },
+    });
+    const results = await Promise.allSettled([
+      transporter.sendMail(ownerMailOptions),
+      transporter.sendMail(customerMailOptions),
+    ]);
+    results.forEach((result, index) => {
+      if (result.status === 'fulfilled') {
+        console.log(`${index === 0 ? 'Owner' : 'Customer'} notification sent: %s`, result.value.messageId);
+      } else {
+        console.error(`${index === 0 ? 'Owner' : 'Customer'} notification failed:`, result.reason);
+      }
+    });
+    return results.every((result) => result.status === 'fulfilled');
   } catch (error) {
     console.error('Failed to send order notification email(s):', error);
-    // Do not rethrow – we do not want the checkout to fail because of email issues.
+    return false;
   }
 }

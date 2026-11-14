@@ -4,12 +4,16 @@ import { db } from '@/lib/server/firebaseAdmin';
 import { sendOrderNotification } from '@/ai/notifications';
 
 const ConfirmSchema = z.object({
-  reference: z.string(),
-});
+  reference: z.string().min(1).max(100).regex(/^order_[a-f0-9-]+$/i),
+}).strict();
 
 export async function POST(request: Request) {
   try {
-    const { reference } = ConfirmSchema.parse(await request.json());
+    const body = await request.text();
+    if (body.length > 4_000) {
+      return NextResponse.json({ error: 'Request is too large' }, { status: 413 });
+    }
+    const { reference } = ConfirmSchema.parse(JSON.parse(body));
     // Retrieve pending order
     const orderRef = db.collection('orders').doc(reference);
     const orderSnap = await orderRef.get();
@@ -19,10 +23,6 @@ export async function POST(request: Request) {
     const orderData = orderSnap.data();
     if (!orderData) {
       return new NextResponse('Invalid order data', { status: 500 });
-    }
-    if (orderData.status === 'paid') {
-      // Idempotent: already processed
-      return NextResponse.json({ message: 'Order already paid', reference });
     }
     const PAYSTACK_SECRET = process.env.PAYSTACK_SECRET_KEY;
     if (!PAYSTACK_SECRET) throw new Error('PAYSTACK_SECRET_KEY missing');
@@ -43,30 +43,44 @@ export async function POST(request: Request) {
     }
 
     // Mark order as paid atomically
-    await db.runTransaction(async (t: any) => {
+    const shouldNotify = await db.runTransaction(async (t) => {
       const snap = await t.get(orderRef);
       if (!snap.exists) throw new Error('Order disappeared');
       const current = snap.data();
+      const notificationStartedAt = Date.parse(current?.notificationStartedAt || '');
+      const notificationLeaseExpired = Number.isNaN(notificationStartedAt)
+        || Date.now() - notificationStartedAt > 5 * 60 * 1000;
       if (current?.status !== 'paid') {
-        t.update(orderRef, { status: 'paid', paidAt: new Date().toISOString() });
+        const now = new Date().toISOString();
+        t.update(orderRef, { status: 'paid', paidAt: now, notificationStatus: 'sending', notificationStartedAt: now });
+        return true;
       }
+      if (current.notificationStatus === 'sent' || (current.notificationStatus === 'sending' && !notificationLeaseExpired)) return false;
+      t.update(orderRef, { notificationStatus: 'sending', notificationStartedAt: new Date().toISOString() });
+      return true;
     });
 
-    // Send notifications (owner + customer)
-    try {
-      await sendOrderNotification({
-        customer: orderData.customer,
-        cart: orderData.cart,
-        total: orderData.total,
-        shipping: orderData.shipping,
-      });
-    } catch (e) {
-      console.error('Notification error:', e);
+    if (shouldNotify) {
+      try {
+        const sent = await sendOrderNotification({
+          customer: orderData.customer,
+          cart: orderData.cart,
+          total: orderData.total,
+          shipping: orderData.shipping,
+        });
+        await orderRef.update({ notificationStatus: sent ? 'sent' : 'failed' });
+      } catch (notificationError) {
+        console.error('Order notification error:', notificationError);
+        await orderRef.update({ notificationStatus: 'failed' });
+      }
     }
 
     return NextResponse.json({ message: 'Payment verified and order marked as paid', reference });
-  } catch (err: any) {
+  } catch (err) {
     console.error('Confirm error', err);
-    return new NextResponse(err.message || 'Invalid request', { status: 400 });
+    if (err instanceof z.ZodError || err instanceof SyntaxError) {
+      return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
+    }
+    return NextResponse.json({ error: 'Unable to confirm payment' }, { status: 500 });
   }
 }

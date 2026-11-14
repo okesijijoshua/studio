@@ -38,6 +38,9 @@ export function ProductCard({ product, currentPage }: ProductCardProps) {
   const activeDiscount = product.discount ?? GLOBAL_DISCOUNT;
   const originalPrice = product.price;
   const discountedPrice = activeDiscount > 0 ? originalPrice - (originalPrice * activeDiscount / 100) : originalPrice;
+  const imageSrc = product.image.startsWith('/') || /^https?:\/\//i.test(product.image)
+    ? product.image
+    : `/${product.image.replace(/^\.\/+/, '')}`;
 
 
   return (
@@ -46,7 +49,7 @@ export function ProductCard({ product, currentPage }: ProductCardProps) {
         <CardHeader className="p-0">
             <div className="relative aspect-square w-full">
             <Image
-                src={product.image}
+                src={imageSrc}
                 alt={product.name}
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
