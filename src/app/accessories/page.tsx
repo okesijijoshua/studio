@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, Suspense } from 'react';
 import { products as allProducts } from '@/lib/data';
 import type { Product } from '@/lib/types';
 import { ProductCard } from '@/components/shared/product-card';
@@ -29,7 +28,6 @@ import { useSearchParams } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Input } from '@/components/ui/input';
-
 
 const BRANDS = [...new Set(allProducts.filter(p => p.category === 'Accessory').map(p => p.brand))];
 const MAX_PRICE = Math.max(...allProducts.filter(p => p.category === 'Accessory').map(p => p.price));
@@ -72,13 +70,13 @@ const usePagination = ({ totalPages, siblingCount = 1, currentPage }: { totalPag
         }
 
         return [];
-
     }, [totalPages, siblingCount, currentPage]);
 
     return paginationRange;
 }
 
-export default function AccessoriesPage() {
+function AccessoriesContent() {
+  // Original component body starts here
   const { formatPrice } = useCurrency();
   const { isMobile, isMounted } = useIsMobile();
   const searchParams = useSearchParams();
@@ -88,7 +86,7 @@ export default function AccessoriesPage() {
   const [priceRange, setPriceRange] = useState([0, MAX_PRICE]);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  
+
   useEffect(() => {
     const pageFromUrl = searchParams.get('page');
     if (pageFromUrl && !isNaN(parseInt(pageFromUrl))) {
@@ -103,7 +101,6 @@ export default function AccessoriesPage() {
       setCurrentPage(1);
     }
   }, [selectedBrands, priceRange, sortOption, searchTerm]);
-
 
   const filteredAndSortedProducts = useMemo(() => {
     let products = allProducts.filter(p => p.category === 'Accessory');
@@ -152,7 +149,7 @@ export default function AccessoriesPage() {
 
   const toggleFilter = (setter: React.Dispatch<React.SetStateAction<string[]>>, value: string) => {
     setter(prev => prev.includes(value) ? prev.filter(item => item !== value) : [...prev, value]);
-  }
+  };
 
   const Filters = () => (
      <div className="space-y-6">
@@ -183,17 +180,17 @@ export default function AccessoriesPage() {
         <div>
             <Label className="text-lg font-headline">Price Range</Label>
             <div className="mt-4">
-            <Slider
-                min={0}
-                max={MAX_PRICE}
-                step={1000}
-                value={priceRange}
-                onValueChange={(value) => setPriceRange(value)}
-            />
+                <Slider
+                    min={0}
+                    max={MAX_PRICE}
+                    step={1000}
+                    value={priceRange}
+                    onValueChange={(value) => setPriceRange(value)}
+                />
                 <div className="flex justify-between text-sm text-muted-foreground mt-2">
-                <span>{formatPrice(priceRange[0])}</span>
-                <span>{formatPrice(priceRange[1])}</span>
-            </div>
+                    <span>{formatPrice(priceRange[0])}</span>
+                    <span>{formatPrice(priceRange[1])}</span>
+                </div>
             </div>
         </div>
     </div>
@@ -201,53 +198,53 @@ export default function AccessoriesPage() {
 
   const AccordionFilters = () => (
      <Accordion type="multiple" className="w-full">
-        <AccordionItem value="sort">
-            <AccordionTrigger className="text-lg font-headline">Sort By</AccordionTrigger>
-            <AccordionContent>
-                <Select value={sortOption} onValueChange={setSortOption}>
-                    <SelectTrigger className="w-full mt-2">
-                    <SelectValue placeholder="Sort products" />
-                    </SelectTrigger>
-                    <SelectContent>
-                    <SelectItem value="name-asc">Alphabetically, A-Z</SelectItem>
-                    <SelectItem value="name-desc">Alphabetically, Z-A</SelectItem>
-                    <SelectItem value="price-asc">Price, low to high</SelectItem>
-                    <SelectItem value="price-desc">Price, high to low</SelectItem>
-                    </SelectContent>
-                </Select>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="brand">
-            <AccordionTrigger className="text-lg font-headline">Brand</AccordionTrigger>
-            <AccordionContent>
+         <AccordionItem value="sort">
+             <AccordionTrigger className="text-lg font-headline">Sort By</AccordionTrigger>
+             <AccordionContent>
+                 <Select value={sortOption} onValueChange={setSortOption}>
+                     <SelectTrigger className="w-full mt-2">
+                     <SelectValue placeholder="Sort products" />
+                     </SelectTrigger>
+                     <SelectContent>
+                     <SelectItem value="name-asc">Alphabetically, A-Z</SelectItem>
+                     <SelectItem value="name-desc">Alphabetically, Z-A</SelectItem>
+                     <SelectItem value="price-asc">Price, low to high</SelectItem>
+                     <SelectItem value="price-desc">Price, high to low</SelectItem>
+                     </SelectContent>
+                 </Select>
+             </AccordionContent>
+         </AccordionItem>
+         <AccordionItem value="brand">
+             <AccordionTrigger className="text-lg font-headline">Brand</AccordionTrigger>
+             <AccordionContent>
                  <div className="mt-2 space-y-2">
-                    {BRANDS.map(brand => (
-                        <Button key={brand} variant={selectedBrands.includes(brand) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleFilter(setSelectedBrands, brand)}>
-                            {brand}
-                        </Button>
-                    ))}
-                </div>
-            </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="price">
-            <AccordionTrigger className="text-lg font-headline">Price</AccordionTrigger>
-            <AccordionContent>
+                 {BRANDS.map(brand => (
+                     <Button key={brand} variant={selectedBrands.includes(brand) ? 'secondary' : 'ghost'} className="w-full justify-start" onClick={() => toggleFilter(setSelectedBrands, brand)}>
+                         {brand}
+                     </Button>
+                 ))}
+                 </div>
+             </AccordionContent>
+         </AccordionItem>
+         <AccordionItem value="price">
+             <AccordionTrigger className="text-lg font-headline">Price</AccordionTrigger>
+             <AccordionContent>
                  <div className="mt-4">
-                    <Slider
-                    min={0}
-                    max={MAX_PRICE}
-                    step={1000}
-                    value={priceRange}
-                    onValueChange={(value) => setPriceRange(value)}
-                    />
-                    <div className="flex justify-between text-sm text-muted-foreground mt-2">
-                        <span>{formatPrice(priceRange[0])}</span>
-                        <span>{formatPrice(priceRange[1])}</span>
-                    </div>
-                </div>
-            </AccordionContent>
-        </AccordionItem>
-    </Accordion>
+                     <Slider
+                     min={0}
+                     max={MAX_PRICE}
+                     step={1000}
+                     value={priceRange}
+                     onValueChange={(value) => setPriceRange(value)}
+                     />
+                     <div className="flex justify-between text-sm text-muted-foreground mt-2">
+                         <span>{formatPrice(priceRange[0])}</span>
+                         <span>{formatPrice(priceRange[1])}</span>
+                     </div>
+                 </div>
+             </AccordionContent>
+         </AccordionItem>
+     </Accordion>
   );
 
   const MobileFilters = () => (
@@ -269,9 +266,9 @@ export default function AccessoriesPage() {
         </ScrollArea>
       </SheetContent>
     </Sheet>
-  )
-  
-   const FilterSkeleton = () => (
+  );
+
+  const FilterSkeleton = () => (
     <div className="space-y-6">
       <Skeleton className="h-10 w-full" />
       <Skeleton className="h-20 w-full" />
@@ -286,7 +283,7 @@ export default function AccessoriesPage() {
         <p className="mt-2 text-muted-foreground">Browse our stylish and functional accessories.</p>
       </div>
 
-       <div className="relative mb-8 max-w-lg mx-auto">
+      <div className="relative mb-8 max-w-lg mx-auto">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
         <Input
             type="search"
@@ -310,9 +307,9 @@ export default function AccessoriesPage() {
           {paginatedProducts.length > 0 ? (
             <>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {paginatedProducts.map(product => (
+                {paginatedProducts.map(product => (
                   <ProductCard key={product.id} product={product} currentPage={currentPage} />
-                  ))}
+                ))}
               </div>
                {totalPages > 1 && (
                 <div className="mt-8 flex justify-center items-center gap-2">
@@ -325,19 +322,19 @@ export default function AccessoriesPage() {
                     Previous
                   </Button>
                   {paginationRange?.map((pageNumber, index) => {
-                      if (pageNumber === DOTS) {
-                          return <span key={`${pageNumber}-${index}`} className="px-2 py-1 text-muted-foreground">...</span>;
-                      }
-                      return (
-                          <Button
-                              key={pageNumber}
-                              variant={currentPage === pageNumber ? 'secondary' : 'ghost'}
-                              size="sm"
-                              onClick={() => setCurrentPage(pageNumber as number)}
-                          >
-                              {pageNumber}
-                          </Button>
-                      )
+                    if (pageNumber === DOTS) {
+                        return <span key={`${pageNumber}-${index}`} className="px-2 py-1 text-muted-foreground">...</span>;
+                    }
+                    return (
+                        <Button
+                            key={pageNumber}
+                            variant={currentPage === pageNumber ? 'secondary' : 'ghost'}
+                            size="sm"
+                            onClick={() => setCurrentPage(pageNumber as number)}
+                        >
+                            {pageNumber}
+                        </Button>
+                    )
                   })}
                   <Button
                     variant="outline"
@@ -348,7 +345,7 @@ export default function AccessoriesPage() {
                     Next
                   </Button>
                 </div>
-              )}
+               )}
             </>
           ) : (
             <div className="flex flex-col items-center justify-center h-full text-center">
@@ -361,3 +358,13 @@ export default function AccessoriesPage() {
     </div>
   );
 }
+
+function AccessoriesPage() {
+  return (
+    <Suspense fallback={<div className="p-4 text-center">Loading accessories...</div>}>
+      <AccessoriesContent />
+    </Suspense>
+  );
+}
+
+export default AccessoriesPage;

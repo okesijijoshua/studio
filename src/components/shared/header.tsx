@@ -22,7 +22,6 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/collections', label: 'Perfumes' },
   { href: '/accessories', label: 'Accessories' },
-  { href: '/ai-fragrance-guide', label: 'AI Fragrance Guide' },
   { href: '/about', label: 'About Us' },
 ];
 
@@ -142,3 +141,4 @@ export function Header() {
     </header>
   );
 }
+

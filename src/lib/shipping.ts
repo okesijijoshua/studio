@@ -1,109 +1,112 @@
+/**
+ * Shipping calculation for DekemiScents.
+ * Internal dispatch origin: FHA Lugbe, Abuja.
+ * Note: The dispatch origin is kept internal and NOT displayed to users.
+ */
 
+export interface LocationCoords {
+  lat: number;
+  lng: number;
+  name?: string;
+}
 
-export const abujaLocalPrices: Record<string, number> = {
-    "Maitama": 2000,
-    "Asokoro": 2300,
-    "Garki": 2000,
-    "Gwarimpa": 2500,
-    "Utako": 2000,
-    "Jabi": 2000,
-    "Apo": 2500,
-    "Nyanya": 3500,
-    "Mararaba": 4000,
-    "Lugbe": 3000,
-    "Kubwa": 3000,
-    "Kuje": 4500,
-    "Karu": 3500,
-    "Lokogoma": 3000,
-    "LifeCamp": 2500,
-    "Mpape": 2500,
-    "AirportRoad": 3500,
-    "Galadimawa": 3000,
-    "DeiDei": 4000,
-    "Zuba": 4500,
+// Internal dispatch origin (FHA Lugbe, Abuja)
+export const DISPATCH_ORIGIN: LocationCoords = {
+  name: "FHA Lugbe, Abuja",
+  lat: 8.9733,
+  lng: 7.3755,
 };
 
+// Pre-calculated delivery fees for Abuja locations from FHA Lugbe (+₦1,000 applied)
+export const ABUJA_AREAS: Record<string, { lat: number; lng: number; fee: number }> = {
+  "Lugbe (FHA / Federal Housing)": { lat: 8.9733, lng: 7.3755, fee: 2500 },
+  "Lugbe (Airport Road / Trademore / Pyakasa)": { lat: 8.9600, lng: 7.3500, fee: 2800 },
+  "Airport / Airport Road": { lat: 9.0068, lng: 7.2631, fee: 3000 },
+  "Galadimawa": { lat: 8.9950, lng: 7.4350, fee: 3000 },
+  "Lokogoma": { lat: 8.9800, lng: 7.4600, fee: 3200 },
+  "Apo (Resettlement / Legislative / Mechanic)": { lat: 9.0050, lng: 7.4950, fee: 3500 },
+  "Garki (Area 1 - Area 11)": { lat: 9.0333, lng: 7.4833, fee: 3500 },
+  "Central Business District (CBD)": { lat: 9.0546, lng: 7.4878, fee: 4000 },
+  "Wuse 2": { lat: 9.0765, lng: 7.4760, fee: 4000 },
+  "Wuse (Zone 1 - 7 / Market)": { lat: 9.0686, lng: 7.4648, fee: 4000 },
+  "Utako": { lat: 9.0633, lng: 7.4410, fee: 4000 },
+  "Jabi": { lat: 9.0700, lng: 7.4200, fee: 4000 },
+  "Asokoro": { lat: 9.0430, lng: 7.5270, fee: 4000 },
+  "Guzape": { lat: 9.0200, lng: 7.5300, fee: 4000 },
+  "Wuye": { lat: 9.0450, lng: 7.4500, fee: 4000 },
+  "Life Camp": { lat: 9.0720, lng: 7.3850, fee: 4000 },
+  "Maitama": { lat: 9.0882, lng: 7.4934, fee: 4000 },
+  "Mabushi": { lat: 9.0833, lng: 7.4600, fee: 4500 },
+  "Gwarinpa": { lat: 9.1120, lng: 7.3980, fee: 4500 },
+  "Kado": { lat: 9.0900, lng: 7.4200, fee: 4500 },
+  "Jahi": { lat: 9.1000, lng: 7.4400, fee: 4500 },
+  "Dawaki": { lat: 9.1350, lng: 7.3750, fee: 4800 },
+  "Kuje": { lat: 8.8800, lng: 7.2300, fee: 5000 },
+  "Mpape": { lat: 9.1300, lng: 7.5000, fee: 5000 },
+  "Karu": { lat: 9.0000, lng: 7.5650, fee: 4800 },
+  "Nyanya": { lat: 8.9900, lng: 7.5900, fee: 5000 },
+  "Mararaba": { lat: 8.9800, lng: 7.6200, fee: 5500 },
+  "Kubwa": { lat: 9.1550, lng: 7.3350, fee: 5500 },
+  "Dei-Dei": { lat: 9.1400, lng: 7.2900, fee: 5800 },
+  "Bwari": { lat: 9.2800, lng: 7.3800, fee: 6500 },
+  "Zuba": { lat: 9.1050, lng: 7.2000, fee: 6500 },
+};
+
+export const abujaLocations = Object.keys(ABUJA_AREAS).sort((a, b) => a.localeCompare(b));
+
+// Interstate delivery fees for states outside Abuja (+₦1,000 applied)
 export const nigeriaStatesPrices: Record<string, number> = {
-    "Lagos": 8000,
-    "Kano": 8000,
-    "PortHarcourt": 8000,
-    "Ibadan": 8000,
-    "Kaduna": 5000,
-    "Jos": 5000,
-    "BeninCity": 8000,
-    "Enugu": 8000,
-    "Maiduguri": 8000,
-    "Yola": 8000,
-    "Bauchi": 7000,
-    "Ilorin": 7000,
-    "Calabar": 8000,
-    "Owerri": 8000,
-    "Akure": 8000,
-    "Sokoto": 8000,
-    "Gusau": 8000,
-    "Katsina": 8000,
-    "Minna": 4000,
-    "Lokoja": 4000,
-    "Uyo": 8000,
-    "Makurdi": 6000,
-    "AdoEkiti": 8000,
-    "Abeokuta": 8000,
-    "Warri": 8000,
-    "Onitsha": 8000,
-    "Umuahia": 8000,
-    "Jalingo": 8000,
-    "Damaturu": 8000,
-    "Lafia": 3000,
-    "BirninKebbi": 8000,
-    "Dutse": 7500,
-    "Gombe": 8000,
-    "Yenagoa": 8000,
-    "Awka": 8000,
-    "Ogbomoso": 8000,
-    "Oyo": 8000,
-    "IjebuOde": 8000,
-    "Ekpoma": 8000,
-    "Idah": 6000,
-    "Okene": 5000,
-    "Kontagora": 5000,
-    "Gboko": 6500,
-    "Nsukka": 8000,
-    "Ilesha": 8000,
-    "Osogbo": 8000,
-    "Akwanga": 3000,
-    "Keffi": 3000,
-    "Bida": 5000,
-    "Azare": 7000,
-    "FCT-Abuja": 3000, // Default FCT price if a specific area isn't chosen
+  "Lagos": 9000,
+  "Kano": 9000,
+  "Port Harcourt (Rivers)": 9000,
+  "Ibadan (Oyo)": 9000,
+  "Kaduna": 6000,
+  "Jos (Plateau)": 6000,
+  "Benin City (Edo)": 9000,
+  "Enugu": 9000,
+  "Maiduguri (Borno)": 9000,
+  "Yola (Adamawa)": 9000,
+  "Bauchi": 8000,
+  "Ilorin (Kwara)": 8000,
+  "Calabar (Cross River)": 9000,
+  "Owerri (Imo)": 9000,
+  "Akure (Ondo)": 9000,
+  "Sokoto": 9000,
+  "Gusau (Zamfara)": 9000,
+  "Katsina": 9000,
+  "Minna (Niger)": 5000,
+  "Lokoja (Kogi)": 5000,
+  "Uyo (Akwa Ibom)": 9000,
+  "Makurdi (Benue)": 7000,
+  "Ado-Ekiti (Ekiti)": 9000,
+  "Abeokuta (Ogun)": 9000,
+  "Delta (Warri / Asaba)": 9000,
+  "Anambra (Onitsha / Awka)": 9000,
+  "Abia (Umuahia / Aba)": 9000,
+  "Jalingo (Taraba)": 9000,
+  "Damaturu (Yobe)": 9000,
+  "Lafia (Nasarawa)": 4000,
+  "Keffi (Nasarawa)": 4000,
+  "Birnin Kebbi (Kebbi)": 9000,
+  "Dutse (Jigawa)": 8500,
+  "Gombe": 9000,
+  "Yenagoa (Bayelsa)": 9000,
+  "Ebonyi (Abakaliki)": 9000,
+  "Osogbo (Osun)": 9000,
 };
 
-export const abujaLocations = Object.keys(abujaLocalPrices).sort((a,b) => a.localeCompare(b));
-export const nigeriaStates = Object.keys(nigeriaStatesPrices).sort((a,b) => a.localeCompare(b));
-
-
-// Combine all locations into a single sorted list for the dropdown
-export const allDeliveryLocations: string[] = [
-    ...Object.keys(abujaLocalPrices),
-    ...Object.keys(nigeriaStatesPrices)
-].sort((a, b) => a.localeCompare(b));
-
+export const nigeriaStates = Object.keys(nigeriaStatesPrices).sort((a, b) => a.localeCompare(b));
 
 /**
- * Calculates the shipping cost from the fixed pricing table.
- * @param location The destination location (local Abuja area or state/city).
- * @returns The shipping cost, or null if no location is provided.
+ * Calculates delivery fee for any selected location.
  */
 export function getShippingCost(location: string): number | null {
-    if (!location) return null;
-
-    if (abujaLocalPrices[location] !== undefined) {
-        return abujaLocalPrices[location];
-    }
-
-    if (nigeriaStatesPrices[location] !== undefined) {
-        return nigeriaStatesPrices[location];
-    }
-    
-    // Fallback if the location is somehow not in either list
-    return 8000;
+  if (!location) return null;
+  if (ABUJA_AREAS[location]) {
+    return ABUJA_AREAS[location].fee;
+  }
+  if (nigeriaStatesPrices[location] !== undefined) {
+    return nigeriaStatesPrices[location];
+  }
+  return 4000;
 }

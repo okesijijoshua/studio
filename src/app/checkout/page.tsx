@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -28,13 +27,15 @@ import {
 import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
-import { Separator } from '@/components/ui/separator';
-import { Truck, CreditCard, Info } from 'lucide-react';
+import { useSearchParams, useRouter } from 'next/navigation';
+import { Truck, CreditCard, Info, MapPin, CheckCircle } from 'lucide-react';
 import { getShippingCost, abujaLocations, nigeriaStates } from '@/lib/shipping';
-import { usePaystackPayment } from 'react-paystack';
+// Removed legacy Paystack client integration – server‑side init will be used
+
 import { GLOBAL_DISCOUNT } from '@/lib/config';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { notifyOrder } from '@/ai/flows/order-notification';
+import { Separator } from '@/components/ui/separator';
+
 
 const formSchema = z.object({
   fullName: z.string().min(3, 'Full name must be at least 3 characters.'),
@@ -49,11 +50,11 @@ const formSchema = z.object({
 }).refine(data => {
     // If an Abuja location is selected, address is required
     if (data.abujaLocation) {
-        return !!data.address && data.address.length >= 10;
+        return !!data.address && data.address.trim().length >= 5;
     }
     return true;
 }, {
-    message: "Please enter a valid delivery address for Abuja locations.",
+    message: "Please enter your street address or landmark.",
     path: ["address"],
 });
 
@@ -62,7 +63,7 @@ type FormValues = z.infer<typeof formSchema>;
 export default function CheckoutPage() {
   const { toast } = useToast();
   const { cartItems, totalPrice, totalItems, clearCart } = useCart();
-  const { formatPrice, currency, isMounted } = useCurrency();
+  const { formatPrice, isMounted } = useCurrency();
   const [selectedState, setSelectedState] = useState<string>('');
   const [isLocalDelivery, setIsLocalDelivery] = useState(false);
 
@@ -77,8 +78,14 @@ export default function CheckoutPage() {
       stateLocation: '',
     },
   });
-  
+
   const { formState, reset, trigger, setValue, watch, getValues } = form;
+  
+  // State for payment verification UI
+  const [verifying, setVerifying] = useState(false);
+  const [verifyError, setVerifyError] = useState<string | null>(null);
+  const verifiedRef = useRef(false);
+
   const watchedAbujaLocation = watch('abujaLocation');
   const watchedStateLocation = watch('stateLocation');
 
@@ -98,67 +105,100 @@ export default function CheckoutPage() {
     }
   }, [watchedAbujaLocation, watchedStateLocation, setValue, getValues]);
   
-  const shippingCost = getShippingCost(selectedState);
+  // Calculate delivery fee
+  const shippingCost: number | null = selectedState ? getShippingCost(selectedState) : null;
   const finalTotal = totalPrice + (shippingCost || 0);
 
-  const onPaymentSuccess = (reference: any) => {
-    console.log('Payment successful:', reference);
+  // Payment verification after Paystack redirect is handled via useEffect below.
+
+
     
-    const orderData = {
-      customer: getValues(),
-      cart: cartItems,
-      total: finalTotal,
-      shipping: shippingCost || 0,
-    };
-    
-    console.log("Triggering order notification flow with data:", orderData);
-    notifyOrder(orderData).then(() => {
-        console.log("Order notification flow completed.");
-    }).catch(error => {
-        console.error("Failed to send order notification:", error);
-    });
 
-    toast({
-      title: 'Payment Successful!',
-      description: 'Your order has been placed. We will process it shortly.',
-    });
-    clearCart();
-    reset();
-  };
 
-  const onPaymentClose = () => {
-    console.log('Payment closed');
-    toast({
-        title: 'Payment Canceled',
-        description: 'The payment process was not completed.',
-        variant: 'destructive',
-    });
-  };
 
-  const config = {
-      reference: new Date().getTime().toString(),
-      email: getValues('email'),
-      amount: finalTotal * 100, // Paystack amount is in kobo
-      publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || '',
-      metadata: {
-        fullName: getValues('fullName'),
-        phone: getValues('phone'),
-        cartItems: JSON.stringify(cartItems.map(item => ({ id: item.product.id, name: item.product.name, quantity: item.quantity }))),
-      },
-  };
-
-  const initializePayment = usePaystackPayment(config);
-
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-     initializePayment(onPaymentSuccess, onPaymentClose);
-  };
-
+// Server‑side payment initialization
   const handleProceedToPayment = async () => {
     const isValid = await trigger();
-    if (isValid) {
-        form.handleSubmit(onSubmit)();
+    if (!isValid) return;
+    const values = getValues();
+    const payload = {
+      customer: {
+        fullName: values.fullName,
+        email: values.email,
+        phone: values.phone,
+        address: values.address,
+        abujaLocation: values.abujaLocation,
+        stateLocation: values.stateLocation,
+      },
+      cart: cartItems.map(item => ({ product: { id: item.product.id }, quantity: item.quantity })),
+    };
+    try {
+      const res = await fetch('/api/orders/init', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.message || 'Order initialization failed');
+      // Redirect to Paystack authorization URL
+      window.location.href = data.authorization_url;
+    } catch (err: any) {
+      toast({
+        title: 'Payment Initialization Failed',
+        description: err.message || 'Unable to start payment.',
+        variant: 'destructive',
+      });
     }
-  }
+  };
+
+  // Verify payment when returning from Paystack
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const reference = params.get('reference');
+    if (!reference) return;
+    // Prevent duplicate verification attempts
+    if (verifying) return;
+    const verifyPayment = async () => {
+      try {
+        setVerifying(true);
+        const res = await fetch('/api/orders/confirm', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ reference }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.message || 'Verification failed');
+        // Ensure we only process successful verification once
+        if (!verifiedRef.current) {
+          toast({
+            title: 'Payment Successful!',
+            description: 'Your order has been placed and we will process it shortly.',
+          });
+          clearCart();
+          reset();
+          verifiedRef.current = true;
+        }
+        // Clean URL to remove reference param
+        const cleanUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, '', cleanUrl);
+      } catch (err: any) {
+        setVerifyError(err.message || 'Unable to verify payment.');
+        toast({
+          title: 'Payment Verification Failed',
+          description: err.message || 'Unable to verify payment.',
+          variant: 'destructive',
+        });
+      } finally {
+        setVerifying(false);
+      }
+    };
+    verifyPayment();
+  }, []);
+
+  // Remove client‑side Paystack hooks and config
+  // const config = { ... };
+  // const initializePayment = usePaystackPayment(config);
+  // const onSubmit: SubmitHandler<FormValues> = () => { initializePayment(onPaymentSuccess, onPaymentClose); };
 
 
   if (totalItems === 0 && !formState.isSubmitSuccessful) {
@@ -170,7 +210,7 @@ export default function CheckoutPage() {
                 <a href="/collections">Start Shopping</a>
             </Button>
         </div>
-    )
+    );
   }
   
   const formattedFinalTotal = formatPrice(finalTotal);
@@ -214,61 +254,112 @@ export default function CheckoutPage() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <FormField control={form.control} name="abujaLocation" render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Location (Within FCT-Abuja)</FormLabel>
-                                    <Select onValueChange={(value) => { field.onChange(value); setValue('stateLocation', ''); }} value={field.value}>
+                                    <FormLabel className="flex items-center gap-1.5 font-semibold">
+                                        <MapPin className="h-4 w-4 text-primary" />
+                                        Within Abuja (FCT)
+                                    </FormLabel>
+                                    <Select 
+                                        onValueChange={(value) => { 
+                                          field.onChange(value); 
+                                          setValue('stateLocation', ''); 
+                                        }} 
+                                        value={field.value || ''}
+                                    >
                                         <FormControl>
                                             <SelectTrigger>
-                                                <SelectValue placeholder="Select Abuja Area" />
+                                                <SelectValue placeholder="Select Your Area" />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent position="popper">
-                                            {abujaLocations.map(location => <SelectItem key={location} value={location}>{location}</SelectItem>)}
+                                            {abujaLocations.map(location => (
+                                              <SelectItem key={location} value={location}>{location}</SelectItem>
+                                            ))}
                                         </SelectContent>
                                     </Select>
                                     <FormMessage />
                                 </FormItem>
                             )} />
+
                              <FormField control={form.control} name="stateLocation" render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Location (Outside FCT-Abuja)</FormLabel>
-                                    <Select onValueChange={(value) => { field.onChange(value); setValue('abujaLocation', ''); }} value={field.value}>
+                                    <FormLabel className="font-semibold text-muted-foreground">Outside Abuja (Other States)</FormLabel>
+                                    <Select 
+                                        onValueChange={(value) => { 
+                                          field.onChange(value); 
+                                          setValue('abujaLocation', ''); 
+                                        }} 
+                                        value={field.value || ''}
+                                    >
                                         <FormControl>
                                             <SelectTrigger>
                                                 <SelectValue placeholder="Select State" />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent position="popper">
-                                            {nigeriaStates.map(location => <SelectItem key={location} value={location}>{location}</SelectItem>)}
+                                            {nigeriaStates.map(location => (
+                                              <SelectItem key={location} value={location}>{location}</SelectItem>
+                                            ))}
                                         </SelectContent>
                                     </Select>
                                     <FormMessage />
                                 </FormItem>
                             )} />
                         </div>
+
+                        {/* Instant Price Notification Banner */}
+                        {selectedState && shippingCost !== null && (
+                          <div className="flex items-center justify-between rounded-md border border-primary/20 bg-primary/5 p-3 text-sm">
+                            <div className="flex items-center gap-2">
+                              <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                              <span className="font-medium text-foreground">
+                                {isLocalDelivery ? `Delivery to ${selectedState}` : `Interstate Delivery to ${selectedState}`}
+                              </span>
+                            </div>
+                            <span className="font-bold text-primary text-base">
+                              {formatPrice(shippingCost)}
+                            </span>
+                          </div>
+                        )}
                         
-                         {!isLocalDelivery && selectedState && (
+                        {!isLocalDelivery && selectedState && (
                             <Alert>
                                 <Info className="h-4 w-4" />
                                 <AlertTitle>Interstate Delivery</AlertTitle>
                                 <AlertDescription>
-                                    Deliveries to {selectedState} will be sent to a central park/hub for pickup.
+                                    Deliveries outside Abuja are dispatched safely to a central park/hub for pickup.
                                 </AlertDescription>
                             </Alert>
                         )}
                         
                         <FormField control={form.control} name="address" render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Street Address</FormLabel>
+                                <FormLabel>Detailed Delivery Address / Landmark</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="123, Luxe Avenue" {...field} disabled={!isLocalDelivery} />
+                                    <Input 
+                                      placeholder={isLocalDelivery ? "e.g., House 14, 4th Avenue, Phase 2, Lugbe" : "N/A (Park Pickup)"} 
+                                      {...field} 
+                                      disabled={!isLocalDelivery} 
+                                    />
                                 </FormControl>
-                                {isLocalDelivery && <FormDescription>Street address is only for deliveries within Abuja.</FormDescription>}
+                                {isLocalDelivery && (
+                                  <FormDescription>
+                                    Enter your street address, estate, building number, or nearest landmark.
+                                  </FormDescription>
+                                )}
                                 <FormMessage />
                             </FormItem>
                         )} />
 
-                         <Button type="button" onClick={handleProceedToPayment} disabled={formState.isSubmitting || totalItems === 0 || !selectedState} className="w-full text-base sm:text-lg py-3 h-auto">
-                            {formState.isSubmitting ? 'Processing...' : `Proceed to Payment - ${!isMounted || !formattedFinalTotal ? "Calculating..." : formattedFinalTotal}`}
+                         <Button 
+                            type="button" 
+                            onClick={handleProceedToPayment} 
+                            disabled={formState.isSubmitting || totalItems === 0 || !selectedState} 
+                            className="w-full text-base sm:text-lg py-3 h-auto"
+                         >
+                            {formState.isSubmitting 
+                              ? 'Processing...' 
+                              : `Proceed to Payment - ${!isMounted || !formattedFinalTotal ? "Calculating..." : formattedFinalTotal}`
+                            }
                         </Button>
                     </form>
                 </Form>
@@ -303,7 +394,7 @@ export default function CheckoutPage() {
                                     )}
                                 </div>
                             </div>
-                        )
+                        );
                     })}
                 </div>
                 <Separator className="my-6" />
@@ -312,9 +403,11 @@ export default function CheckoutPage() {
                         <p className="text-muted-foreground">Subtotal</p>
                         <p className="font-medium">{formatPrice(totalPrice)}</p>
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between items-center">
                         <p className="text-muted-foreground">Shipping</p>
-                        <p className="font-medium">{isMounted && shippingCost ? formatPrice(shippingCost) : 'Select a location'}</p>
+                        <p className="font-medium">
+                          {isMounted && shippingCost !== null ? formatPrice(shippingCost) : 'Select location'}
+                        </p>
                     </div>
                 </div>
                 <Separator className="my-6" />
@@ -327,3 +420,4 @@ export default function CheckoutPage() {
       </div>
     </div>
   );
+}
