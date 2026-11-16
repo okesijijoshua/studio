@@ -74,6 +74,7 @@ export async function POST(request: Request) {
     if (!SITE_URL) {
       throw new Error('NEXT_PUBLIC_SITE_URL env var is missing');
     }
+    const callbackUrl = new URL('/checkout', SITE_URL).toString();
     const initRes = await fetch('https://api.paystack.co/transaction/initialize', {
       method: 'POST',
       headers: {
@@ -84,7 +85,7 @@ export async function POST(request: Request) {
         email: parsed.customer.email,
         amount: Math.round(total * 100), // kobo
         reference,
-        callback_url: `${SITE_URL}/checkout`,
+        callback_url: callbackUrl,
       }),
     });
     const initData = await initRes.json();
